@@ -1,4 +1,4 @@
-/* ВАЖНО: Импорт должен быть самым первым! */
+/* import must be the first line */
 @import "katex/dist/katex.min.css";
 
 @tailwind base;
@@ -23,6 +23,16 @@ body {
   @apply bg-zinc-700;
 }
 
+/* utility to hide scrollbar but keep functionality for ascii hero */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* scanline effect overlay */
 .scanlines::before {
   content: " ";
   display: block;
@@ -35,4 +45,11 @@ body {
   background-size: 100% 2px;
   z-index: 50;
   pointer-events: none;
+}
+
+/* cyberpunk glow effect for ascii art */
+.ascii-glow {
+  text-shadow:
+    0 0 10px rgba(34, 211, 238, 0.22),
+    0 0 24px rgba(168, 85, 247, 0.14);
 }

@@ -1,21 +1,50 @@
 export function AsciiHero() {
-    return (
-      <div className="w-full overflow-hidden mb-12 select-none opacity-80">
-        <pre className="text-[10px] md:text-xs leading-[10px] md:leading-3 font-mono text-zinc-600 whitespace-pre-wrap break-all">
-  {`
-    010101010101010101010101010101010101010101010101010101010101010101
-    1  _______  __   __  _______  __   __  _______  ______    _______  1
-    0 |       ||  | |  ||       ||  |_|  ||       ||    _ |  |       | 0
-    1 |       ||  |_|  ||    _  ||       ||    ___||   | ||  |  _____| 1
-    0 |       ||       ||   |_| ||       ||   |___ |   |_||_ | |_____  0
-    1 |      _||       ||    ___||       ||    ___||    __  ||_____  | 1
-    0 |     |_ |   _   ||   |    | ||_|| ||   |___ |   |  | | _____| | 0
-    1 |_______||__| |__||___|    |_|   |_||_______||___|  |_||_______| 1
-    0                                                                  0
-    1  [ zk-snarks ] [ merkle-trees ] [ distributed-systems ] [ rust ] 1
-    010101010101010101010101010101010101010101010101010101010101010101
-  `}
+  // wide version for desktop screens
+  const WIDE = String.raw`0101010101010101010101010101010101010101010101010101010101010101010101
+1                                                                       0
+0   o───o      o──────────────o        o──────────────o      o───o      1
+1   │   │      │              │        │              │      │   │      0
+0   o───┴──o───o   ┌──────────┴────────┴──────────┐   o───o──┴───o      1
+1           │       │   ┌───────┐      ┌───────┐   │       │             0
+0   o───o───o       │  /       /|     /       /|   │       o───o───o     1
+1   │   │           │ /_______/ |    /_______/ |   │           │   │     0
+0   o───┘   o───o   │ |       | |    |       | |   │   o───o   └───o     1
+1         ┌─┴─┐ │   │ |  ███  | /    |  ███  | /   │   │ ┌─┴─┐           0
+0   o───o │   │ o───o |       |/     |       |/    o───o │   │ o───o     1
+1   │   │ └─┬─┘      │  ──┬───┘      └───┬───  │      └─┬─┘ │   │      0
+0   o───o───o        │    │   ╔═══════════╗     │        o───o───o       1
+1                    │    │   ║ ░▒▓█▓▒░▒▓█ ║     │                      0
+0   ┌───┐──┬──┌───┐  │    │   ╚═══════════╝     │  ┌───┐──┬──┌───┐      1
+1   │▒▒▒│  │  │▒▒▒│  └────┴──────────┬──────────┘  │▒▒▒│  │  │▒▒▒│      0
+0   └───┘──┴──└───┘                  │             └───┘──┴──└───┘      1
+1                                                                       0
+0101010101010101010101010101010101010101010101010101010101010101010101`;
+
+  // compact version for mobile screens
+  const COMPACT = String.raw`010101010101010101010101010101010101
+1   o──o     ┌──────┐     o──o      0
+0   │  │  o──┤ ┌──┐ ├──o  │  │      1
+1   o──┴──┤  └─┴──┴─┘  ├──┴──o      0
+0         │  /____/|   │             1
+1  ┌───┐──┼──|    | |──┼──┌───┐      0
+0  │▒▒▒│  │  |____|/   │  │▒▒▒│      1
+1  └───┘──┴─────┬──────┴──└───┘      0
+0        ┌──────┴──────┐              1
+1        └─────────────┘              0
+010101010101010101010101010101010101`;
+
+  return (
+    <div className="w-full mb-12 select-none">
+      <div className="overflow-x-auto no-scrollbar">
+        {/* desktop view */}
+        <pre className="ascii-glow hidden md:block whitespace-pre font-mono text-[10px] md:text-xs leading-[10px] md:leading-4 text-zinc-200 opacity-90">
+          {WIDE}
+        </pre>
+        {/* mobile view */}
+        <pre className="ascii-glow md:hidden whitespace-pre font-mono text-[10px] leading-[10px] text-zinc-200 opacity-90">
+          {COMPACT}
         </pre>
       </div>
-    );
-  }
+    </div>
+  );
+}
