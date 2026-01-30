@@ -1,0 +1,20 @@
+[
+    {
+      "slug": "ethereum",
+      "name": "Ethereum",
+      "chain": "L1",
+      "tags": ["Smart Contracts", "PoS"],
+      "links": { "website": "https://ethereum.org" },
+      "description": "The leading smart contract platform.",
+      "dataSources": { "coingeckoId": "ethereum" }
+    },
+    {
+      "slug": "solana",
+      "name": "Solana",
+      "chain": "L1",
+      "tags": ["High TPS", "Rust"],
+      "links": { "website": "https://solana.com" },
+      "description": "High-performance blockchain.",
+      "dataSources": { "coingeckoId": "solana" }
+    }
+  ]
