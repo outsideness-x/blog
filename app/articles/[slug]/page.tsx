@@ -1,22 +1,75 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { readMDXFile, getMDXFiles } from "@/lib/mdx";
 import { components } from "@/components/mdx-components";
 import { formatDate } from "@/lib/utils";
+import { Frontmatter } from "@/lib/types";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const files = getMDXFiles("articles");
-  return files.map((file) => ({
-    slug: file.replace(".mdx", ""),
-  }));
+  return files
+    .map((file) => {
+      const slug = file.replace(".mdx", "");
+      const { data } = readMDXFile("articles", slug);
+      return { slug, published: (data as Frontmatter).published === true };
+    })
+    .filter((entry) => entry.published)
+    .map(({ slug }) => ({ slug }));
 }
 
-export default function ArticleLayout({ params }: { params: { slug: string } }) {
+type ArticlePageProps = {
+  params: { slug: string };
+};
+
+function getArticle(slug: string) {
+  const article = readMDXFile("articles", slug);
+  if ((article.data as Frontmatter).published !== true) return null;
+  return article;
+}
+
+export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   try {
-    const { content, data } = readMDXFile("articles", params.slug);
+    const article = getArticle(params.slug);
+    if (!article) return {};
+
+    const data = article.data as Frontmatter;
+    return {
+      title: data.title,
+      description: data.summary,
+      keywords: data.tags,
+      alternates: {
+        canonical: `/articles/${params.slug}`,
+      },
+      openGraph: {
+        type: "article",
+        title: data.title,
+        description: data.summary,
+      },
+      twitter: {
+        card: "summary",
+        title: data.title,
+        description: data.summary,
+      },
+    };
+  } catch {
+    return {};
+  }
+}
+
+export default function ArticleLayout({ params }: ArticlePageProps) {
+  try {
+    const article = getArticle(params.slug);
+    if (!article) {
+      notFound();
+    }
+
+    const { content, data } = article;
 
     return (
       <article className="prose prose-invert prose-zinc max-w-none">
@@ -44,7 +97,7 @@ export default function ArticleLayout({ params }: { params: { slug: string } }) 
         />
       </article>
     );
-  } catch (e) {
+  } catch {
     notFound();
   }
 }

@@ -4,6 +4,7 @@
       "name": "Ethereum",
       "chain": "L1",
       "tags": ["Smart Contracts", "PoS"],
+      "published": false,
       "links": { "website": "https://ethereum.org" },
       "description": "The leading smart contract platform.",
       "dataSources": { "coingeckoId": "ethereum" }
@@ -13,6 +14,7 @@
       "name": "Solana",
       "chain": "L1",
       "tags": ["High TPS", "Rust"],
+      "published": false,
       "links": { "website": "https://solana.com" },
       "description": "High-performance blockchain.",
       "dataSources": { "coingeckoId": "solana" }

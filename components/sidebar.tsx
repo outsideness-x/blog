@@ -33,7 +33,7 @@ export function Sidebar() {
               key={item.path}
               href={item.path}
               className={cn(
-                "flex items-center gap-3 px-4 py-2 rounded-md text-sm font-mono transition-colors",
+                "flex items-center gap-3 px-4 py-2 rounded-md text-sm font-mono transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70",
                 isActive 
                   ? "bg-zinc-800 text-primary border border-zinc-700" 
                   : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900"

@@ -1,14 +1,18 @@
-import fs from "fs";
-import path from "path";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ProjectData, CryptoPrice } from "@/lib/types";
+import { CryptoPrice } from "@/lib/types";
+import { getPublishedAnalyticsProjects } from "@/lib/analytics";
+import { isExternalHref, sanitizeHref } from "@/lib/security";
 import { ArrowUpRight, AlertTriangle } from "lucide-react";
+
+export const dynamicParams = false;
 
 // fetch data with caching (revalidate every 60s)
 async function getCryptoData(id: string): Promise<CryptoPrice | null> {
   try {
+    const encodedId = encodeURIComponent(id);
     const res = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${id}`,
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${encodedId}`,
       { next: { revalidate: 60 } }
     );
     
@@ -22,23 +26,38 @@ async function getCryptoData(id: string): Promise<CryptoPrice | null> {
       price_change_percentage_24h: data[0].price_change_percentage_24h,
       last_updated: data[0].last_updated,
     };
-  } catch (error) {
-    console.error("Fetch error:", error);
+  } catch {
     return null;
   }
 }
 
 export async function generateStaticParams() {
-  const filePath = path.join(process.cwd(), "content/analytics/projects.json");
-  const projects: ProjectData[] = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-  return projects.map((p) => ({ slug: p.slug }));
+  return getPublishedAnalyticsProjects().map((project) => ({ slug: project.slug }));
 }
 
-export default async function AnalyticsProjectPage({ params }: { params: { slug: string } }) {
-  const filePath = path.join(process.cwd(), "content/analytics/projects.json");
-  const projects: ProjectData[] = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-  const project = projects.find((p) => p.slug === params.slug);
+type AnalyticsPageProps = {
+  params: { slug: string };
+};
 
+function getAnalyticsProjectBySlug(slug: string) {
+  return getPublishedAnalyticsProjects().find((project) => project.slug === slug) ?? null;
+}
+
+export async function generateMetadata({ params }: AnalyticsPageProps): Promise<Metadata> {
+  const project = getAnalyticsProjectBySlug(params.slug);
+  if (!project) return {};
+
+  return {
+    title: `${project.name} Analytics`,
+    description: project.description,
+    alternates: {
+      canonical: `/analytics/${project.slug}`,
+    },
+  };
+}
+
+export default async function AnalyticsProjectPage({ params }: AnalyticsPageProps) {
+  const project = getAnalyticsProjectBySlug(params.slug);
   if (!project) notFound();
 
   const marketData = project.dataSources.coingeckoId 
@@ -75,17 +94,22 @@ export default async function AnalyticsProjectPage({ params }: { params: { slug:
         <div className="p-6 border border-border rounded-lg bg-zinc-900/30">
           <h3 className="text-zinc-500 font-mono text-sm mb-2">Links</h3>
           <div className="flex flex-col gap-2">
-            {Object.entries(project.links).map(([key, url]) => (
-              <a 
-                key={key} 
-                href={url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-primary hover:underline capitalize"
-              >
-                {key} <ArrowUpRight size={14} />
-              </a>
-            ))}
+            {Object.entries(project.links).map(([key, url]) => {
+              const safeUrl = sanitizeHref(url);
+              if (!isExternalHref(safeUrl)) return null;
+
+              return (
+                <a
+                  key={key}
+                  href={safeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="flex items-center gap-2 text-primary hover:underline capitalize"
+                >
+                  {key} <ArrowUpRight size={14} />
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

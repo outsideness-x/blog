@@ -1,19 +1,62 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { readMDXFile, getMDXFiles } from "@/lib/mdx";
 import { components } from "@/components/mdx-components";
+import { Frontmatter } from "@/lib/types";
 import rehypePrettyCode from "rehype-pretty-code";
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const files = getMDXFiles("projects");
-  return files.map((file) => ({
-    slug: file.replace(".mdx", ""),
-  }));
+  return files
+    .map((file) => {
+      const slug = file.replace(".mdx", "");
+      const { data } = readMDXFile("projects", slug);
+      return { slug, published: (data as Frontmatter).published === true };
+    })
+    .filter((entry) => entry.published)
+    .map(({ slug }) => ({ slug }));
 }
 
-export default function ProjectLayout({ params }: { params: { slug: string } }) {
+type ProjectPageProps = {
+  params: { slug: string };
+};
+
+function getProject(slug: string) {
+  const project = readMDXFile("projects", slug);
+  if ((project.data as Frontmatter).published !== true) return null;
+  return project;
+}
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   try {
-    const { content, data } = readMDXFile("projects", params.slug);
+    const project = getProject(params.slug);
+    if (!project) return {};
+
+    const data = project.data as Frontmatter;
+    return {
+      title: data.title,
+      description: data.summary,
+      keywords: data.tags,
+      alternates: {
+        canonical: `/projects/${params.slug}`,
+      },
+    };
+  } catch {
+    return {};
+  }
+}
+
+export default function ProjectLayout({ params }: ProjectPageProps) {
+  try {
+    const project = getProject(params.slug);
+    if (!project) {
+      notFound();
+    }
+
+    const { content, data } = project;
 
     return (
       <article className="prose prose-invert prose-zinc max-w-none">
@@ -34,7 +77,7 @@ export default function ProjectLayout({ params }: { params: { slug: string } }) 
         />
       </article>
     );
-  } catch (e) {
+  } catch {
     notFound();
   }
 }

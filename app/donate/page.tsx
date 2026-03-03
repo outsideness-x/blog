@@ -1,17 +1,24 @@
+import type { Metadata } from "next";
 import { CopyButton } from "@/components/copy-button";
 
 const wallets = [
-  { name: "Bitcoin (BTC)", address: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh" },
-  { name: "Ethereum (ETH)", address: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F" },
-  { name: "Solana (SOL)", address: "HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrH" },
+  { name: "Bitcoin (BTC)", address: "bc1qcg22w09z2d9phdstsg3lsyswu8k7zm9ek28fng" },
+  { name: "Ethereum (ETH)", address: "0x5DCb0D14126f1A30a6c4cAC9F2647173aF4131f9" },
+  { name: "Solana (SOL)", address: "4jechBmGFiFWhEJ1x1o6zSfiw7v7WANhmR8MkxiQvh4d" },
 ];
+
+export const metadata: Metadata = {
+  title: "Donate",
+  description: "Support this blog using crypto wallets.",
+  alternates: { canonical: "/donate" },
+};
 
 export default function DonatePage() {
   return (
     <div className="space-y-8">
       <h1 className="text-3xl font-bold font-mono text-primary mb-8">/donate</h1>
       <p className="text-zinc-400">
-        If you find my work valuable, consider supporting the lab.
+      if you find my work valuable, you can support it:
       </p>
 
       <div className="space-y-4">

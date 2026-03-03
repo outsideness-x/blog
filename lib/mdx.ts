@@ -4,6 +4,11 @@ import matter from "gray-matter";
 import { Frontmatter } from "./types";
 
 const root = process.cwd();
+const validSlugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function isValidSlug(slug: string) {
+  return validSlugPattern.test(slug);
+}
 
 // read all mdx files from a directory
 export function getMDXFiles(dir: string) {
@@ -14,7 +19,15 @@ export function getMDXFiles(dir: string) {
 
 // read single mdx file content and frontmatter
 export function readMDXFile(dir: string, slug: string) {
+  if (!isValidSlug(slug)) {
+    throw new Error(`Invalid slug: ${slug}`);
+  }
+
   const filePath = path.join(root, "content", dir, `${slug}.mdx`);
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`File not found: ${filePath}`);
+  }
+
   const fileContent = fs.readFileSync(filePath, "utf-8");
   return matter(fileContent);
 }
@@ -28,6 +41,7 @@ export function getAllItems(dir: string) {
     return {
       ...(data as Frontmatter),
       slug: file.replace(".mdx", ""),
+      published: (data as Frontmatter).published === true,
     };
   });
 

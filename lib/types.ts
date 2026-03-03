@@ -3,6 +3,7 @@ export type Frontmatter = {
     date: string;
     summary: string;
     tags?: string[];
+    published?: boolean;
     slug: string;
   };
   
@@ -11,6 +12,7 @@ export type Frontmatter = {
     name: string;
     chain: string;
     tags: string[];
+    published?: boolean;
     links: {
       website?: string;
       github?: string;
