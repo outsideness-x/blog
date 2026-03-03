@@ -11,6 +11,6 @@ function normalizeSiteUrl(input?: string) {
   }
 }
 
-export const SITE_NAME = "mini-blog";
+export const SITE_NAME = "chemical-pink";
 export const SITE_DESCRIPTION = "Engineering, cryptography, and Web3 research notes.";
 export const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);

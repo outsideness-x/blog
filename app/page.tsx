@@ -88,10 +88,10 @@ export default function Home() {
               alt=""
               fill
               sizes="(min-width: 1280px) 320px, (min-width: 1024px) 280px, (min-width: 768px) 250px, 220px"
-              className="object-cover object-center opacity-40 md:opacity-35 lg:opacity-45 contrast-75 brightness-75 saturate-0"
+              className="object-cover object-center opacity-50 md:opacity-45 lg:opacity-55 contrast-80 brightness-85 saturate-0"
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-background/35 via-background/50 to-background/72" />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(9,9,11,0.80)_100%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-background/24 via-background/38 to-background/56" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(9,9,11,0.64)_100%)]" />
           </div>
         </figure>
       </div>

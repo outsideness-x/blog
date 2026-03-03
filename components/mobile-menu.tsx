@@ -11,7 +11,7 @@ export function MobileMenu() {
 
   return (
     <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur border-b border-border p-4 flex justify-between items-center">
-      <Link href="/" className="font-mono text-primary font-bold">mini_blog_v1</Link>
+      <Link href="/" className="font-mono text-primary font-bold">chemical_pink_v1</Link>
       <button
         type="button"
         onClick={toggle}

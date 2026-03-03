@@ -21,7 +21,7 @@ export function Sidebar() {
       <div className="p-6 border-b border-border">
         <Link href="/" className="flex items-center gap-2 font-mono text-primary hover:opacity-80 transition-opacity">
           <Terminal size={20} />
-          <span className="font-bold tracking-tighter">mini_blog_v1</span>
+          <span className="font-bold tracking-tighter">chemical_pink_v1</span>
         </Link>
       </div>
       
@@ -47,7 +47,7 @@ export function Sidebar() {
       </nav>
 
       <div className="p-4 border-t border-border text-xs text-zinc-600 font-mono text-center">
-        © {new Date().getFullYear()} engineering
+        © {new Date().getFullYear()} chemical_pink
       </div>
     </aside>
   );
