@@ -1,5 +1,26 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Github } from "lucide-react";
+
+const skillStack = [
+  { name: "JavaScript", icon: "javascript.svg" },
+  { name: "TypeScript", icon: "typescript.svg" },
+  { name: "React", icon: "react.svg" },
+  { name: "Next.js", icon: "nextdotjs.svg" },
+  { name: "Node.js", icon: "nodedotjs.svg" },
+  { name: "Express", icon: "express.svg" },
+  { name: "Python", icon: "python.svg" },
+  { name: "Rust", icon: "rust.svg" },
+  { name: "Swift", icon: "swift.svg" },
+  { name: "Solidity", icon: "solidity.svg" },
+  { name: "Ethereum", icon: "ethereum.svg" },
+  { name: "Solana", icon: "solana.svg" },
+  { name: "PyTorch", icon: "pytorch.svg" },
+  { name: "Docker", icon: "docker.svg" },
+  { name: "Linux", icon: "linux.svg" },
+  { name: "Git", icon: "git.svg" },
+  { name: "Figma", icon: "figma.svg" },
+];
 
 function XIcon() {
   return (
@@ -33,6 +54,29 @@ export default function AboutPage() {
           Currently working on ZK-rollups and experimenting with Manim for educational content.
         </p>
       </div>
+
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold font-mono text-zinc-100">My stack</h2>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+          {skillStack.map((skill) => (
+            <div
+              key={skill.name}
+              className="group flex items-center gap-3 rounded border border-border bg-zinc-900/40 p-3 transition-colors hover:border-primary/60"
+            >
+              <Image
+                src={`/skills-icons/${skill.icon}`}
+                alt={skill.name}
+                width={22}
+                height={22}
+                className="h-[22px] w-[22px] shrink-0 brightness-0 invert"
+              />
+              <span className="text-sm text-zinc-300 transition-colors group-hover:text-zinc-100">
+                {skill.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <div className="flex gap-6 mt-8">
         <a
