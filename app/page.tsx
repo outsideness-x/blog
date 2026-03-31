@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CopyInlineText } from "@/components/copy-inline-text";
+import { HeroPhaseField } from "@/components/hero-phase-field";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="min-h-[80vh] flex items-center">
-      <div className="grid w-full gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(240px,320px)] lg:items-center lg:gap-12">
+      <div className="grid w-full gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:items-center lg:gap-14">
         <div className="space-y-6 max-w-2xl">
           <h1 className="text-3xl font-bold font-mono text-primary">
             <span aria-hidden="true">{">"}</span>{" "}
@@ -20,9 +20,8 @@ export default function Home() {
           </h1>
 
           <p className="text-zinc-400 leading-relaxed">
-            My name is Alex. I am a full-stack Web3 dev and researcher. Here, I
-            will share my projects and research in the fields of cryptography,
-            algorithmic trading, math and machine learning. For questions and
+            My name is Alex. I am a full-stack/Swift dev and free ML researcher. Here, I
+            will share my projects and research in the fields of machine learning and math. For questions and
             collaboration, please contact me at{" "}
             <CopyInlineText text="colddme@proton.me" />{" "}
             or Telegram{" "}
@@ -80,19 +79,9 @@ export default function Home() {
 
         <figure
           aria-hidden="true"
-          className="order-last mx-auto w-full max-w-[220px] sm:max-w-[250px] md:max-w-[290px] lg:order-none lg:max-w-[320px] lg:justify-self-end"
+          className="order-last mx-auto w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:order-none lg:max-w-[360px] lg:justify-self-end"
         >
-          <div className="relative aspect-square">
-            <Image
-              src="/pictures/main.png"
-              alt=""
-              fill
-              sizes="(min-width: 1280px) 320px, (min-width: 1024px) 280px, (min-width: 768px) 250px, 220px"
-              className="object-cover object-center opacity-50 md:opacity-45 lg:opacity-55 contrast-80 brightness-85 saturate-0"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-background/24 via-background/38 to-background/56" />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(9,9,11,0.64)_100%)]" />
-          </div>
+          <HeroPhaseField />
         </figure>
       </div>
     </div>
