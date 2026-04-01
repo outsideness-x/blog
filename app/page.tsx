@@ -20,7 +20,7 @@ export default function Home() {
           </h1>
 
           <p className="text-zinc-400 leading-relaxed">
-            My name is Alex. I am a full-stack/Swift dev and free ML researcher. Here, I
+            My name is Alex. I am a full-stack web and Swift dev and free ML researcher. Here, I
             will share my projects and research in the fields of machine learning and math. For questions and
             collaboration, please contact me at{" "}
             <CopyInlineText text="colddme@proton.me" />{" "}
