@@ -79,7 +79,7 @@ export default function AboutPage() {
         >
           <Github />
         </a>
-        <a
+        {/* <a
           href="https://x.com/AlexxEth76177"
           className="text-zinc-400 hover:text-white hover:scale-110 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded"
           aria-label="X"
@@ -87,7 +87,7 @@ export default function AboutPage() {
           rel="noopener noreferrer"
         >
           <XIcon />
-        </a>
+        </a> */}
       </div>
     </div>
   );
