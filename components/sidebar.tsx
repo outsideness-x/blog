@@ -21,10 +21,10 @@ export function Sidebar() {
       <div className="p-6 border-b border-border">
         <Link href="/" className="flex items-center gap-2 font-mono text-brand hover:opacity-80 transition-opacity">
           <Terminal size={20} />
-          <span className="font-bold tracking-tighter">chemical_pink_v1</span>
+          <span className="font-bold tracking-tighter">chemical_pink_v0.1</span>
         </Link>
       </div>
-      
+
       <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
         {navItems.map((item) => {
           const isActive = pathname.startsWith(item.path);
@@ -34,8 +34,8 @@ export function Sidebar() {
               href={item.path}
               className={cn(
                 "flex items-center gap-3 px-4 py-2.5 rounded-md text-sm font-mono transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70",
-                isActive 
-                  ? "bg-zinc-800 text-primary border border-zinc-700" 
+                isActive
+                  ? "bg-zinc-800 text-primary border border-zinc-700"
                   : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900"
               )}
             >
