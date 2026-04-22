@@ -35,14 +35,14 @@ export default function AboutPage() {
   return (
     <div className="space-y-8">
       <h1 className="text-3xl font-bold font-mono text-white mb-8">/about</h1>
-      
+
       <div className="prose prose-invert prose-zinc max-w-none">
         <p>
-          I am a Full Stack Engineer passionate about decentralized technologies and
+          I am a Full Stack Engineer passionate about Deep Learning and
           mathematical visualization. This blog is a collection of my research notes.
         </p>
         <p>
-          Currently working on ZK-rollups and experimenting with Manim for educational content.
+          Currently working on iOS apps and experimenting with Manim for educational content.
         </p>
       </div>
 
