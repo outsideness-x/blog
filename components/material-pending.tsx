@@ -5,7 +5,7 @@ type MaterialPendingProps = {
 export function MaterialPending({ section }: MaterialPendingProps) {
   return (
     <div className="relative overflow-hidden rounded-lg border border-zinc-800/90 bg-zinc-900/35 p-6 md:p-8">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(34,197,94,0.08),transparent_45%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(34,197,94,0.05),transparent_45%)]" />
 
       <div className="relative">
         <p className="text-xs font-mono uppercase tracking-[0.18em] text-zinc-500">

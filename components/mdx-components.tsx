@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { AnchorHTMLAttributes, HTMLAttributes, ImgHTMLAttributes } from "react";
 import { ManimVideo } from "./manim-video";
+import { FormulaExplainer } from "./formula-explainer";
 import { isExternalHref, sanitizeHref } from "@/lib/security";
 
 function MdxAnchor(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
@@ -27,6 +28,7 @@ export const components = {
   Image,
   Link,
   ManimVideo,
+  FormulaExplainer,
   img: (props: ImgHTMLAttributes<HTMLImageElement>) => {
     if (!props.src) return null;
     const safeSrc = sanitizeHref(props.src);
@@ -50,13 +52,13 @@ export const components = {
     );
   },
   h1: (props: HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className="text-2xl font-bold mt-8 mb-4 text-primary" {...props} />
+    <h1 className="text-[2rem] font-bold mt-8 mb-4 text-zinc-50 font-sans leading-[1.2]" {...props} />
   ),
   h2: (props: HTMLAttributes<HTMLHeadingElement>) => (
     <h2 className="text-xl font-bold mt-6 mb-3 text-zinc-100" {...props} />
   ),
   p: (props: HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="leading-7 mb-4 text-zinc-300" {...props} />
+    <p className="leading-[1.7] mb-4 text-zinc-300" {...props} />
   ),
   a: MdxAnchor,
   ul: (props: HTMLAttributes<HTMLUListElement>) => (

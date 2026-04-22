@@ -4,6 +4,8 @@ import { sanitizeHref } from "@/lib/security";
 
 interface ManimVideoProps {
   src?: string;
+  webmSrc?: string;
+  mp4Src?: string;
   sources?: Array<{
     src: string;
     type?: "video/mp4" | "video/webm" | "image/gif";
@@ -27,6 +29,8 @@ function inferMimeType(src: string) {
 
 export function ManimVideo({
   src,
+  webmSrc,
+  mp4Src,
   sources,
   caption,
   className,
@@ -38,15 +42,22 @@ export function ManimVideo({
   muted = true,
   preload = "metadata",
 }: ManimVideoProps) {
-  const normalizedSources =
+  const sourceEntries =
     sources && sources.length > 0
-      ? sources.map((source) => ({
-          ...source,
-          src: sanitizeHref(source.src),
-        }))
+      ? sources
+      : webmSrc || mp4Src
+      ? [
+          ...(webmSrc ? [{ src: webmSrc, type: "video/webm" as const }] : []),
+          ...(mp4Src ? [{ src: mp4Src, type: "video/mp4" as const }] : []),
+        ]
       : src
-      ? [{ src: sanitizeHref(src), type: inferMimeType(src) }]
+      ? [{ src, type: inferMimeType(src) }]
       : [];
+
+  const normalizedSources = sourceEntries.map((source) => ({
+    ...source,
+    src: sanitizeHref(source.src),
+  }));
 
   const normalizedPoster = poster ? sanitizeHref(poster) : undefined;
   const safePoster = normalizedPoster === "#" ? undefined : normalizedPoster;

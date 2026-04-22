@@ -3,22 +3,13 @@ import Image from "next/image";
 import { Github } from "lucide-react";
 
 const skillStack = [
-  { name: "JavaScript", icon: "javascript.svg" },
   { name: "TypeScript", icon: "typescript.svg" },
   { name: "React", icon: "react.svg" },
   { name: "Next.js", icon: "nextdotjs.svg" },
-  { name: "Node.js", icon: "nodedotjs.svg" },
-  { name: "Express", icon: "express.svg" },
   { name: "Python", icon: "python.svg" },
-  { name: "Rust", icon: "rust.svg" },
   { name: "Swift", icon: "swift.svg" },
-  { name: "Solidity", icon: "solidity.svg" },
-  { name: "Ethereum", icon: "ethereum.svg" },
-  { name: "Solana", icon: "solana.svg" },
   { name: "PyTorch", icon: "pytorch.svg" },
-  { name: "Docker", icon: "docker.svg" },
   { name: "Linux", icon: "linux.svg" },
-  { name: "Git", icon: "git.svg" },
   { name: "Figma", icon: "figma.svg" },
 ];
 
@@ -43,7 +34,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="space-y-8">
-      <h1 className="text-3xl font-bold font-mono text-primary mb-8">/about</h1>
+      <h1 className="text-3xl font-bold font-mono text-white mb-8">/about</h1>
       
       <div className="prose prose-invert prose-zinc max-w-none">
         <p>
@@ -81,7 +72,7 @@ export default function AboutPage() {
       <div className="flex gap-6 mt-8">
         <a
           href="https://github.com/outsideness-x"
-          className="text-zinc-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded"
+          className="text-zinc-400 hover:text-white hover:scale-110 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded"
           aria-label="GitHub"
           target="_blank"
           rel="noopener noreferrer"
@@ -90,7 +81,7 @@ export default function AboutPage() {
         </a>
         <a
           href="https://x.com/AlexxEth76177"
-          className="text-zinc-400 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded"
+          className="text-zinc-400 hover:text-white hover:scale-110 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded"
           aria-label="X"
           target="_blank"
           rel="noopener noreferrer"

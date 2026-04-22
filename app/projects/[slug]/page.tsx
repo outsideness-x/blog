@@ -5,6 +5,7 @@ import { readMDXFile, getMDXFiles } from "@/lib/mdx";
 import { components } from "@/components/mdx-components";
 import { Frontmatter } from "@/lib/types";
 import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 
 export const dynamicParams = false;
 
@@ -61,7 +62,7 @@ export default function ProjectLayout({ params }: ProjectPageProps) {
     return (
       <article className="prose prose-invert prose-zinc max-w-none">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold font-mono text-primary mb-4">{data.title}</h1>
+          <h1 className="text-[2.5rem] font-bold font-sans text-zinc-50 mb-4 leading-[1.2]">{data.title}</h1>
           <p className="text-xl text-zinc-400">{data.summary}</p>
         </header>
         
@@ -71,6 +72,7 @@ export default function ProjectLayout({ params }: ProjectPageProps) {
           options={{
             mdxOptions: {
               // cast plugins to 'any' to fix typescript mismatch
+              remarkPlugins: [remarkGfm as any],
               rehypePlugins: [[rehypePrettyCode, { theme: "github-dark-dimmed" }] as any],
             },
           }}

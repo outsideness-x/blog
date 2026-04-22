@@ -14,7 +14,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-3xl font-bold font-mono text-primary mb-8">/projects</h1>
+      <h1 className="text-3xl font-bold font-mono text-white mb-8">/projects</h1>
       
       {projects.length === 0 ? (
         <MaterialPending section="/projects" />
@@ -24,7 +24,7 @@ export default function ProjectsPage() {
             <Link 
               key={project.slug} 
               href={`/projects/${project.slug}`}
-              className="block border border-border bg-zinc-900/50 p-6 rounded-lg hover:border-primary transition-all hover:shadow-[0_0_15px_rgba(34,197,94,0.1)]"
+              className="block border border-border bg-zinc-900/50 p-6 rounded-lg hover:border-primary transition-all hover:shadow-[0_0_15px_rgba(34,197,94,0.08)]"
             >
               <div className="flex justify-between items-start mb-4">
                 <h2 className="text-xl font-bold font-mono text-zinc-100">{project.title}</h2>

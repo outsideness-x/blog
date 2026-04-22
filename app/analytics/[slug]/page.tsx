@@ -67,7 +67,7 @@ export default async function AnalyticsProjectPage({ params }: AnalyticsPageProp
   return (
     <div className="space-y-8">
       <header className="border-b border-border pb-6">
-        <h1 className="text-4xl font-bold font-mono text-primary mb-2">{project.name}</h1>
+        <h1 className="text-4xl font-bold font-sans text-zinc-50 mb-2">{project.name}</h1>
         <p className="text-zinc-400">{project.description}</p>
       </header>
 

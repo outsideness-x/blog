@@ -15,7 +15,7 @@ export default function ArticlesPage() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-3xl font-bold font-mono text-primary mb-8">/articles</h1>
+      <h1 className="text-3xl font-bold font-mono text-white mb-8">/articles</h1>
       
       {articles.length === 0 ? (
         <MaterialPending section="/articles" />

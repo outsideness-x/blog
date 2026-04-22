@@ -10,12 +10,13 @@ const config: Config = {
     extend: {
       fontFamily: {
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "monospace"],
-        sans: ["system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif"],
+        sans: ["var(--font-inter)", "Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif"],
       },
       colors: {
-        background: "#09090b", // zinc-950
+        background: "#0A0A0A",
         foreground: "#e4e4e7", // zinc-200
-        primary: "#22c55e", // green-500 (terminal vibe)
+        primary: "#22c55e", // green-500 — terminal/interactive accents only
+        brand: "#FF2D78", // neon pink — logo & brand identity
         border: "#27272a", // zinc-800
       },
       backgroundImage: {

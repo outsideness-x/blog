@@ -14,7 +14,7 @@ export default function AnalyticsPage() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-3xl font-bold font-mono text-primary mb-8">/analytics</h1>
+      <h1 className="text-3xl font-bold font-mono text-white mb-8">/analytics</h1>
       
       {publishedProjects.length === 0 ? (
         <MaterialPending section="/analytics" />

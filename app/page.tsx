@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { CopyInlineText } from "@/components/copy-inline-text";
-import { HeroPhaseField } from "@/components/hero-phase-field";
+import { ParticleFlow } from "@/components/particle-flow";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -12,9 +10,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="min-h-[80vh] flex items-center">
-      <div className="grid w-full gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] lg:items-center lg:gap-14">
+      <div className="grid w-full gap-10 lg:grid-cols-[minmax(0,35fr)_minmax(0,65fr)] lg:items-center lg:gap-14">
         <div className="space-y-6 max-w-2xl">
-          <h1 className="text-3xl font-bold font-mono text-primary">
+          <h1 className="text-3xl font-bold font-mono text-brand">
             <span aria-hidden="true">{">"}</span>{" "}
             hello there<span className="cursor-blink" aria-hidden="true">█</span>
           </h1>
@@ -28,36 +26,6 @@ export default function Home() {
             <CopyInlineText text="@coldd_me" />
             .
           </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-            <Link
-              href="/articles"
-              className="group border border-border p-4 rounded hover:border-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
-            >
-              <h3 className="font-mono text-zinc-100 flex items-center gap-2">
-                /articles{" "}
-                <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </h3>
-              <p className="text-sm text-zinc-500 mt-2">Deep dives into tech &amp; math.</p>
-            </Link>
-
-            <Link
-              href="/projects"
-              className="group border border-border p-4 rounded hover:border-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
-            >
-              <h3 className="font-mono text-zinc-100 flex items-center gap-2">
-                /projects{" "}
-                <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </h3>
-              <p className="text-sm text-zinc-500 mt-2">Open source contributions.</p>
-            </Link>
-          </div>
 
           {/* local CSS for blinking cursor */}
           <style>{`
@@ -79,11 +47,14 @@ export default function Home() {
 
         <figure
           aria-hidden="true"
-          className="order-last mx-auto w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:order-none lg:max-w-[360px] lg:justify-self-end"
+          className="order-last w-full lg:order-none lg:justify-self-end"
         >
-          <HeroPhaseField />
+          <div className="relative aspect-square w-full bg-transparent scale-[1.15] lg:scale-[1.25] lg:translate-x-6">
+            <ParticleFlow className="block h-full w-full bg-transparent" />
+          </div>
         </figure>
       </div>
     </div>
   );
 }
+

@@ -9,6 +9,18 @@ body {
   @apply bg-background text-foreground font-sans antialiased;
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
 /* custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -52,4 +64,97 @@ body {
   text-shadow:
     0 0 10px rgba(34, 211, 238, 0.22),
     0 0 24px rgba(168, 85, 247, 0.14);
+}
+
+@layer components {
+  .formula-explainer {
+    @apply my-6;
+  }
+
+  .formula-explainer__formula {
+    @apply overflow-x-auto pb-1;
+  }
+
+  .formula-explainer__formula .katex-display {
+    margin: 0;
+  }
+
+  .formula-explainer__details {
+    @apply mt-2;
+  }
+
+  .formula-explainer__summary {
+    @apply flex min-h-[44px] w-full cursor-pointer list-none items-center justify-between gap-3 rounded-md px-3 py-2 text-sm text-zinc-400 transition-colors duration-150 ease-out;
+  }
+
+  .formula-explainer__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .formula-explainer__details[open] .formula-explainer__summary {
+    @apply text-zinc-300;
+  }
+
+  .formula-explainer__summary:hover {
+    @apply bg-zinc-900/60 text-zinc-300;
+  }
+
+  .formula-explainer__summary:focus-visible {
+    @apply outline-none ring-1 ring-zinc-500 ring-offset-2 ring-offset-background;
+  }
+
+  .formula-explainer__chevron {
+    @apply text-xs text-zinc-500 transition-transform duration-150 ease-out;
+    transform: rotate(0deg);
+  }
+
+  .formula-explainer__details[open] .formula-explainer__chevron {
+    transform: rotate(180deg);
+  }
+
+  .formula-explainer__panel {
+    @apply mt-2 rounded-md border border-zinc-800/90 bg-zinc-950/80 px-4 py-3 text-[0.95rem] leading-6 text-zinc-300;
+  }
+
+  .formula-explainer__section + .formula-explainer__section {
+    @apply mt-4;
+  }
+
+  .formula-explainer__section-title {
+    @apply mb-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-zinc-500;
+  }
+
+  .formula-explainer__notation-list {
+    @apply grid gap-2;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 720px) {
+    .formula-explainer__notation-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .formula-explainer__notation-item {
+    @apply grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-3 gap-y-1;
+  }
+
+  .formula-explainer__symbol {
+    @apply inline-flex max-w-full items-center rounded-sm border border-zinc-700 bg-zinc-900/70 px-2 py-1 font-mono text-[0.75rem] leading-4 text-zinc-200;
+  }
+
+  .formula-explainer__meaning {
+    @apply min-w-0 text-sm leading-6 text-zinc-300;
+  }
+
+  .formula-explainer__paragraph {
+    @apply m-0 text-sm leading-6 text-zinc-300;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formula-explainer__summary,
+  .formula-explainer__chevron {
+    transition-duration: 0ms !important;
+  }
 }
