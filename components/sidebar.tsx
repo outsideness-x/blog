@@ -7,8 +7,8 @@ import { Terminal, BookOpen, FolderGit2, BarChart3, User, Coffee } from "lucide-
 
 const navItems = [
   { name: "articles", path: "/articles", icon: BookOpen },
-  { name: "projects", path: "/projects", icon: FolderGit2 },
-  { name: "analytics", path: "/analytics", icon: BarChart3 },
+  // { name: "projects", path: "/projects", icon: FolderGit2 },
+  // { name: "analytics", path: "/analytics", icon: BarChart3 },
   { name: "about", path: "/about", icon: User },
   { name: "donate", path: "/donate", icon: Coffee },
 ];
