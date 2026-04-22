@@ -6,6 +6,7 @@ const skillStack = [
   { name: "TypeScript", icon: "typescript.svg" },
   { name: "React", icon: "react.svg" },
   { name: "Next.js", icon: "nextdotjs.svg" },
+  { name: "Node.js", icon: "nodedotjs.svg" },
   { name: "Python", icon: "python.svg" },
   { name: "Swift", icon: "swift.svg" },
   { name: "PyTorch", icon: "pytorch.svg" },
