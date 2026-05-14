@@ -14,7 +14,7 @@ export default function Home() {
         <div className="space-y-6 max-w-2xl">
           <h1 className="text-3xl font-bold font-mono text-brand">
             <span aria-hidden="true">{">"}</span>{" "}
-            <span className="lang-ru" lang="ru">привет</span>
+            <span className="lang-ru" lang="ru">hello there</span>
             <span className="lang-en" lang="en">hello there</span>
             <span className="cursor-blink" aria-hidden="true">█</span>
           </h1>
