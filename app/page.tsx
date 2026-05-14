@@ -20,7 +20,7 @@ export default function Home() {
           </h1>
 
           <p className="lang-ru text-zinc-400 leading-relaxed" lang="ru">
-            Меня зовут Алекс. Я full-stack web и Swift разработчик, а также независимый ML-исследователь. Здесь я
+            Меня зовут Алексей. Я full-stack web и Swift разработчик, а также независимый ML-исследователь. Здесь я
             делюсь проектами и исследованиями в области машинного обучения и математики. По вопросам и
             предложениям о сотрудничестве можно написать мне на{" "}
             <CopyInlineText text="colddme@proton.me" />{" "}
