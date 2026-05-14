@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { DEFAULT_LANGUAGE, type Language } from "./i18n";
 import { Frontmatter } from "./types";
 
 const root = process.cwd();
@@ -29,6 +30,24 @@ export function readMDXFile(dir: string, slug: string) {
   }
 
   const fileContent = fs.readFileSync(filePath, "utf-8");
+  return matter(fileContent);
+}
+
+export function readLocalizedMDXFile(dir: string, slug: string, language: Language) {
+  if (language === DEFAULT_LANGUAGE) {
+    return readMDXFile(dir, slug);
+  }
+
+  if (!isValidSlug(slug)) {
+    throw new Error(`Invalid slug: ${slug}`);
+  }
+
+  const localizedFilePath = path.join(root, "content", dir, language, `${slug}.mdx`);
+  if (!fs.existsSync(localizedFilePath)) {
+    return readMDXFile(dir, slug);
+  }
+
+  const fileContent = fs.readFileSync(localizedFilePath, "utf-8");
   return matter(fileContent);
 }
 

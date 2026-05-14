@@ -68,7 +68,8 @@ export function ManimVideo({
     return (
       <figure className={cn("my-8", className)}>
         <div className="rounded-lg border border-border bg-zinc-900 p-4 text-sm text-zinc-400">
-          Animation unavailable.
+          <span className="lang-ru" lang="ru">Анимация недоступна.</span>
+          <span className="lang-en" lang="en">Animation unavailable.</span>
         </div>
         {caption && (
           <figcaption className="mt-2 text-center text-xs text-zinc-500 font-mono">

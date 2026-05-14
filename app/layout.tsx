@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Sidebar } from "@/components/sidebar";
 import { MobileMenu } from "@/components/mobile-menu";
+import { DEFAULT_LANGUAGE, languageInitScript } from "@/lib/i18n";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -46,7 +47,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html
+      lang={DEFAULT_LANGUAGE}
+      data-lang={DEFAULT_LANGUAGE}
+      className={inter.variable}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: languageInitScript }} />
+      </head>
       <body className="bg-background text-foreground font-sans min-h-screen flex flex-col md:flex-row">
         <div className="scanlines fixed inset-0 pointer-events-none z-50 opacity-50" />
         

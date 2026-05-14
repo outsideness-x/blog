@@ -73,7 +73,10 @@ export default async function AnalyticsProjectPage({ params }: AnalyticsPageProp
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="p-6 border border-border rounded-lg bg-zinc-900/30">
-          <h3 className="text-zinc-500 font-mono text-sm mb-2">Live Price (USD)</h3>
+          <h3 className="text-zinc-500 font-mono text-sm mb-2">
+            <span className="lang-ru" lang="ru">Текущая цена (USD)</span>
+            <span className="lang-en" lang="en">Live Price (USD)</span>
+          </h3>
           {marketData ? (
             <div className="flex items-baseline gap-4">
               <span className="text-3xl font-bold text-zinc-100">
@@ -86,13 +89,17 @@ export default async function AnalyticsProjectPage({ params }: AnalyticsPageProp
           ) : (
             <div className="flex items-center gap-2 text-yellow-500">
               <AlertTriangle size={18} />
-              <span>Data unavailable</span>
+              <span className="lang-ru" lang="ru">Данные недоступны</span>
+              <span className="lang-en" lang="en">Data unavailable</span>
             </div>
           )}
         </div>
 
         <div className="p-6 border border-border rounded-lg bg-zinc-900/30">
-          <h3 className="text-zinc-500 font-mono text-sm mb-2">Links</h3>
+          <h3 className="text-zinc-500 font-mono text-sm mb-2">
+            <span className="lang-ru" lang="ru">Ссылки</span>
+            <span className="lang-en" lang="en">Links</span>
+          </h3>
           <div className="flex flex-col gap-2">
             {Object.entries(project.links).map(([key, url]) => {
               const safeUrl = sanitizeHref(url);
@@ -116,7 +123,9 @@ export default async function AnalyticsProjectPage({ params }: AnalyticsPageProp
       
       {marketData && (
         <p className="text-xs text-zinc-600 font-mono mt-4">
-          Last updated: {new Date(marketData.last_updated).toLocaleString()}
+          <span className="lang-ru" lang="ru">Обновлено: </span>
+          <span className="lang-en" lang="en">Last updated: </span>
+          {new Date(marketData.last_updated).toLocaleString()}
         </p>
       )}
     </div>

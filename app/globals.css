@@ -67,6 +67,20 @@ body::after {
 }
 
 @layer components {
+  html[data-lang="ru"] .lang-en,
+  html[data-lang="en"] .lang-ru {
+    display: none !important;
+  }
+
+  .lang-switch__button {
+    @apply rounded border border-transparent px-2 py-1 text-zinc-500 transition-colors hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70;
+  }
+
+  html[data-lang="ru"] .lang-switch__button[data-language-option="ru"],
+  html[data-lang="en"] .lang-switch__button[data-language-option="en"] {
+    @apply border-zinc-700 bg-zinc-800 text-primary;
+  }
+
   .formula-explainer {
     @apply my-6;
   }

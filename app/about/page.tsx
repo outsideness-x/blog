@@ -38,17 +38,27 @@ export default function AboutPage() {
       <h1 className="text-3xl font-bold font-mono text-white mb-8">/about</h1>
 
       <div className="prose prose-invert prose-zinc max-w-none">
-        <p>
+        <p className="lang-ru" lang="ru">
+          Я Full Stack Engineer, интересуюсь Deep Learning и математической визуализацией.
+          Этот блог - собрание моих исследовательских заметок.
+        </p>
+        <p className="lang-ru" lang="ru">
+          Сейчас работаю над iOS-приложениями и экспериментирую с Manim для образовательного контента.
+        </p>
+        <p className="lang-en" lang="en">
           I am a Full Stack Engineer passionate about Deep Learning and
           mathematical visualization. This blog is a collection of my research notes.
         </p>
-        <p>
+        <p className="lang-en" lang="en">
           Currently working on iOS apps and experimenting with Manim for educational content.
         </p>
       </div>
 
       <section className="space-y-4">
-        <h2 className="text-xl font-bold font-mono text-zinc-100">My stack</h2>
+        <h2 className="text-xl font-bold font-mono text-zinc-100">
+          <span className="lang-ru" lang="ru">Мой стек</span>
+          <span className="lang-en" lang="en">My stack</span>
+        </h2>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
           {skillStack.map((skill) => (
             <div

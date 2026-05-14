@@ -23,10 +23,22 @@ export default function AnalyticsPage() {
           <table className="w-full text-left text-sm">
             <thead className="border-b border-zinc-800 text-zinc-500 font-mono uppercase">
               <tr>
-                <th className="pb-4">Project</th>
-                <th className="pb-4">Chain</th>
-                <th className="pb-4">Tags</th>
-                <th className="pb-4 text-right">Action</th>
+                <th className="pb-4">
+                  <span className="lang-ru" lang="ru">Проект</span>
+                  <span className="lang-en" lang="en">Project</span>
+                </th>
+                <th className="pb-4">
+                  <span className="lang-ru" lang="ru">Сеть</span>
+                  <span className="lang-en" lang="en">Chain</span>
+                </th>
+                <th className="pb-4">
+                  <span className="lang-ru" lang="ru">Теги</span>
+                  <span className="lang-en" lang="en">Tags</span>
+                </th>
+                <th className="pb-4 text-right">
+                  <span className="lang-ru" lang="ru">Действие</span>
+                  <span className="lang-en" lang="en">Action</span>
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-800">
@@ -37,7 +49,8 @@ export default function AnalyticsPage() {
                   <td className="py-4 text-zinc-500">{p.tags.join(", ")}</td>
                   <td className="py-4 text-right">
                     <Link href={`/analytics/${p.slug}`} className="text-primary hover:underline">
-                      View Data
+                      <span className="lang-ru" lang="ru">Данные</span>
+                      <span className="lang-en" lang="en">View Data</span>
                     </Link>
                   </td>
                 </tr>

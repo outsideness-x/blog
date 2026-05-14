@@ -18,7 +18,12 @@ export default function DonatePage() {
     <div className="space-y-8">
       <h1 className="text-3xl font-bold font-mono text-white mb-8">/donate</h1>
       <p className="text-zinc-400">
-      if you find my work valuable, you can support it:
+        <span className="lang-ru" lang="ru">
+          если моя работа кажется вам полезной, ее можно поддержать:
+        </span>
+        <span className="lang-en" lang="en">
+          if you find my work valuable, you can support it:
+        </span>
       </p>
 
       <div className="space-y-4">

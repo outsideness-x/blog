@@ -3,14 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Terminal, BookOpen, FolderGit2, BarChart3, User, Coffee } from "lucide-react";
+import { Terminal, BookOpen, User, Coffee } from "lucide-react";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { LocalizedText } from "@/components/localized-text";
 
 const navItems = [
-  { name: "articles", path: "/articles", icon: BookOpen },
-  // { name: "projects", path: "/projects", icon: FolderGit2 },
-  // { name: "analytics", path: "/analytics", icon: BarChart3 },
-  { name: "about", path: "/about", icon: User },
-  { name: "donate", path: "/donate", icon: Coffee },
+  { name: { ru: "статьи", en: "articles" }, path: "/articles", icon: BookOpen },
+  { name: { ru: "обо мне", en: "about" }, path: "/about", icon: User },
+  { name: { ru: "поддержать", en: "donate" }, path: "/donate", icon: Coffee },
 ];
 
 export function Sidebar() {
@@ -40,11 +40,15 @@ export function Sidebar() {
               )}
             >
               <item.icon size={16} />
-              {item.name}
+              <LocalizedText ru={item.name.ru} en={item.name.en} />
             </Link>
           );
         })}
       </nav>
+
+      <div className="p-4 border-t border-border">
+        <LanguageSwitcher />
+      </div>
 
       <div className="p-4 border-t border-border text-xs text-zinc-600/[0.38] font-mono text-center">
         © {new Date().getFullYear()} chemical_pink

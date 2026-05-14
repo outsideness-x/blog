@@ -14,10 +14,22 @@ export default function Home() {
         <div className="space-y-6 max-w-2xl">
           <h1 className="text-3xl font-bold font-mono text-brand">
             <span aria-hidden="true">{">"}</span>{" "}
-            hello there<span className="cursor-blink" aria-hidden="true">█</span>
+            <span className="lang-ru" lang="ru">привет</span>
+            <span className="lang-en" lang="en">hello there</span>
+            <span className="cursor-blink" aria-hidden="true">█</span>
           </h1>
 
-          <p className="text-zinc-400 leading-relaxed">
+          <p className="lang-ru text-zinc-400 leading-relaxed" lang="ru">
+            Меня зовут Алекс. Я full-stack web и Swift разработчик, а также независимый ML-исследователь. Здесь я
+            делюсь проектами и исследованиями в области машинного обучения и математики. По вопросам и
+            предложениям о сотрудничестве можно написать мне на{" "}
+            <CopyInlineText text="colddme@proton.me" />{" "}
+            или в Telegram{" "}
+            <CopyInlineText text="@coldd_me" />
+            .
+          </p>
+
+          <p className="lang-en text-zinc-400 leading-relaxed" lang="en">
             My name is Alex. I am a full-stack web and Swift dev and free ML researcher. Here, I
             will share my projects and research in the fields of machine learning and math. For questions and
             collaboration, please contact me at{" "}
@@ -57,4 +69,3 @@ export default function Home() {
     </div>
   );
 }
-

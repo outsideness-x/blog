@@ -1,0 +1,407 @@
+---
+title: "From the First Law of Complexodynamics to Neural Networks"
+date: "2026-04-21"
+summary: "Why computational complexity is key to understanding and scaling AI"
+tags: ["computer science", "machine learning"]
+slug: "complexity"
+published: true
+---
+
+> This article is largely based on and extends ideas from Scott Aaronson's note "The First Law of Complexodynamics"
+> ([Shtetl-Optimized, 2011](https://scottaaronson.blog/?p=762)),
+> as well as classical work on algorithmic statistics
+> (Gacs, Tromp, Vitanyi, 2001) and the Minimum Description Length principle
+> (Rissanen, 1978).
+
+---
+
+## 1. A mug of coffee
+
+At first we will follow Aaronson and take a mug of coffee with milk as our example.
+
+**First moment.** The milk and the coffee are completely separated: a white layer on top,
+a dark one below. The system is perfectly ordered.
+
+**Second moment.** Mixing. The surface is covered with complex
+swirls: dark coffee cuts through the milk, forming
+fractal-like boundaries.
+
+**Third moment.** Everything has mixed into a uniform liquid. Order
+has dissolved into homogeneous chaos.
+
+As we know, *entropy* - a measure of disorder in a system -
+monotonically increases from left to right. But the important point is this:
+intuitively, the most meaningful moment, in the sense of information about the system,
+is exactly the middle one: the boundary zone between order and chaos.
+
+This paradox was first voiced by the physicist Sean Carroll at the
+FQXi conference in 2011. Scott Aaronson proposed an answer, and that answer leads
+us deep into modern theory of computation and machine learning.
+
+---
+
+<ManimVideo
+  mp4Src="/animations/complexity/complexity/video.mp4?v=20260420"
+  caption="Order -> structure -> noise"
+/>
+
+---
+
+## 2. Entropy is not complexity
+
+Before going further, we need to clarify a notion that is often confused
+with "interestingness" - I will translate the notion of sophistication, introduced by Koppel in
+the volume "The Universal Turing Machine: A Half-Century Survey", in precisely this sense:
+meaningful structural complexity. That notion is not the same as **entropy**.
+
+In the information-theoretic sense, Shannon entropy for a discrete distribution
+is defined as follows:
+
+<FormulaExplainer
+  label="Explanation"
+  notation={[
+    { symbol: "i", meaning: "index of a possible state" },
+    { symbol: "p_i", meaning: "probability of the i-th state" },
+    { symbol: "log₂", meaning: "logarithm with base 2" },
+    { symbol: "H(X)", meaning: "average amount of information in a random outcome" }
+  ]}
+  intuition="The formula averages the amount of information over all outcomes: the less predictable the distribution is, the higher the entropy."
+  significance="It measures how chaotic a distribution is, but by itself it does not tell us whether an object contains meaningful structure."
+>
+$$
+H(X) = -\sum_{i} p_i \log_2 p_i
+$$
+</FormulaExplainer>
+
+The more uniform the distribution, the higher the entropy. Complete chaos
+(a uniform distribution over all states) gives maximal entropy.
+
+**The key point:** entropy monotonically increases in an isolated system
+(which is the Second Law of Thermodynamics). But sophistication does not.
+Uniform gray noise has high entropy, yet it is *not interesting*: it contains
+no structure that could tell us anything meaningful about the system under study.
+So entropy is a poor candidate for a measure of "meaningful complexity".
+This is where Kolmogorov complexity enters as a possible measure.
+
+---
+
+## 3. Kolmogorov complexity: a measure of compressibility
+
+Suppose we have a bit string - for example, a description of the state of our
+coffee grid. Can this bit string be described *more briefly* than by writing it out?
+
+**Kolmogorov complexity** of a string $x$ is the length of the shortest computer
+program, in some fixed universal programming language, that outputs $x$ and halts:
+
+<FormulaExplainer
+  label="Explanation"
+  notation={[
+    { symbol: "U", meaning: "fixed universal Turing machine" },
+    { symbol: "p", meaning: "program run on U" },
+    { symbol: "|p|", meaning: "length of program p in bits" },
+    { symbol: "K(x)", meaning: "minimum program length that outputs x" }
+  ]}
+  intuition="We are looking for the shortest description that fully reproduces the object x."
+  significance="If an object compresses strongly, it contains a lot of structure; if it barely compresses, it is closer to random noise. Here U is a fixed universal Turing machine, and the choice of U affects the value only up to an additive constant."
+>
+$$
+K_U(x)=\min\{|p| : U(p)=x\}
+$$
+</FormulaExplainer>
+
+---
+
+<ManimVideo
+  mp4Src="/animations/complexity/three-bit-strings/video.mp4?v=20260420"
+  caption="Three strings"
+/>
+
+---
+
+String 1 compresses easily: one instruction is enough. String 2 is practically
+incompressible - for a random string, the shortest program is roughly the string
+itself. String 3 compresses because it contains deep algorithmic structure:
+the number $\pi$ is generated by a short rule.
+
+Now comes the point from Kolmogorov's work that matters for our topic:
+
+> **A random string has maximal Kolmogorov complexity,
+> but it is also one of the least sophisticated strings.**
+
+Once we have said that the string is random, we have already said everything.
+There is no additional structure worth explaining.
+High $K(x)$ is a sign of incompressibility, but not a sign of meaningfulness
+or sophistication.
+
+We need the next level.
+
+---
+
+## 4. Sophistication: attempts to separate structure from random residue
+
+In the 1970s Kolmogorov formulated a question: can the information
+in an object be split into two layers?
+
+- **Structural layer** - the part that can be learned: a set of regularities
+  that generate the object.
+- **Random residue** - the part of the object that looks like a random
+  element of that structure.
+
+This separation formalizes the notion of **sophistication**.
+
+Let $S$ be some set of strings. Then the sophistication of a string $x$
+is defined as the minimum complexity $K(S)$ of such a set $S$ that:
+
+<FormulaExplainer
+  label="Explanation"
+  notation={[
+    { symbol: "S", meaning: "set of strings defining a structural model" },
+    { symbol: "K(S)", meaning: "complexity of the description of set S" },
+    { symbol: "K(x \\mid S)", meaning: "complexity of x given that S is already known" },
+    { symbol: "log₂|S|", meaning: "length of the index of an element inside set S" },
+    { symbol: "c", meaning: "small constant correction" }
+  ]}
+  intuition="A string x is considered typical for structure S if, once S has been specified, x cannot be compressed much further."
+  significance="This separates the structure worth explaining from the random residue inside that structure."
+>
+1. $x \in S$
+2. $K(x \mid S) \geq \log_2 |S| - c$
+</FormulaExplainer>
+
+---
+
+<ManimVideo
+  mp4Src="/animations/complexity/sophistication-split/video.mp4?v=20260420"
+  caption="Structure vs residual"
+/>
+
+---
+
+The intuition is this: sophistication is small both for trivially simple objects
+and for purely random ones, but it is large for objects that contain nontrivial
+structure requiring a meaningful description - exactly the "middle moment".
+
+This is precisely the bell shape that we see in the coffee animation.
+
+**Important note:** Aaronson stresses that this is not a proven theorem about
+the physical world, but a research program and a hypothesis. Sophistication is
+only a candidate measure of "meaningful complexity", and its behavior
+in concrete physical systems is still not well understood.
+
+---
+
+## 5. The problem of deterministic systems and resource bounds
+
+Here a subtlety appears that is easy to miss.
+
+Suppose our coffee system is a deterministic automaton.
+Then the state of the system after $t$ steps can always be described by giving:
+
+- the initial state, a constant number of bits,
+- the number of steps $t$, which takes $\log_2 t$ bits.
+
+In total: $K(\text{state}_t) \leq c + \log_2 t$.
+
+This grows logarithmically, much more slowly than intuition suggests.
+By a purely Kolmogorov-style measure, both sophistication and entropy barely
+grow, even though we can clearly see that the system is becoming more complex.
+
+The problem is that we allow programs with *unbounded running time*.
+The program "run the system from scratch for $t$ steps" is short, but it requires
+exactly $t$ computational steps. If we allow such programs, then "complexity"
+stops reflecting anything meaningful.
+
+**The solution: resource-bounded complexity.**
+
+What should we do? We must forbid programs from using too many computational
+resources. Formally, let $K^t(x)$ be the length of the shortest program that
+outputs $x$ within time at most $t(|x|)$:
+
+<FormulaExplainer
+  label="Explanation"
+  notation={[
+    { symbol: "K^t(x)", meaning: "length of the shortest description of x under a given time bound" },
+    { symbol: "p", meaning: "candidate program" },
+    { symbol: "|p|", meaning: "program length in bits" },
+    { symbol: "t(|x|)", meaning: "allowed computation time as a function of input size" }
+  ]}
+  intuition="We consider not just the shortest programs, but only those that finish within the given resource budget."
+  significance="This brings the formula closer to real computational systems, where both compactness and time accessibility matter."
+>
+$$
+K^t(x) = \min |p|
+$$
+</FormulaExplainer>
+
+---
+
+<ManimVideo
+  mp4Src="/animations/complexity/two-contracts/video.mp4?v=20260420"
+  caption="Two programs"
+/>
+
+---
+
+It is precisely the resource bound that allows **complextropy** -
+the resource-bounded version of sophistication - to show the right behavior:
+to be small at the beginning, reach a maximum in the middle, and then fall again
+when the system reaches equilibrium. A clarification is needed here: according to
+Aaronson, merely appealing to sophistication is not enough. For a measure of
+"meaningful complexity" to behave as desired, computational constraints have to be
+built into the definition very carefully - at least on the side that generates the
+model and on the side that recovers the object inside it. Only then does a plausible
+hypothesis of the regime "little -> much -> little" emerge.
+
+Aaronson formulates this as an open hypothesis - the "first law of
+complexodynamics" - and proposed testing it in discrete models such as
+cellular automata.
+
+---
+
+## 6. Three types of objects
+
+Now we can build a clear taxonomy:
+
+| Type of object | Kolmogorov $K(x)$ | Sophistication | Example |
+|---|---|---|---|
+| Trivially simple | Low | Low | `000000...` |
+| Random | High | Low | White noise |
+| Structurally complex | Medium/high | High | Boundaries of milk in coffee, DNA, a trained model (a good model!) |
+
+The main thing to understand is this: high sophistication means that an object
+contains nontrivial structure that cannot be reduced either to a banal rule or
+to pure noise.
+
+---
+
+<ManimVideo
+  mp4Src="/animations/complexity/object-landscape/video.mp4?v=20260420"
+  caption="Object landscape"
+/>
+
+---
+
+## 7. Machine learning as a search for the structural middle
+
+Now we can turn to machine learning, because ML systems implicitly do exactly
+what Aaronson describes.
+
+Underfitting and overfitting are two failures along one axis, as is clear from
+basic examples of these phenomena in the task of simple linear classification.
+
+Consider a classification task: a model is searching for a decision boundary
+in feature space.
+
+- **A model that is too simple** (a linear classifier on nonlinear data)
+  fails to capture the structure. The sophistication of the data description
+  by the model is low: underfitting.
+- **A model that is too complex** (a neural network with a million parameters on a small
+  dataset) memorizes noise: random details of the training examples.
+  The sophistication of the description is also low: the model reproduces chaos,
+  not structure. This is overfitting.
+- **A good model** always captures a *stable pattern* that is neither trivial
+  nor random.
+
+---
+
+<ManimVideo
+  mp4Src="/animations/complexity/decision-boundary/video.mp4?v=20260420"
+  caption="Decision boundary and complexity"
+/>
+
+---
+
+A concrete bridge between algorithmic information theory and machine learning
+is the MDL principle.
+
+### Minimum Description Length principle (MDL)
+
+The MDL idea was formulated by Jorma Rissanen in 1978, drawing on
+Kolmogorov's intuition. The essence of the principle is:
+
+> The best hypothesis for the data is the one that describes the data
+> *as compactly as possible*.
+
+Formally, let $H$ be a hypothesis (model), and let $D$ be the data. We minimize:
+
+<FormulaExplainer
+  label="Explanation"
+  notation={[
+    { symbol: "H", meaning: "hypothesis or model" },
+    { symbol: "D", meaning: "set of observed data" },
+    { symbol: "L(H)", meaning: "description length of the model itself" },
+    { symbol: "L(D \\mid H)", meaning: "residual description length of the data when the model is known" }
+  ]}
+  intuition="We are looking for a model where the total encoding length of the model and the unexplained part of the data is minimal."
+  significance="The minimum of this sum naturally balances underfitting and overfitting while preserving only stable structure."
+>
+$$
+L(H) + L(D \mid H)
+$$
+</FormulaExplainer>
+
+The MDL principle is based on the idea that any regularity in the data can
+be used to compress it. If a model captures real structure, the data can be
+described more compactly with its help; if the model fits noise, there is no
+gain in description length.
+
+MDL automatically creates a balance between model complexity and
+the quality of its fit to the data, which provides protection against overfitting.
+
+This is the mathematical version of Occam's razor: do not multiply entities
+without necessity - do not make the model more complex than the data require.
+
+---
+
+<ManimVideo
+  mp4Src="/animations/complexity/mdl-balance/video.mp4?v=20260420"
+  caption="MDL as balance"
+/>
+
+---
+
+### Representation learning and "computationally accessible structure"
+
+Let us move to deep learning. A neural network trained on images
+gradually builds a hierarchy of representations: from pixels to edges,
+from edges to textures, and then to objects. Each level of this hierarchy
+compresses the input data while preserving what is predictively important.
+
+This idea can be read through Aaronson's complextropy: a good representation
+is precisely that "structural explanation" $S$ which lets us describe the data
+with minimal information loss, while not requiring exponential time to apply.
+From the above we can infer that **training a neural network is a search for a
+computationally accessible version of the data's sophistication**. I should note,
+however, that this is more of a philosophical interpretation of the relationship
+between algorithmic statistics, MDL, and representation learning, although it is
+certainly a promising idea for further research.
+
+---
+
+## 8. Why computational constraints matter
+
+Let us return to resource-bounded complexity, now from another angle.
+
+In real systems, we care not only whether a short description of an object exists,
+but also whether it can be *found* and *applied* in reasonable time (see the excellent
+[Complexity Zoo](https://complexityzoo.net/Complexity_Zoo), with its many kinds of
+computational complexity, created by Aaronson). This is exactly why ML raises questions such as:
+
+- How much computation is needed for training?
+- How much is needed for inference?
+- How much is needed to verify the result?
+- How compressible is the model without loss of quality?
+
+All of these questions are direct descendants of the resource-bounded version
+of Kolmogorov complexity. Complexity theory provides the language in which
+they can be formulated precisely.
+
+---
+
+
+<ManimVideo
+  mp4Src="/animations/complexity/computation-pyramid/video.mp4?v=20260420"
+  caption="Pyramid of computational costs"
+/>
+
+
