@@ -44,20 +44,20 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
       <button
         type="button"
         className="lang-switch__button"
-        data-language-option="ru"
-        aria-pressed={currentLanguage === "ru"}
-        onClick={() => selectLanguage("ru")}
-      >
-        RU
-      </button>
-      <button
-        type="button"
-        className="lang-switch__button"
         data-language-option="en"
         aria-pressed={currentLanguage === "en"}
         onClick={() => selectLanguage("en")}
       >
         EN
+      </button>
+      <button
+        type="button"
+        className="lang-switch__button"
+        data-language-option="ru"
+        aria-pressed={currentLanguage === "ru"}
+        onClick={() => selectLanguage("ru")}
+      >
+        RU
       </button>
     </div>
   );

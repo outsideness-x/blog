@@ -1,7 +1,7 @@
-export const DEFAULT_LANGUAGE = "ru";
+export const DEFAULT_LANGUAGE = "en";
 export const LANGUAGE_STORAGE_KEY = "chemical-pink-language";
 
-export const languages = ["ru", "en"] as const;
+export const languages = ["en", "ru"] as const;
 
 export type Language = (typeof languages)[number];
 
