@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { DEFAULT_LANGUAGE, type Language } from "./i18n";
+import { type Language } from "./i18n";
 import { Frontmatter } from "./types";
 
 const root = process.cwd();
@@ -34,7 +34,7 @@ export function readMDXFile(dir: string, slug: string) {
 }
 
 export function readLocalizedMDXFile(dir: string, slug: string, language: Language) {
-  if (language === DEFAULT_LANGUAGE) {
+  if (language === "ru") {
     return readMDXFile(dir, slug);
   }
 
