@@ -44,7 +44,7 @@ export function KoreanStudy() {
       <p className="prototype-instruction">
         <T
           en="Tap a word. Stay in the story."
-          ru="Нажми на слово. Останься в истории."
+          ru="Нажмите на слово. Оставайтесь в истории."
         />
       </p>
       <div className="korean-sentence" lang="ko">
@@ -142,7 +142,7 @@ export function ReadingStudy() {
           <span className="hand">
             <T
               en="Your thought, beside the text."
-              ru="Твоя мысль рядом с текстом."
+              ru="Ваша мысль рядом с текстом."
             />
           </span>
           <textarea
@@ -155,7 +155,7 @@ export function ReadingStudy() {
         <p className="reading-hint">
           <T
             en="Select the line, then leave a thought beside it."
-            ru="Выдели строку и оставь рядом свою мысль."
+            ru="Выделите строку и оставьте рядом свою мысль."
           />
         </p>
       )}
@@ -206,7 +206,7 @@ export function MemoryStudy() {
             />
           </span>
           <span className="memory-card-prompt">
-            <T en="tap to turn over ↗" ru="нажми, чтобы перевернуть ↗" />
+            <T en="tap to turn over ↗" ru="нажмите, чтобы перевернуть ↗" />
           </span>
         </span>
         <span className="memory-card-back">
@@ -232,7 +232,7 @@ export function MemoryStudy() {
             />
           </span>
           <span className="memory-card-prompt">
-            <T en="tap to return ↶" ru="нажми, чтобы вернуться ↶" />
+            <T en="tap to return ↶" ru="нажмите, чтобы вернуться ↶" />
           </span>
         </span>
       </button>

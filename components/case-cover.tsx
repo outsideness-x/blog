@@ -33,12 +33,6 @@ export function CaseCover({ project }: { project: Project }) {
                 alt="OROT — Terminal Station story cover"
                 priority
               />
-              <span className="hand">
-                <T
-                  en="a story worth getting lost in"
-                  ru="история, в которой хочется остаться"
-                />
-              </span>
             </div>
             <Image
               className="cover-orot-reading"
@@ -59,8 +53,8 @@ export function CaseCover({ project }: { project: Project }) {
             <span className="cover-stamp">
               <span>읽다</span>
               <T
-                en="READ.\nFEEL.\nUNDERSTAND."
-                ru="ЧИТАТЬ.\nЧУВСТВОВАТЬ.\nПОНИМАТЬ."
+                en={"READ.\nFEEL.\nUNDERSTAND."}
+                ru={"ЧИТАТЬ.\nЧУВСТВОВАТЬ.\nПОНИМАТЬ."}
               />
             </span>
             <span className="cover-note hand">
@@ -101,7 +95,10 @@ export function CaseCover({ project }: { project: Project }) {
             </div>
             <span className="cover-bookmark">
               <span>01</span>
-              <T en="READ\nMARK\nREMEMBER" ru="ЧИТАТЬ\nОТМЕЧАТЬ\nПОМНИТЬ" />
+              <T
+                en={"READ\nMARK\nREMEMBER"}
+                ru={"ЧИТАТЬ\nОТМЕЧАТЬ\nПОМНИТЬ"}
+              />
             </span>
             <span className="cover-note hand">
               <T
@@ -153,12 +150,6 @@ export function CaseCover({ project }: { project: Project }) {
               />
               <Asterisk />
             </div>
-            <span className="cover-note hand">
-              <T
-                en="a notebook with a memory ↙"
-                ru="блокнот, который помнит ↙"
-              />
-            </span>
           </>
         )}
       </div>

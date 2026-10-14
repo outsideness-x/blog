@@ -700,7 +700,7 @@ export function InkeptStudy() {
           <p>
             <T
               en="Plain files. Your folder. No account or tracking. A personal tool should leave you in control."
-              ru="Обычные файлы. Твоя папка. Без аккаунта и трекинга. Личный инструмент оставляет контроль у тебя."
+              ru="Обычные файлы. Ваша папка. Без аккаунта и трекинга. Личный инструмент оставляет контроль у вас."
             />
           </p>
         </div>

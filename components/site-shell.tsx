@@ -35,7 +35,6 @@ export function Header() {
         <span>
           chemical<span className="wordmark-pink">pink</span>
         </span>
-        <span className="wordmark-period">®</span>
       </Link>
       <LiquidNavigation language={language} scrolled={scrolled} />
       <button

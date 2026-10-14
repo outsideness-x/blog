@@ -81,7 +81,7 @@ export const projects: Project[] = [
     },
     overview: {
       en: "Reading rarely ends on the last page. diple brings EPUBs, PDFs, saved articles and a notebook into one quiet space. A passage can become a highlight, a highlight can become a note, and an idea can find its way back to you.",
-      ru: "Чтение редко заканчивается на последней странице. diple объединяет EPUB, PDF, сохранённые статьи и блокнот. Отрывок становится выделением, выделение — заметкой, а мысль возвращается к тебе позже.",
+      ru: "Чтение редко заканчивается на последней странице. diple объединяет EPUB, PDF, сохранённые статьи и блокнот. Отрывок становится выделением, выделение — заметкой, а мысль возвращается к вам позже.",
     },
     features: [
       {
@@ -102,7 +102,7 @@ export const projects: Project[] = [
         title: { en: "A second reading", ru: "Вернуться к прочитанному" },
         text: {
           en: "Second Read brings back marked passages and notes. Your library stays yours, with optional private iCloud sync and export.",
-          ru: "Second Read возвращает к отмеченным отрывкам и заметкам. Библиотека принадлежит тебе: с экспортом и необязательной синхронизацией через личный iCloud.",
+          ru: "Second Read возвращает к отмеченным отрывкам и заметкам. Библиотека принадлежит вам: с экспортом и необязательной синхронизацией через личный iCloud.",
         },
       },
     ],
@@ -149,7 +149,7 @@ export const projects: Project[] = [
         title: { en: "Remember, just in time", ru: "Вспоминать вовремя" },
         text: {
           en: "Turn a passage into a flashcard. FSRS schedules the next review; your notes remain plain files in the folder you choose.",
-          ru: "Преврати отрывок в карточку. FSRS рассчитает время повторения, а заметки останутся обычными файлами в выбранной папке.",
+          ru: "Превратите отрывок в карточку. FSRS рассчитает время повторения, а заметки останутся обычными файлами в выбранной папке.",
         },
       },
     ],

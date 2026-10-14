@@ -126,7 +126,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               <T en="HAVE SOMETHING IN MIND?" ru="ЕСТЬ ИДЕЯ ПРОДУКТА?" />
             </p>
             <h2>
-              <T en="Let’s make your next one." ru="Давай создадим твой." />
+              <T en="Let’s make your next one." ru="Создадим ваш." />
             </h2>
           </div>
           <div className="case-contact-actions">

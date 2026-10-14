@@ -97,7 +97,7 @@ export function Services() {
           />
         </span>
         <Link href="/contacts" className="text-link">
-          <T en="Let’s discuss yours" ru="Обсудим твой проект" />
+          <T en="Let’s discuss yours" ru="Обсудим ваш проект" />
           <Arrow diagonal />
         </Link>
       </div>

@@ -28,7 +28,7 @@ export default function Projects() {
           <p>
             <T
               en="Three products, from the first design decision to the version in your hands."
-              ru="Три продукта — от первого дизайн-решения до приложения у тебя в руках."
+              ru="Три продукта — от первого дизайн-решения до приложения у вас в руках."
             />
           </p>
           <span className="hand hand-mixed">
@@ -81,7 +81,7 @@ export default function Projects() {
         <p className="hand">
           <T
             en="The next one could be yours."
-            ru="Следующим может быть твой."
+            ru="Следующим может быть ваш."
           />
         </p>
         <Link href="/contacts" className="button button-light">

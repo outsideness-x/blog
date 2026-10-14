@@ -61,7 +61,7 @@ export default function Contacts() {
       </div>
       <div className="contact-colophon">
         <span className="hand">
-          <T en="Thanks for stopping by :)" ru="Спасибо, что заглянул :)" />
+          <T en="Thanks for stopping by :)" ru="Спасибо, что заглянули :)" />
         </span>
         <span className="eyebrow">DESIGN + CODE + A LITTLE SOUL</span>
       </div>

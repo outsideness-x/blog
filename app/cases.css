@@ -97,14 +97,6 @@
   width: 100%;
   box-shadow: 15px 25px 40px #0007;
 }
-.cover-orot-book > .hand {
-  position: absolute;
-  top: -55px;
-  left: -20px;
-  font-size: 21px;
-  width: 220px;
-  color: #b6c0a5;
-}
 .cover-stamp {
   position: absolute;
   left: 5%;
@@ -129,7 +121,7 @@
 }
 .cover-note {
   position: absolute;
-  top: 37%;
+  top: 20%;
   right: 4%;
   font-size: 20px;
   max-width: 180px;
@@ -346,14 +338,6 @@
   bottom: 8px;
   color: #737c60;
 }
-.cover-inkept .cover-note {
-  right: auto;
-  left: 5%;
-  top: 34%;
-  font-size: 20px;
-  width: 195px;
-  transform: rotate(-11deg);
-}
 .case-page .case-facts {
   padding: 38px 0;
 }
@@ -434,13 +418,10 @@
     width: 22%;
     left: 7%;
   }
-  .cover-orot-book > .hand {
-    font-size: 18px;
-  }
   .cover-note {
     font-size: 17px;
     right: 3%;
-    top: 33%;
+    top: 18%;
     max-width: 155px;
   }
   .cover-korean {
@@ -479,11 +460,6 @@
     top: 40px;
     right: 5%;
     padding: 30px 15px 22px;
-  }
-  .cover-inkept .cover-note {
-    font-size: 18px;
-    top: 35%;
-    width: 180px;
   }
   .case-page .case-overview {
     gap: 55px;
@@ -529,9 +505,6 @@
     left: -3%;
     top: 235px;
     transform: rotate(-17deg);
-  }
-  .cover-orot-book > .hand {
-    display: none;
   }
   .cover-korean {
     font-size: 32px;
@@ -660,12 +633,6 @@
   .cover-inkept-note > svg {
     width: 19px;
     bottom: 5px;
-  }
-  .cover-inkept .cover-note {
-    top: 38%;
-    left: 5%;
-    max-width: 130px;
-    font-size: 17px;
   }
   .case-page .case-facts {
     padding: 30px 0;

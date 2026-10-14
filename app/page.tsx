@@ -245,7 +245,7 @@ export default function Home() {
           <p className="hand">
             <T
               en="Your next product starts here."
-              ru="Твой следующий продукт начинается здесь."
+              ru="Ваш следующий продукт начинается здесь."
             />
           </p>
           <h2>

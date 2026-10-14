@@ -11,6 +11,56 @@ const links = [
   { href: "/contacts", en: "Contact", ru: "Контакты" },
 ];
 
+// Like system glass, the bar adapts to what is behind it: over pale artwork
+// the labels turn dark instead of relying on a heavier tint.
+const imageTones = new WeakMap<HTMLImageElement, number>();
+function luminance(r: number, g: number, b: number) {
+  const linear = (c: number) => {
+    const v = c / 255;
+    return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b);
+}
+function imageLuminance(image: HTMLImageElement) {
+  if (imageTones.has(image)) return imageTones.get(image);
+  if (!image.complete || !image.naturalWidth) return undefined;
+  try {
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = 12;
+    const context = canvas.getContext("2d", { willReadFrequently: true });
+    if (!context) return undefined;
+    context.drawImage(image, 0, 0, 12, 12);
+    const data = context.getImageData(0, 0, 12, 12).data;
+    let total = 0;
+    let weight = 0;
+    for (let i = 0; i < data.length; i += 4) {
+      const alpha = data[i + 3] / 255;
+      total += luminance(data[i], data[i + 1], data[i + 2]) * alpha;
+      weight += alpha;
+    }
+    if (weight < 20) return undefined;
+    const value = total / weight;
+    imageTones.set(image, value);
+    return value;
+  } catch {
+    return undefined;
+  }
+}
+function luminanceBehind(start: Element) {
+  if (start instanceof HTMLVideoElement) return 0;
+  if (start instanceof HTMLImageElement) {
+    const value = imageLuminance(start);
+    if (value !== undefined) return value;
+  }
+  for (let el: Element | null = start; el; el = el.parentElement) {
+    const channels = getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
+    if (!channels) continue;
+    const [r, g, b, a = 1] = channels.map(Number);
+    if (a >= 0.5) return luminance(r, g, b);
+  }
+  return 0;
+}
+
 export function LiquidNavigation({
   language,
   scrolled,
@@ -28,6 +78,8 @@ export function LiquidNavigation({
   const [lensWidth, setLensWidth] = useState(94);
   const [map, setMap] = useState("");
   const [backdropSupported, setBackdropSupported] = useState(false);
+  const [tone, setTone] = useState<"dark" | "light">("dark");
+  const nav = useRef<HTMLElement>(null);
   const glass = useRef<LiquidGlassHandle>(null);
   const options = useRef<HTMLDivElement>(null);
   const backdrop = useRef<HTMLSpanElement>(null);
@@ -53,6 +105,42 @@ export function LiquidNavigation({
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const element = nav.current;
+    if (!element) return;
+    let frame = 0;
+    const sample = () => {
+      frame = 0;
+      const box = element.getBoundingClientRect();
+      const y = box.top + box.height / 2;
+      const points = 5;
+      let light = 0;
+      for (let i = 0; i < points; i++) {
+        const x = box.left + (box.width * (i + 0.5)) / points;
+        const below = document
+          .elementsFromPoint(x, y)
+          .find((el) => !element.contains(el));
+        if (below && luminanceBehind(below) > 0.3) light++;
+      }
+      setTone(light > points / 2 ? "light" : "dark");
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(sample);
+    };
+    schedule();
+    const settle = window.setTimeout(schedule, 600);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    window.addEventListener("load", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(settle);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("load", schedule);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     const destination = (target + 0.5) / 3;
@@ -92,7 +180,9 @@ export function LiquidNavigation({
 
   return (
     <nav
+      ref={nav}
       data-scrolled={scrolled}
+      data-tone={tone}
       className="glass main-nav liquid-nav"
       aria-label={language === "en" ? "Main navigation" : "Главная навигация"}
     >
