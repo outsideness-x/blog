@@ -2934,6 +2934,7 @@ html[data-lang="ru"] .lang-ru {
   height: 40px;
   position: relative;
   color: #dcdfdf;
+  text-shadow: 0 1px 3px #000b, 0 0 1px #000;
   transition: color 0.25s;
 }
 .liquid-nav a:hover {
