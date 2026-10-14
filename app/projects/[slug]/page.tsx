@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { projects } from '@/lib/projects';
 import { T } from '@/components/text';
-import { ProjectArt } from '@/components/project-art';
+import { CaseCover } from '@/components/case-cover';
 import { Arrow } from '@/components/marks';
 import { OrotStudy, DipleStudy, InkeptStudy } from '@/components/case-studies';
 export const dynamicParams = false;
@@ -16,10 +16,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   const project = projects.find(p => p.slug === params.slug);
   if (!project) notFound();
   const next = projects[(projects.indexOf(project) + 1) % projects.length];
-  return <article className={`case-page case-${project.slug}`}><div className="page-width">
-    <Link className="back-link" href="/projects">← <T en="All projects" ru="Все проекты" /></Link>
-    <header className="case-heading"><p className="eyebrow">PROJECT / {project.number} — <T {...project.category} /></p><h1>{project.name}</h1><p className="case-tagline"><T {...project.line} /></p><a className="button button-light" href={project.store} target="_blank" rel="noreferrer"><T en="View on the App Store" ru="Открыть в App Store" /> <Arrow diagonal /></a></header>
-    <ProjectArt slug={project.slug} hero />
+  return <article className={`case-page case-${project.slug}`}><CaseCover project={project}/><div className="page-width" id="case-story">
     <dl className="case-facts"><div><dt><T en="MY PART" ru="МОЯ РОЛЬ" /></dt><dd><T en="UI/UX design & development" ru="UI/UX-дизайн и разработка" /></dd></div><div><dt><T en="PLATFORMS" ru="ПЛАТФОРМЫ" /></dt><dd>{project.platform}</dd></div><div><dt><T en="FOCUS" ru="НАПРАВЛЕНИЕ" /></dt><dd><T {...project.category} /></dd></div><div><dt><T en="STATUS" ru="СТАТУС" /></dt><dd><span className="status-dot" /> <T en="Live on the App Store" ru="Доступно в App Store" /></dd></div></dl>
     <section className="case-overview"><div><p className="eyebrow"><T en="THE IDEA" ru="ИДЕЯ" /></p><h2><T {...project.thesis} /></h2></div><p><T {...project.overview} /></p></section>
     {project.slug === 'orot' ? <OrotStudy/> : project.slug === 'diple' ? <DipleStudy/> : <InkeptStudy/>}

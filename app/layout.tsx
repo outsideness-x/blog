@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Header, Footer } from '@/components/site-shell';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
 import './globals.css';
+import './cases.css';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL), title: { default: SITE_NAME, template: `%s — chemical pink` }, description: SITE_DESCRIPTION,
   openGraph: { type: 'website', title: SITE_NAME, description: SITE_DESCRIPTION, siteName: 'chemical pink', locale: 'en_US' },
