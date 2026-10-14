@@ -71,10 +71,10 @@ export function LiquidNavigation({
   const pathname = usePathname();
   const selected =
     pathname.startsWith("/projects") || pathname.startsWith("/playground")
-    ? 1
-    : pathname.startsWith("/contacts")
-      ? 2
-      : 0;
+      ? 1
+      : pathname.startsWith("/contacts")
+        ? 2
+        : 0;
   const [target, setTarget] = useState(selected);
   const [lensWidth, setLensWidth] = useState(94);
   const [map, setMap] = useState("");

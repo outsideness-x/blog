@@ -95,7 +95,10 @@ export default function Home() {
           <div>
             <strong>iPhone · iPad · Mac</strong>
             <span>
-              <T en="native, in Swift and SwiftUI" ru="нативно, на Swift и SwiftUI" />
+              <T
+                en="native, in Swift and SwiftUI"
+                ru="нативно, на Swift и SwiftUI"
+              />
             </span>
           </div>
           <div>

@@ -45,16 +45,28 @@ export default function Chemical() {
         <div className="cover-scene">
           <div className="cover-grid" aria-hidden="true" />
           <h1 className="hand">chemical</h1>
-          <span className="chemical-sample chemical-sample-ru hand" aria-hidden="true">
+          <span
+            className="chemical-sample chemical-sample-ru hand"
+            aria-hidden="true"
+          >
             привет
           </span>
-          <span className="chemical-sample chemical-sample-ko hand" aria-hidden="true">
+          <span
+            className="chemical-sample chemical-sample-ko hand"
+            aria-hidden="true"
+          >
             오롯
           </span>
-          <span className="chemical-sample chemical-sample-hearts hand" aria-hidden="true">
+          <span
+            className="chemical-sample chemical-sample-hearts hand"
+            aria-hidden="true"
+          >
             love notes
           </span>
-          <span className="chemical-sample chemical-sample-credits hand" aria-hidden="true">
+          <span
+            className="chemical-sample chemical-sample-credits hand"
+            aria-hidden="true"
+          >
             film credits
           </span>
           <svg
@@ -100,7 +112,10 @@ export default function Chemical() {
               <T en="MY PART" ru="МОЯ РОЛЬ" />
             </dt>
             <dd>
-              <T en="Type design and tooling" ru="Дизайн шрифта и инструменты" />
+              <T
+                en="Type design and tooling"
+                ru="Дизайн шрифта и инструменты"
+              />
             </dd>
           </div>
           <div>
@@ -108,7 +123,10 @@ export default function Chemical() {
               <T en="SCRIPTS" ru="ПИСЬМЕННОСТИ" />
             </dt>
             <dd>
-              <T en="Latin, Cyrillic, Hangul" ru="Латиница, кириллица, хангыль" />
+              <T
+                en="Latin, Cyrillic, Hangul"
+                ru="Латиница, кириллица, хангыль"
+              />
             </dd>
           </div>
           <div>
@@ -226,8 +244,19 @@ export default function Chemical() {
             <li>
               <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
                 <defs>
-                  <filter id="ragged" x="-20%" y="-20%" width="140%" height="140%">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" />
+                  <filter
+                    id="ragged"
+                    x="-20%"
+                    y="-20%"
+                    width="140%"
+                    height="140%"
+                  >
+                    <feTurbulence
+                      type="fractalNoise"
+                      baseFrequency="0.9"
+                      numOctaves="2"
+                      seed="4"
+                    />
                     <feDisplacementMap in="SourceGraphic" scale="3.2" />
                   </filter>
                 </defs>
@@ -270,7 +299,10 @@ export default function Chemical() {
             <p className="eyebrow">
               <T en="NEVER TWINS" ru="НИКАКИХ БЛИЗНЕЦОВ" />
             </p>
-            <p className="type-twins-sample hand" aria-label="aaaaaa ллллл 오오오">
+            <p
+              className="type-twins-sample hand"
+              aria-label="aaaaaa ллллл 오오오"
+            >
               <span>aaaaaa</span>
               <span>лллллл</span>
               <span lang="ko">오오오</span>
@@ -286,7 +318,10 @@ export default function Chemical() {
         <section className="case-try">
           <div>
             <p className="eyebrow">
-              <T en="A TYPEFACE, A PRODUCT, A WHOLE IDENTITY" ru="ШРИФТ, ПРОДУКТ, ЦЕЛАЯ АЙДЕНТИКА" />
+              <T
+                en="A TYPEFACE, A PRODUCT, A WHOLE IDENTITY"
+                ru="ШРИФТ, ПРОДУКТ, ЦЕЛАЯ АЙДЕНТИКА"
+              />
             </p>
             <h2>
               <T en="Need a hand like this?" ru="Нужен такой почерк?" />
@@ -297,7 +332,12 @@ export default function Chemical() {
               <T en="Discuss a project" ru="Обсудить проект" />
               <Arrow diagonal />
             </Link>
-            <a className="text-link" href={SOURCE} target="_blank" rel="noreferrer">
+            <a
+              className="text-link"
+              href={SOURCE}
+              target="_blank"
+              rel="noreferrer"
+            >
               <T en="Source on GitHub" ru="Исходники на GitHub" />
               <Arrow diagonal />
             </a>
@@ -310,7 +350,10 @@ export default function Chemical() {
             </p>
             <h2>OROT</h2>
             <p>
-              <T en="A language begins with a story." ru="Язык начинается с истории." />
+              <T
+                en="A language begins with a story."
+                ru="Язык начинается с истории."
+              />
             </p>
           </div>
           <span className="round-link glass">

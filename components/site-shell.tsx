@@ -45,7 +45,9 @@ export function Header() {
           className="language-button"
           onClick={switchLanguage}
           aria-label={
-            language === "en" ? "Switch to Russian" : "Переключить на английский"
+            language === "en"
+              ? "Switch to Russian"
+              : "Переключить на английский"
           }
         >
           <span className={language === "en" ? "active" : ""}>EN</span>

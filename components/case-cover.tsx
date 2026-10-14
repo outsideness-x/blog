@@ -110,10 +110,7 @@ export function CaseCover({ project }: { project: Project }) {
             </div>
             <span className="cover-bookmark">
               <span>01</span>
-              <T
-                en={"READ\nMARK\nREMEMBER"}
-                ru={"ЧИТАТЬ\nОТМЕЧАТЬ\nПОМНИТЬ"}
-              />
+              <T en={"READ\nMARK\nREMEMBER"} ru={"ЧИТАТЬ\nОТМЕЧАТЬ\nПОМНИТЬ"} />
             </span>
             <span className="cover-note hand">
               <T

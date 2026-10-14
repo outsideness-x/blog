@@ -1,8 +1,7 @@
 /* chemical: a typeface page that is mostly the typeface. */
 .cover-chemical .cover-scene {
   background:
-    radial-gradient(circle at 78% 30%, #9ebcdf14, transparent 40%),
-    #111413;
+    radial-gradient(circle at 78% 30%, #9ebcdf14, transparent 40%), #111413;
 }
 .cover-chemical h1 {
   top: 6%;

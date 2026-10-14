@@ -189,10 +189,7 @@ export function ContactBrief() {
         <label className="brief-idea">
           <span className="brief-legend">
             <span>03</span>
-            <T
-              en="A few words about the idea"
-              ru="Пара слов об идее"
-            />
+            <T en="A few words about the idea" ru="Пара слов об идее" />
           </span>
           <textarea
             rows={3}

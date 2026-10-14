@@ -74,7 +74,12 @@ export function LoopVideo({
       <span className="loop-video-state" aria-hidden="true">
         {running ? (
           <svg viewBox="0 0 16 16">
-            <path d="M5 3v10M11 3v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <path
+              d="M5 3v10M11 3v10"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
           </svg>
         ) : (
           <svg viewBox="0 0 16 16">

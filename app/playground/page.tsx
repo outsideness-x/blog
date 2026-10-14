@@ -17,7 +17,11 @@ export const metadata: Metadata = {
 const clips = orotMotion.flatMap((item, i) =>
   [
     { ...item, app: "OROT", href: "/projects/orot" },
-    dipleMotion[i] && { ...dipleMotion[i], app: "diple.", href: "/projects/diple" },
+    dipleMotion[i] && {
+      ...dipleMotion[i],
+      app: "diple.",
+      href: "/projects/diple",
+    },
   ].filter(Boolean),
 ) as ((typeof orotMotion)[number] & { app: string; href: string })[];
 
@@ -110,9 +114,7 @@ export default function Playground() {
           <span className="eyebrow">
             <T en="AND A TYPEFACE" ru="И ЕЩЁ ШРИФТ" />
           </span>
-          <span className="play-note-sample hand">
-            Aa Яя 한
-          </span>
+          <span className="play-note-sample hand">Aa Яя 한</span>
           <span className="play-note-copy">
             <T
               en="Every handwritten note on this site is set in chemical, my own felt-tip typeface. Try it."
@@ -129,7 +131,10 @@ export default function Playground() {
             <T en="LOOK UP" ru="ПОСМОТРИТЕ НАВЕРХ" />
           </span>
           <span className="play-note-title">
-            <T en="The navigation is real glass." ru="Навигация — настоящее стекло." />
+            <T
+              en="The navigation is real glass."
+              ru="Навигация — настоящее стекло."
+            />
           </span>
           <span className="play-note-copy">
             <T

@@ -7,8 +7,7 @@
   font-weight: 400;
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+2000-206F, U+20A0-20CF, U+2100-214F, U+2190-22FF, U+25A0-27BF,
-    U+2B00-2BFF;
+    U+2000-206F, U+20A0-20CF, U+2100-214F, U+2190-22FF, U+25A0-27BF, U+2B00-2BFF;
 }
 @font-face {
   font-family: chemical;
@@ -2780,7 +2779,9 @@ html[data-lang="ru"] .lang-ru {
   height: 40px;
   position: relative;
   color: #dcdfdf;
-  text-shadow: 0 1px 3px #000b, 0 0 1px #000;
+  text-shadow:
+    0 1px 3px #000b,
+    0 0 1px #000;
   transition: color 0.25s;
 }
 .liquid-nav a:hover {

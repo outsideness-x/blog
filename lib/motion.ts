@@ -116,7 +116,10 @@ export const heroMotion: HeroItem[] = [
     ...clip("orot", "read-along"),
     app: "orot",
     title: { en: "OROT", ru: "OROT" },
-    text: { en: "words light up as they’re read", ru: "слова загораются, пока звучат" },
+    text: {
+      en: "words light up as they’re read",
+      ru: "слова загораются, пока звучат",
+    },
   },
   {
     ...clip("diple", "ink-highlight"),

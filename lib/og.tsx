@@ -202,7 +202,9 @@ export async function homeOg() {
           transform: "rotate(-14deg)",
         }}
       />
-      <div style={{ position: "absolute", left: 72, bottom: 52, display: "flex" }}>
+      <div
+        style={{ position: "absolute", left: 72, bottom: 52, display: "flex" }}
+      >
         <Wordmark />
       </div>
     </div>,
@@ -218,7 +220,12 @@ export async function projectsOg() {
   const apps = [
     { name: "OROT", line: "Korean through stories", src: orot, bg: "#000" },
     { name: "diple.", line: "A reader and a notebook", src: diple, bg: "#000" },
-    { name: "inkept", line: "Notes that come back", src: flower, bg: "#eeeadf" },
+    {
+      name: "inkept",
+      line: "Notes that come back",
+      src: flower,
+      bg: "#eeeadf",
+    },
   ];
   return render(
     <div
@@ -243,7 +250,12 @@ export async function projectsOg() {
         {apps.map((app) => (
           <div
             key={app.name}
-            style={{ display: "flex", alignItems: "center", gap: 20, width: 330 }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 20,
+              width: 330,
+            }}
           >
             <div
               style={{
@@ -266,13 +278,22 @@ export async function projectsOg() {
               />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <span style={{ fontSize: 34, letterSpacing: -1 }}>{app.name}</span>
+              <span style={{ fontSize: 34, letterSpacing: -1 }}>
+                {app.name}
+              </span>
               <span style={{ fontSize: 19, color: MUTED }}>{app.line}</span>
             </div>
           </div>
         ))}
       </div>
-      <div style={{ display: "flex", marginTop: "auto", justifyContent: "space-between", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          marginTop: "auto",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Wordmark />
         <span style={{ fontFamily: "chemical", fontSize: 30, color: BLUE }}>
           designed. built. out in the world.
@@ -326,13 +347,25 @@ async function caseArt(slug: string): Promise<Omit<Case, "line" | "platform">> {
             src={phone}
             width={262}
             frame="transparent"
-            style={{ left: 790, top: 120, transform: "rotate(-6deg)", padding: 0, boxShadow: "none" }}
+            style={{
+              left: 790,
+              top: 120,
+              transform: "rotate(-6deg)",
+              padding: 0,
+              boxShadow: "none",
+            }}
           />
           <Phone
             src={grammar}
             width={250}
             frame="transparent"
-            style={{ left: 960, top: 210, transform: "rotate(9deg)", padding: 0, boxShadow: "none" }}
+            style={{
+              left: 960,
+              top: 210,
+              transform: "rotate(9deg)",
+              padding: 0,
+              boxShadow: "none",
+            }}
           />
         </>
       ),
@@ -348,7 +381,9 @@ async function caseArt(slug: string): Promise<Omit<Case, "line" | "platform">> {
       color: "#253b49",
       muted: "#3d5665",
       title: (
-        <span style={{ fontFamily: "Literata", fontSize: 260, letterSpacing: -18 }}>
+        <span
+          style={{ fontFamily: "Literata", fontSize: 260, letterSpacing: -18 }}
+        >
           diple.
         </span>
       ),
@@ -391,7 +426,9 @@ async function caseArt(slug: string): Promise<Omit<Case, "line" | "platform">> {
     color: "#c3d5c1",
     muted: "#a6bca7",
     title: (
-      <span style={{ fontFamily: "chemical", fontSize: 230, letterSpacing: -6 }}>
+      <span
+        style={{ fontFamily: "chemical", fontSize: 230, letterSpacing: -6 }}
+      >
         inkept
       </span>
     ),
@@ -424,7 +461,12 @@ async function caseArt(slug: string): Promise<Omit<Case, "line" | "platform">> {
         <img
           src={flower}
           width={190}
-          style={{ position: "absolute", left: 830, top: 40, transform: "rotate(14deg)" }}
+          style={{
+            position: "absolute",
+            left: 830,
+            top: 40,
+            transform: "rotate(14deg)",
+          }}
         />
       </>
     ),
@@ -446,7 +488,9 @@ export async function caseOg(slug: string, line: string, platform: string) {
         overflow: "hidden",
       }}
     >
-      <div style={{ position: "absolute", left: 56, top: -40, display: "flex" }}>
+      <div
+        style={{ position: "absolute", left: 56, top: -40, display: "flex" }}
+      >
         {look.title}
       </div>
       {look.art}
@@ -526,7 +570,12 @@ export async function contactOg() {
       <img
         src={flower}
         width={250}
-        style={{ position: "absolute", right: 90, top: 150, transform: "rotate(15deg)" }}
+        style={{
+          position: "absolute",
+          right: 90,
+          top: 150,
+          transform: "rotate(15deg)",
+        }}
       />
     </div>,
   );
@@ -579,7 +628,12 @@ export async function chemicalOg() {
       <img
         src={flower}
         width={170}
-        style={{ position: "absolute", right: 120, top: 250, transform: "rotate(-12deg)" }}
+        style={{
+          position: "absolute",
+          right: 120,
+          top: 250,
+          transform: "rotate(-12deg)",
+        }}
       />
       <div
         style={{

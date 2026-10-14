@@ -25,10 +25,13 @@ function usePrefersStill() {
   const [still, setStill] = useState(false);
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const connection = (navigator as Navigator & {
-      connection?: { saveData?: boolean };
-    }).connection;
-    const update = () => setStill(media.matches || Boolean(connection?.saveData));
+    const connection = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean };
+      }
+    ).connection;
+    const update = () =>
+      setStill(media.matches || Boolean(connection?.saveData));
     update();
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
@@ -213,11 +216,18 @@ export function ReelToggle({
       type="button"
       className="reel-toggle"
       onClick={onClick}
-      aria-label={running ? "Pause motion / Пауза" : "Play motion / Воспроизвести"}
+      aria-label={
+        running ? "Pause motion / Пауза" : "Play motion / Воспроизвести"
+      }
     >
       {running ? (
         <svg viewBox="0 0 16 16" aria-hidden="true">
-          <path d="M5 3v10M11 3v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path
+            d="M5 3v10M11 3v10"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
         </svg>
       ) : (
         <svg viewBox="0 0 16 16" aria-hidden="true">
@@ -282,7 +292,9 @@ export function CaseReel({
               <span className="reel-progress" aria-hidden="true">
                 <span
                   ref={i === reel.index ? reel.progress : undefined}
-                  style={i === reel.index ? undefined : { transform: "scaleX(0)" }}
+                  style={
+                    i === reel.index ? undefined : { transform: "scaleX(0)" }
+                  }
                 />
               </span>
             </button>

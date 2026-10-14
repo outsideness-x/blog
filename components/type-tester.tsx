@@ -93,7 +93,11 @@ export function TypeTester() {
   return (
     <div className="type-tester">
       <div className="type-tester-bar">
-        <div className="type-samples" role="group" aria-label="Samples / Образцы">
+        <div
+          className="type-samples"
+          role="group"
+          aria-label="Samples / Образцы"
+        >
           {samples.map((item) => (
             <button
               key={item.id}
@@ -134,14 +138,21 @@ export function TypeTester() {
         style={{ fontSize: size, fontFeatureSettings: settings }}
         rows={4}
       />
-      <div className="type-features" role="group" aria-label="OpenType features">
+      <div
+        className="type-features"
+        role="group"
+        aria-label="OpenType features"
+      >
         {features.map((feature) => (
           <button
             key={feature.tag}
             type="button"
             aria-pressed={Boolean(on[feature.tag])}
             onClick={() =>
-              setOn((current) => ({ ...current, [feature.tag]: !current[feature.tag] }))
+              setOn((current) => ({
+                ...current,
+                [feature.tag]: !current[feature.tag],
+              }))
             }
           >
             <span className="type-feature-tag">{feature.tag}</span>

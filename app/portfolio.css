@@ -906,8 +906,7 @@
 /* chemical in the project index. */
 .art-chemical {
   background:
-    radial-gradient(circle at 75% 25%, #9ebcdf17, transparent 45%),
-    #111413;
+    radial-gradient(circle at 75% 25%, #9ebcdf17, transparent 45%), #111413;
 }
 .art-chemical-word {
   position: absolute;
@@ -1026,8 +1025,7 @@
 }
 .beyond-play .beyond-visual {
   background:
-    radial-gradient(circle at 50% 120%, #9ebcdf22, transparent 60%),
-    #0f1111;
+    radial-gradient(circle at 50% 120%, #9ebcdf22, transparent 60%), #0f1111;
 }
 .beyond-visual .beyond-device {
   position: absolute;

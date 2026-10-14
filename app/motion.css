@@ -3,7 +3,13 @@
   position: relative;
   padding: 3.3%;
   border-radius: 16.5% / 7.6%;
-  background: linear-gradient(150deg, #34373a 0%, #141516 38%, #0d0e0f 62%, #2a2d30 100%);
+  background: linear-gradient(
+    150deg,
+    #34373a 0%,
+    #141516 38%,
+    #0d0e0f 62%,
+    #2a2d30 100%
+  );
   box-shadow:
     inset 0 0 0 1px #5a5f63,
     inset 0 0 0 2.5px #0a0b0c,
@@ -677,8 +683,7 @@ a.play-note:hover {
 }
 .play-note-glass {
   background:
-    radial-gradient(circle at 80% 0%, #9ebcdf1f, transparent 55%),
-    #121414;
+    radial-gradient(circle at 80% 0%, #9ebcdf1f, transparent 55%), #121414;
 }
 @media (max-width: 1100px) {
   .play-grid {

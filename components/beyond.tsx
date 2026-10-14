@@ -44,7 +44,10 @@ export function Beyond({ showTypeface = true }: { showTypeface?: boolean }) {
             </div>
           </Link>
         )}
-        <Link href="/projects/orot#beyond" className="beyond-card beyond-mascot">
+        <Link
+          href="/projects/orot#beyond"
+          className="beyond-card beyond-mascot"
+        >
           <div className="beyond-visual" aria-hidden="true">
             <Image
               src="/projects/orot/brand/pose-wave.webp"

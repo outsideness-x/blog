@@ -125,10 +125,7 @@ export default function Projects() {
       <Beyond showTypeface={false} />
       <div className="work-index-end">
         <p className="hand">
-          <T
-            en="The next one could be yours."
-            ru="Следующим может быть ваш."
-          />
+          <T en="The next one could be yours." ru="Следующим может быть ваш." />
         </p>
         <Link href="/contacts" className="button button-light">
           <T en="Let’s talk" ru="Обсудим" />

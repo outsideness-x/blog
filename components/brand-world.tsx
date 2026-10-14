@@ -130,7 +130,10 @@ export function BrandWorld() {
             <T en="ALTERNATE APP ICONS" ru="АЛЬТЕРНАТИВНЫЕ ИКОНКИ" />
           </p>
           <h3>
-            <T en="Six ways to wear the app." ru="Шесть способов носить приложение." />
+            <T
+              en="Six ways to wear the app."
+              ru="Шесть способов носить приложение."
+            />
           </h3>
           <p>
             <T

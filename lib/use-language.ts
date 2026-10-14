@@ -11,7 +11,10 @@ export function useLanguage(): Language {
     const read = () => setLanguage(root.dataset.lang === "ru" ? "ru" : "en");
     read();
     const observer = new MutationObserver(read);
-    observer.observe(root, { attributes: true, attributeFilter: ["data-lang"] });
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ["data-lang"],
+    });
     return () => observer.disconnect();
   }, []);
   return language;

@@ -184,9 +184,7 @@ export function Services() {
         {services.map((service) => (
           <article className="service-card" key={service.number}>
             <div className="service-card-top">
-              <span className="service-card-number hand">
-                {service.number}
-              </span>
+              <span className="service-card-number hand">{service.number}</span>
               <h3>
                 <T {...service.title} />
               </h3>
