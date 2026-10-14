@@ -4,6 +4,7 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 import "./cases.css";
 import "./portfolio.css";
+import "./contact.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: SITE_NAME, template: `%s — chemical pink` },

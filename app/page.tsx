@@ -7,6 +7,7 @@ import { Flower } from "@/components/project-art";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/projects";
 import { Services } from "@/components/services";
+import { CONTACT, CONTACT_LINKS } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Alex — Design engineer",
   alternates: { canonical: "/" },
@@ -254,12 +255,15 @@ export default function Home() {
               ru="Создадим то, чем захочется пользоваться."
             />
           </h2>
+          <div className="contact-strip-links">
+            <a href={CONTACT_LINKS.email}>{CONTACT.email}</a>
+            <a href={CONTACT_LINKS.telegram} target="_blank" rel="noreferrer">
+              Telegram @{CONTACT.telegram}
+            </a>
+          </div>
         </div>
-        <Link
-          href="/contacts"
-          className="round-link glass"
-          aria-label="Contact / Контакты"
-        >
+        <Link href="/contacts" className="button button-light">
+          <T en="Start a project" ru="Обсудить проект" />
           <Arrow diagonal />
         </Link>
       </section>

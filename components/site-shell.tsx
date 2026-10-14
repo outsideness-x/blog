@@ -1,11 +1,14 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { CONTACT, CONTACT_LINKS } from "@/lib/site";
 import { T } from "./text";
 import { Asterisk, Arrow } from "./marks";
 import { LiquidNavigation } from "./liquid-navigation";
 
 export function Header() {
+  const pathname = usePathname();
   const [language, setLanguage] = useState("en");
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
@@ -37,17 +40,25 @@ export function Header() {
         </span>
       </Link>
       <LiquidNavigation language={language} scrolled={scrolled} />
-      <button
-        className="language-button"
-        onClick={switchLanguage}
-        aria-label={
-          language === "en" ? "Switch to Russian" : "Переключить на английский"
-        }
-      >
-        <span className={language === "en" ? "active" : ""}>EN</span>
-        <span className="language-divider">/</span>
-        <span className={language === "ru" ? "active" : ""}>RU</span>
-      </button>
+      <div className="header-actions">
+        <button
+          className="language-button"
+          onClick={switchLanguage}
+          aria-label={
+            language === "en" ? "Switch to Russian" : "Переключить на английский"
+          }
+        >
+          <span className={language === "en" ? "active" : ""}>EN</span>
+          <span className="language-divider">/</span>
+          <span className={language === "ru" ? "active" : ""}>RU</span>
+        </button>
+        {!pathname.startsWith("/contacts") && (
+          <Link href="/contacts" className="header-cta">
+            <T en="Start a project" ru="Обсудить проект" />
+            <Arrow diagonal />
+          </Link>
+        )}
+      </div>
     </header>
   );
 }
@@ -63,13 +74,17 @@ export function Footer() {
           ru="Немного чернил и много внимания."
         />
       </p>
-      <a
-        href="https://github.com/outsideness-x"
-        target="_blank"
-        rel="noreferrer"
-      >
-        GitHub <Arrow diagonal />
-      </a>
+      <nav className="footer-links" aria-label="Contacts">
+        <a href={CONTACT_LINKS.email}>
+          {CONTACT.email} <Arrow diagonal />
+        </a>
+        <a href={CONTACT_LINKS.telegram} target="_blank" rel="noreferrer">
+          Telegram <Arrow diagonal />
+        </a>
+        <a href={CONTACT_LINKS.github} target="_blank" rel="noreferrer">
+          GitHub <Arrow diagonal />
+        </a>
+      </nav>
       <span className="footer-year">© {new Date().getFullYear()}</span>
     </footer>
   );
