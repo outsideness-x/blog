@@ -313,16 +313,25 @@
   color: #fff;
   background: #15201e44;
 }
-.work-row-diple {
+.work-row-diple,
+.work-row-chemical {
   grid-template-columns: 1.4fr 0.72fr;
 }
-.work-row-diple .work-row-copy {
+.work-row-diple .work-row-copy,
+.work-row-chemical .work-row-copy {
   grid-column: 2;
   grid-row: 1;
 }
-.work-row-diple .work-row-art {
+.work-row-diple .work-row-art,
+.work-row-chemical .work-row-art {
   grid-column: 1;
   grid-row: 1;
+}
+.work-row-chemical .work-row-copy h2 {
+  font-family: chemical, sans-serif;
+  letter-spacing: 0;
+  color: var(--paper);
+  transform: rotate(-3deg);
 }
 .work-index-end {
   display: flex;
@@ -560,13 +569,16 @@
     margin-top: 15px;
   }
   .work-row,
-  .work-row-diple {
+  .work-row-diple,
+  .work-row-chemical {
     grid-template-columns: 1fr;
     gap: 30px;
     padding: 35px 0 40px;
   }
   .work-row-diple .work-row-copy,
-  .work-row-diple .work-row-art {
+  .work-row-diple .work-row-art,
+  .work-row-chemical .work-row-copy,
+  .work-row-chemical .work-row-art {
     grid-column: auto;
     grid-row: auto;
   }
@@ -888,5 +900,185 @@
   }
   .process-steps h3 {
     margin-top: 6px;
+  }
+}
+
+/* chemical in the project index. */
+.art-chemical {
+  background:
+    radial-gradient(circle at 75% 25%, #9ebcdf17, transparent 45%),
+    #111413;
+}
+.art-chemical-word {
+  position: absolute;
+  left: 7%;
+  top: 14%;
+  font-size: clamp(90px, 10vw, 150px);
+  line-height: 1;
+  color: var(--paper);
+  transform: rotate(-5deg);
+}
+.art-chemical-ko {
+  position: absolute;
+  right: 9%;
+  top: 12%;
+  font-size: 64px;
+  color: #e47b62;
+  transform: rotate(8deg);
+}
+.art-chemical-ru {
+  position: absolute;
+  left: 10%;
+  bottom: 14%;
+  font-size: 54px;
+  color: var(--blue);
+  transform: rotate(-6deg);
+}
+.art-chemical-hearts {
+  position: absolute;
+  right: 10%;
+  bottom: 18%;
+  font-size: 40px;
+  color: #b9c9b6;
+  font-feature-settings:
+    "calt" 1,
+    "ss03" 1;
+  transform: rotate(4deg);
+}
+/* Beyond the apps: typeface, character, playground. */
+.beyond {
+  padding-top: 100px;
+}
+.beyond-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.beyond-grid-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.beyond-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #ffffff16;
+  border-radius: 12px;
+  background: #121414;
+  transition:
+    border-color 0.3s,
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.beyond-card:hover {
+  border-color: #ffffff33;
+  transform: translateY(-3px);
+}
+.beyond-visual {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.beyond-info {
+  padding: 22px 26px 26px;
+}
+.beyond-info h3 {
+  font-size: 23px;
+  letter-spacing: -0.03em;
+}
+.beyond-info p {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.beyond-type .beyond-visual {
+  background: #111413;
+  gap: 18px;
+}
+.beyond-type-sample {
+  font-size: 110px;
+  color: var(--paper);
+  transform: rotate(-6deg);
+}
+.beyond-type-ru {
+  font-size: 80px;
+  color: var(--blue);
+  transform: rotate(5deg);
+}
+.beyond-type-ko {
+  font-size: 80px;
+  color: #e47b62;
+  transform: rotate(-3deg);
+}
+.beyond-mascot .beyond-visual {
+  background: #efe9dc;
+}
+.beyond-mascot .beyond-visual > img {
+  width: 210px;
+  height: auto;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.beyond-mascot:hover .beyond-visual > img {
+  transform: rotate(-4deg) translateY(-4px);
+}
+.beyond-play .beyond-visual {
+  background:
+    radial-gradient(circle at 50% 120%, #9ebcdf22, transparent 60%),
+    #0f1111;
+}
+.beyond-visual .beyond-device {
+  position: absolute;
+  width: 112px;
+  top: 34px;
+  left: calc(50% - 120px);
+  transform: rotate(-8deg);
+}
+.beyond-visual .beyond-device-two {
+  left: calc(50% + 6px);
+  top: 54px;
+  transform: rotate(7deg);
+}
+.beyond-play:hover .beyond-visual .beyond-device {
+  transform: rotate(-11deg) translateY(-6px);
+}
+.beyond-play:hover .beyond-visual .beyond-device-two {
+  transform: rotate(10deg) translateY(-6px);
+}
+.beyond-visual .beyond-device {
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.projects-page .beyond {
+  padding: 70px 0 30px;
+}
+@media (max-width: 1100px) {
+  .beyond-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .beyond {
+    padding-top: 70px;
+  }
+  .beyond-grid,
+  .beyond-grid-two {
+    grid-template-columns: 1fr;
+  }
+  .beyond-visual {
+    height: 200px;
+  }
+  .art-chemical-word {
+    font-size: 84px;
+  }
+  .art-chemical-ko {
+    font-size: 44px;
+  }
+  .art-chemical-ru {
+    font-size: 40px;
+  }
+  .art-chemical-hearts {
+    font-size: 30px;
   }
 }

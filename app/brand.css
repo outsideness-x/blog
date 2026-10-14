@@ -31,20 +31,9 @@
     0 0 0 1px #ffffff14;
   background: #efe9dc;
 }
-.loop-video {
-  position: relative;
-}
-.loop-video > video {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.loop-video > .reel-toggle {
-  position: absolute;
-  right: 14px;
-  bottom: 14px;
+.brand-mascot-film .loop-video-state {
   border-color: #231f2733;
-  background: #231f2712;
+  background: #efe9dccc;
   color: #231f27;
 }
 .brand-poses {

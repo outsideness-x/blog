@@ -18,9 +18,24 @@
   gap: 10px;
   align-items: center;
 }
-.cover-topline > a svg {
+.cover-topline > a svg,
+.cover-links svg {
   width: 14px;
   height: 14px;
+}
+.cover-links {
+  display: flex;
+  gap: 24px;
+}
+.cover-links > a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: color 0.2s;
+}
+.cover-links > a:hover,
+.cover-topline > a:hover {
+  color: var(--ink);
 }
 .cover-topline > span {
   font-size: 8px;

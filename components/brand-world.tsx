@@ -23,7 +23,7 @@ const slides = ["01", "02", "03", "07", "08", "09"];
 // and a voice on social media, all drawn in the app's own hand.
 export function BrandWorld() {
   return (
-    <section className="brand-world">
+    <section className="brand-world" id="beyond">
       <div className="motion-intro">
         <div className="chapter-heading">
           <p className="eyebrow">
@@ -66,6 +66,7 @@ export function BrandWorld() {
                 poster="/projects/orot/motion/mascot-hello-en.webp"
                 width={720}
                 height={900}
+                label="OROT mascot"
               />
             }
             ru={
@@ -74,6 +75,7 @@ export function BrandWorld() {
                 poster="/projects/orot/motion/mascot-hello-ru.webp"
                 width={720}
                 height={900}
+                label="Маскот OROT"
               />
             }
           />

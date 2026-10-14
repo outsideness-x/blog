@@ -166,6 +166,17 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
               <T en="Try the app" ru="Попробовать приложение" />
               <Arrow diagonal />
             </a>
+            {project.source && (
+              <a
+                className="text-link"
+                href={project.source}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <T en="Read the code" ru="Посмотреть код" />
+                <Arrow diagonal />
+              </a>
+            )}
           </div>
         </section>
         <Link

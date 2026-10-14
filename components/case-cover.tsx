@@ -13,9 +13,16 @@ export function CaseCover({ project }: { project: Project }) {
           ← <T en="Selected work" ru="Избранные проекты" />
         </Link>
         <span>INDEPENDENT PRODUCT / {project.number}</span>
-        <a href={project.store} target="_blank" rel="noreferrer">
-          App Store <Arrow diagonal />
-        </a>
+        <span className="cover-links">
+          {project.source && (
+            <a href={project.source} target="_blank" rel="noreferrer">
+              GitHub <Arrow diagonal />
+            </a>
+          )}
+          <a href={project.store} target="_blank" rel="noreferrer">
+            App Store <Arrow diagonal />
+          </a>
+        </span>
       </div>
       <div className="cover-scene">
         <div className="cover-grid" aria-hidden="true" />

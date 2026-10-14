@@ -11,6 +11,8 @@ export type Project = {
   thesis: Bilingual;
   overview: Bilingual;
   features: { title: Bilingual; text: Bilingual }[];
+  tags: Bilingual[];
+  source?: string;
 };
 export const projects: Project[] = [
   {
@@ -19,6 +21,11 @@ export const projects: Project[] = [
     number: "01",
     platform: "iPhone",
     store: "https://apps.apple.com/pl/app/orot-read-korean/id6783348321",
+    tags: [
+      { en: "Product design", ru: "Продуктовый дизайн" },
+      { en: "iOS app", ru: "iOS-приложение" },
+      { en: "Character & brand", ru: "Персонаж и бренд" },
+    ],
     category: { en: "Language & stories", ru: "Язык и истории" },
     line: {
       en: "A language begins with a story.",
@@ -66,6 +73,12 @@ export const projects: Project[] = [
     number: "02",
     platform: "iOS + macOS",
     store: "https://apps.apple.com/pl/app/diple/id6806528966",
+    source: "https://github.com/outsideness-x/diple",
+    tags: [
+      { en: "Product design", ru: "Продуктовый дизайн" },
+      { en: "iPhone, iPad, Mac", ru: "iPhone, iPad, Mac" },
+      { en: "Reading UX", ru: "UX чтения" },
+    ],
     category: { en: "Reading & reflection", ru: "Чтение и мысли" },
     line: {
       en: "A quiet room for your mind.",
@@ -113,6 +126,12 @@ export const projects: Project[] = [
     number: "03",
     platform: "iOS + macOS",
     store: "https://apps.apple.com/pl/app/inkept/id6819176738",
+    source: "https://github.com/outsideness-x/inkept",
+    tags: [
+      { en: "Product design", ru: "Продуктовый дизайн" },
+      { en: "iPhone, iPad, Mac", ru: "iPhone, iPad, Mac" },
+      { en: "Visual language", ru: "Визуальный язык" },
+    ],
     category: { en: "Notes & memory", ru: "Заметки и память" },
     line: {
       en: "Good thoughts deserve to stay.",

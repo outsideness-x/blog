@@ -69,7 +69,8 @@ export function LiquidNavigation({
   scrolled: boolean;
 }) {
   const pathname = usePathname();
-  const selected = pathname.startsWith("/projects")
+  const selected =
+    pathname.startsWith("/projects") || pathname.startsWith("/playground")
     ? 1
     : pathname.startsWith("/contacts")
       ? 2
@@ -264,7 +265,7 @@ export function LiquidNavigation({
               }}
             >
               <T en={item.en} ru={item.ru} />
-              {index === 1 && <sup>03</sup>}
+              {index === 1 && <sup>04</sup>}
             </Link>
           ))}
         </div>

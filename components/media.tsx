@@ -2,11 +2,10 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { T } from "./text";
-import { ReelToggle } from "./reel";
 
 /**
- * A muted loop that loads and plays only while it is on screen, starts paused
- * for reduced motion, and can always be paused.
+ * A muted loop that loads and plays only while it is on screen and starts
+ * paused for reduced motion. Tapping it pauses or resumes.
  */
 export function LoopVideo({
   src,
@@ -14,12 +13,14 @@ export function LoopVideo({
   width,
   height,
   className = "",
+  label,
 }: {
   src: string;
   poster: string;
   width: number;
   height: number;
   className?: string;
+  label?: string;
 }) {
   const video = useRef<HTMLVideoElement>(null);
   const [running, setRunning] = useState(true);
@@ -51,7 +52,13 @@ export function LoopVideo({
   }, [running, visible, loaded]);
 
   return (
-    <div className={`loop-video ${className}`}>
+    <button
+      type="button"
+      className={`loop-video ${running ? "" : "is-paused"} ${className}`}
+      onClick={() => setRunning((on) => !on)}
+      aria-pressed={!running}
+      aria-label={`${label ? `${label}: ` : ""}${running ? "pause / пауза" : "play / воспроизвести"}`}
+    >
       <video
         ref={video}
         src={loaded ? src : undefined}
@@ -64,8 +71,18 @@ export function LoopVideo({
         preload="none"
         aria-hidden="true"
       />
-      <ReelToggle running={running} onClick={() => setRunning((on) => !on)} />
-    </div>
+      <span className="loop-video-state" aria-hidden="true">
+        {running ? (
+          <svg viewBox="0 0 16 16">
+            <path d="M5 3v10M11 3v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 16 16">
+            <path d="M5 3.5v9l7.5-4.5z" fill="currentColor" />
+          </svg>
+        )}
+      </span>
+    </button>
   );
 }
 
@@ -100,7 +117,13 @@ export function FilmPlayer({
     );
   return (
     <button type="button" className="film-poster" onClick={() => setOn(true)}>
-      <Image src={poster} alt={title} width={width} height={height} sizes="(max-width: 760px) 70vw, 300px" />
+      <Image
+        src={poster}
+        alt={title}
+        width={width}
+        height={height}
+        sizes="(max-width: 760px) 70vw, 300px"
+      />
       <span className="film-play">
         <svg viewBox="0 0 16 16" aria-hidden="true">
           <path d="M5 3.5v9l7.5-4.5z" fill="currentColor" />

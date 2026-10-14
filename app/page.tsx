@@ -7,6 +7,7 @@ import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/projects";
 import { Services } from "@/components/services";
 import { HeroReel } from "@/components/hero-reel";
+import { Beyond } from "@/components/beyond";
 import { CONTACT, CONTACT_LINKS, PERSON_SCHEMA } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Alex — UI/UX designer & iOS developer" },
@@ -134,6 +135,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <Beyond />
       <Services />
       <section className="about-section page-width">
         <div className="about-note">
