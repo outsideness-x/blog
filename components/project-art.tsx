@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { T } from "./text";
+import { Device } from "./reel";
 export function Flower({
   className = "",
   size = 160,
@@ -39,16 +40,19 @@ export function ProjectArt({
             src="/projects/orot/cover-1.webp"
             alt=""
             width={420}
-            height={560}
+            height={743}
+            sizes="(max-width: 760px) 36vw, 320px"
           />
-          <Image
-            className="orot-phone"
-            src="/projects/orot/phone-reading.webp"
-            alt=""
-            width={540}
-            height={1120}
-            priority={hero}
-          />
+          <Device className="orot-phone" island>
+            <Image
+              className="device-shot"
+              src="/projects/orot/reading-hd.webp"
+              alt=""
+              fill
+              sizes="(max-width: 760px) 45vw, 320px"
+              priority={hero}
+            />
+          </Device>
           <span className="art-hand orot-hand">
             <T en="one more chapter…" ru="ещё одну главу…" />
           </span>
@@ -71,6 +75,7 @@ export function ProjectArt({
               alt=""
               width={1200}
               height={750}
+              sizes="(max-width: 760px) 80vw, 640px"
               priority={hero}
             />
           </div>
@@ -80,6 +85,7 @@ export function ProjectArt({
               alt=""
               width={400}
               height={870}
+              sizes="(max-width: 760px) 26vw, 220px"
             />
           </div>
           <span className="art-hand diple-hand">
@@ -114,6 +120,7 @@ export function ProjectArt({
               alt=""
               width={1600}
               height={994}
+              sizes="(max-width: 760px) 92vw, 760px"
               priority={hero}
             />
           </div>

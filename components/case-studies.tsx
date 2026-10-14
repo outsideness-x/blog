@@ -10,7 +10,7 @@ import {
   MemoryStudy,
   InkeptViews,
 } from "./interaction-study";
-import { CaseReel, type ReelItem } from "./reel";
+import { CaseReel, Device, type ReelItem } from "./reel";
 import { dipleMotion, orotMotion } from "@/lib/motion";
 import { BrandWorld } from "./brand-world";
 
@@ -239,30 +239,34 @@ export function OrotStudy() {
           </svg>
         </div>
         <div className="orot-closeup">
-          <ScreenViewer
-            screen={{
-              src: "/projects/orot/phone-reading.webp",
-              width: 540,
-              height: 1120,
-              caption: {
-                en: "The uninterrupted reading experience",
-                ru: "Непрерывное чтение",
-              },
-            }}
-          />
+          <Device island>
+            <ScreenViewer
+              screen={{
+                src: "/projects/orot/reading-hd.webp",
+                width: 900,
+                height: 1955,
+                caption: {
+                  en: "The uninterrupted reading experience",
+                  ru: "Непрерывное чтение",
+                },
+              }}
+            />
+          </Device>
         </div>
         <div className="orot-closeup grammar">
-          <ScreenViewer
-            screen={{
-              src: "/projects/orot/phone-grammar.webp",
-              width: 540,
-              height: 1120,
-              caption: {
-                en: "Grammar and meaning alongside the sentence",
-                ru: "Грамматика и смысл рядом с предложением",
-              },
-            }}
-          />
+          <Device island>
+            <ScreenViewer
+              screen={{
+                src: "/projects/orot/grammar-hd.webp",
+                width: 900,
+                height: 1955,
+                caption: {
+                  en: "Grammar and meaning alongside the sentence",
+                  ru: "Грамматика и смысл рядом с предложением",
+                },
+              }}
+            />
+          </Device>
         </div>
         <p className="spread-footnote">
           <T

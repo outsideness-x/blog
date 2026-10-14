@@ -43,7 +43,7 @@ for (const asset of [
   "fonts/chemical-latin.woff2",
   "fonts/chemical-cyrillic.woff2",
   "projects/inkept/flower.webp",
-  "projects/orot/phone-reading.webp",
+  "projects/orot/reading-hd.webp",
   "projects/diple/mac-library.webp",
 ]) {
   await access(`public/${asset}`);

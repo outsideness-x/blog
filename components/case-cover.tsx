@@ -4,6 +4,7 @@ import { Project } from "@/lib/projects";
 import { T } from "./text";
 import { Arrow, Asterisk } from "./marks";
 import { Flower } from "./project-art";
+import { Device } from "./reel";
 
 export function CaseCover({ project }: { project: Project }) {
   return (
@@ -37,26 +38,31 @@ export function CaseCover({ project }: { project: Project }) {
                 src="/projects/orot/cover-1.webp"
                 width={900}
                 height={1592}
+                sizes="(max-width: 760px) 32vw, 330px"
                 alt="OROT — Terminal Station story cover"
                 priority
               />
             </div>
-            <Image
-              className="cover-orot-reading"
-              src="/projects/orot/phone-reading.webp"
-              width={540}
-              height={1120}
-              alt="OROT Korean reading interface"
-              priority
-            />
-            <Image
-              className="cover-orot-grammar"
-              src="/projects/orot/phone-grammar.webp"
-              width={540}
-              height={1120}
-              alt="OROT sentence breakdown"
-              priority
-            />
+            <Device className="cover-orot-reading" island>
+              <Image
+                className="device-shot"
+                src="/projects/orot/reading-hd.webp"
+                fill
+                sizes="(max-width: 760px) 45vw, 380px"
+                alt="OROT Korean reading interface"
+                priority
+              />
+            </Device>
+            <Device className="cover-orot-grammar" island>
+              <Image
+                className="device-shot"
+                src="/projects/orot/grammar-hd.webp"
+                fill
+                sizes="(max-width: 760px) 40vw, 350px"
+                alt="OROT sentence breakdown"
+                priority
+              />
+            </Device>
             <span className="cover-stamp">
               <span>읽다</span>
               <T
@@ -87,6 +93,7 @@ export function CaseCover({ project }: { project: Project }) {
                 src="/projects/diple/mac-library.webp"
                 width={2400}
                 height={1500}
+                sizes="(max-width: 760px) 100vw, 1000px"
                 alt="diple library on Mac"
                 priority
               />
@@ -96,6 +103,7 @@ export function CaseCover({ project }: { project: Project }) {
                 src="/projects/diple/reader.webp"
                 width={880}
                 height={1912}
+                sizes="(max-width: 760px) 36vw, 300px"
                 alt="diple reading on iPhone"
                 priority
               />
@@ -123,6 +131,7 @@ export function CaseCover({ project }: { project: Project }) {
                 src="/projects/inkept/mac-4-board-detail.webp"
                 width={1600}
                 height={994}
+                sizes="(max-width: 760px) 110vw, 1000px"
                 alt="inkept board on Mac"
                 priority
               />
@@ -132,6 +141,7 @@ export function CaseCover({ project }: { project: Project }) {
                 src="/projects/inkept/iphone-2-note-detail.webp"
                 width={745}
                 height={1600}
+                sizes="(max-width: 760px) 35vw, 290px"
                 alt="inkept handwritten note interface"
                 priority
               />

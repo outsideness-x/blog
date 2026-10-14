@@ -168,7 +168,7 @@
   border-top: 1px solid var(--line);
 }
 .work-row-copy > .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
 }
 .work-row-copy > .eyebrow > span {
   margin: 0 8px;
@@ -206,7 +206,7 @@
   margin-top: 24px;
 }
 .work-row-tags > span {
-  font-size: 8px;
+  font-size: 10px;
   padding: 6px 10px;
   border: 1px solid var(--line);
   border-radius: 25px;

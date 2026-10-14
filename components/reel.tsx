@@ -187,12 +187,15 @@ export function ReelScreen({
 export function Device({
   children,
   className = "",
+  island = false,
 }: {
   children: ReactNode;
   className?: string;
+  /** Draw the Dynamic Island, for still screenshots that don't include it. */
+  island?: boolean;
 }) {
   return (
-    <div className={`device ${className}`}>
+    <div className={`device ${island ? "device-island" : ""} ${className}`}>
       <div className="device-screen">{children}</div>
     </div>
   );

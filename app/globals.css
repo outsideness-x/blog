@@ -129,7 +129,7 @@ html[data-lang="ru"] .lang-ru {
   font-feature-settings: "calt" 1;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.15em;
   line-height: 1.6;
@@ -221,7 +221,7 @@ html[data-lang="ru"] .lang-ru {
     inset 0 1px 0 #fff;
 }
 .main-nav sup {
-  font-size: 8px;
+  font-size: 9px;
   opacity: 0.6;
 }
 .language-button {
@@ -231,7 +231,7 @@ html[data-lang="ru"] .lang-ru {
   padding: 13px 0 13px 16px;
   display: flex;
   gap: 9px;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.04em;
   color: #8b8e8a;
 }
@@ -248,7 +248,7 @@ html[data-lang="ru"] .lang-ru {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   color: var(--muted);
 }
@@ -493,7 +493,7 @@ html[data-lang="ru"] .lang-ru {
   left: 17px;
   bottom: 23px;
   color: #ddd6c8;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.06em;
   mix-blend-mode: difference;
 }
@@ -509,12 +509,12 @@ html[data-lang="ru"] .lang-ru {
   letter-spacing: -0.03em;
 }
 .project-card-info p {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 8px;
 }
 .platform {
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.03em;
   white-space: nowrap;
   padding: 6px 9px;
@@ -741,7 +741,7 @@ html[data-lang="ru"] .lang-ru {
   max-width: 480px;
 }
 .about-note > .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
 }
 .about-copy h2 {
   font-size: 37px;
@@ -770,7 +770,7 @@ html[data-lang="ru"] .lang-ru {
   margin-top: 27px;
 }
 .skill-tags > span {
-  font-size: 9px;
+  font-size: 11px;
   padding: 8px 11px;
   border-radius: 25px;
   border: 1px solid var(--line);
@@ -817,7 +817,7 @@ html[data-lang="ru"] .lang-ru {
   gap: 28px;
   min-height: 135px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
 }
 .footer-signature {
   font-family: chemical, sans-serif;
@@ -843,7 +843,7 @@ html[data-lang="ru"] .lang-ru {
   width: 12px;
 }
 .footer-year {
-  font-size: 8px;
+  font-size: 11px;
 }
 .page-intro {
   padding: 80px 0 70px;
@@ -1157,7 +1157,7 @@ html[data-lang="ru"] .lang-ru {
 .contact-row small {
   display: block;
   color: var(--muted);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   margin-bottom: 12px;
 }
@@ -1181,7 +1181,7 @@ html[data-lang="ru"] .lang-ru {
   transform: rotate(-3deg);
 }
 .contact-colophon .eyebrow {
-  font-size: 8px;
+  font-size: 10px;
 }
 .not-found {
   text-align: center;
@@ -1340,11 +1340,11 @@ html[data-lang="ru"] .lang-ru {
     padding-top: 24px;
   }
   .hero-eyebrow {
-    font-size: 7px;
+    font-size: 9px;
     gap: 7px;
   }
   .hero-index {
-    font-size: 6px;
+    font-size: 9px;
   }
   .hero-layout {
     display: flex;
@@ -1420,12 +1420,12 @@ html[data-lang="ru"] .lang-ru {
   }
   .section-heading .text-link {
     white-space: nowrap;
-    font-size: 9px;
+    font-size: 11px;
     padding-top: 29px;
     gap: 5px;
   }
   .eyebrow {
-    font-size: 8px;
+    font-size: 10px;
   }
   .selected-grid {
     grid-template-columns: 1fr;
@@ -1444,7 +1444,7 @@ html[data-lang="ru"] .lang-ru {
     font-size: 11px;
   }
   .platform {
-    font-size: 9px;
+    font-size: 10px;
   }
   .art-korean {
     font-size: 80px;
@@ -1686,7 +1686,7 @@ html[data-lang="ru"] .lang-ru {
     font-size: 24px;
   }
   .contact-handle {
-    font-size: 10px;
+    font-size: 11px;
   }
   .contact-colophon {
     margin-top: 60px;
@@ -1857,7 +1857,7 @@ html[data-lang="ru"] .lang-ru {
   border-bottom: 1px solid var(--line);
 }
 .case-facts dt {
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   color: var(--muted);
   margin-bottom: 12px;
@@ -1922,7 +1922,7 @@ html[data-lang="ru"] .lang-ru {
   white-space: nowrap;
   padding: 13px 17px;
   border-radius: 30px;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1;
   color: white;
   background: #111b;
@@ -1989,7 +1989,7 @@ html[data-lang="ru"] .lang-ru {
   border-radius: 25px;
   background: #ffffff09;
   padding: 7px 13px;
-  font-size: 10px;
+  font-size: 11px;
 }
 .dialog-close > span:last-child {
   font-size: 24px;
@@ -2018,14 +2018,14 @@ html[data-lang="ru"] .lang-ru {
 .phone-triptych figcaption {
   display: flex;
   gap: 10px;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.6;
   margin-top: 22px;
   color: var(--muted);
 }
 .phone-triptych figcaption > span:first-child {
   color: var(--blue);
-  font-size: 9px;
+  font-size: 10px;
 }
 .orot-editorial {
   display: grid;
@@ -2284,7 +2284,7 @@ html[data-lang="ru"] .lang-ru {
   padding-top: 22px;
 }
 .feature-number {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--blue);
 }
 .case-feature-grid h3 {
@@ -2390,11 +2390,11 @@ html[data-lang="ru"] .lang-ru {
     padding: 27px 0;
   }
   .case-facts dt {
-    font-size: 7px;
+    font-size: 9px;
     margin-bottom: 8px;
   }
   .case-facts dd {
-    font-size: 10px;
+    font-size: 12px;
   }
   .case-overview > p {
     padding-top: 0;
@@ -2423,7 +2423,7 @@ html[data-lang="ru"] .lang-ru {
     padding-top: 12px;
   }
   .phone-triptych figcaption {
-    font-size: 8px;
+    font-size: 10px;
     display: block;
     line-height: 1.5;
     margin-top: 14px;
@@ -2431,7 +2431,7 @@ html[data-lang="ru"] .lang-ru {
   .phone-triptych figcaption > span:first-child {
     display: block;
     margin-bottom: 5px;
-    font-size: 7px;
+    font-size: 9px;
   }
   .screen-expand {
     display: none;
@@ -2520,7 +2520,7 @@ html[data-lang="ru"] .lang-ru {
     max-width: 240px;
   }
   .wide-screen-heading .eyebrow {
-    font-size: 7px;
+    font-size: 9px;
   }
   .inkept-editorial {
     padding-bottom: 12px;
@@ -2590,7 +2590,7 @@ html[data-lang="ru"] .lang-ru {
     gap: 20px;
   }
   .case-try .eyebrow {
-    font-size: 7px;
+    font-size: 10px;
     max-width: 220px;
   }
   .case-try h2 {
@@ -2619,11 +2619,11 @@ html[data-lang="ru"] .lang-ru {
     gap: 20px;
   }
   .dialog-toolbar > p {
-    font-size: 10px;
+    font-size: 11px;
   }
   .dialog-close {
     padding: 5px 10px;
-    font-size: 9px;
+    font-size: 10px;
     flex-shrink: 0;
   }
 }

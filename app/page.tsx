@@ -27,7 +27,9 @@ export default function Home() {
             en="INDEPENDENT DESIGNER & DEVELOPER"
             ru="НЕЗАВИСИМЫЙ ДИЗАЙНЕР И РАЗРАБОТЧИК"
           />
-          <span className="hero-index">PORTFOLIO — 2026</span>
+          <span className="hero-index">
+            <T en="PORTFOLIO — 2026" ru="ПОРТФОЛИО — 2026" />
+          </span>
         </div>
         <div className="hero-layout">
           <div className="hero-copy">

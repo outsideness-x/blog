@@ -707,3 +707,29 @@ a.play-note:hover {
     font-size: 24px;
   }
 }
+
+/* Still screenshots inside the CSS iPhone. */
+.device-shot {
+  object-fit: cover;
+}
+.device-island .device-screen::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 1.5%;
+  left: 50%;
+  width: 30%;
+  height: 3.2%;
+  border-radius: 999px;
+  background: #000;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.cover-scene > .device,
+.project-art > .device {
+  position: absolute;
+  filter: none;
+}
+.orot-closeup .device .screen-button {
+  border-radius: 0;
+}
