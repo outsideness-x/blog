@@ -3,6 +3,7 @@ import { T } from "@/components/text";
 import { Flower } from "@/components/project-art";
 import { Arrow } from "@/components/marks";
 import { ContactBrief, CopyButton } from "@/components/contact-brief";
+import { Faq } from "@/components/faq";
 import { CONTACT, CONTACT_LINKS } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
@@ -125,6 +126,7 @@ export default function Contacts() {
         </li>
       </ol>
       <ContactBrief />
+      <Faq />
       <div className="contact-colophon">
         <span className="hand">
           <T en="Thanks for stopping by :)" ru="Спасибо, что заглянули :)" />

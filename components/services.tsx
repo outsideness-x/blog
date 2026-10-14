@@ -1,44 +1,161 @@
 import Link from "next/link";
-import { T } from "./text";
+import { T, type Bilingual } from "./text";
 import { Arrow, Asterisk } from "./marks";
+
+type Service = {
+  number: string;
+  title: Bilingual;
+  promise: Bilingual;
+  text: Bilingual;
+  includes: Bilingual[];
+  fit: Bilingual;
+};
+
+const services: Service[] = [
+  {
+    number: "01",
+    title: { en: "App design", ru: "Дизайн приложения" },
+    promise: {
+      en: "A clear product with a point of view.",
+      ru: "Ясный продукт с характером.",
+    },
+    text: {
+      en: "From a rough idea to an interface people understand at a glance: flows, structure, a visual language and a prototype you can tap through.",
+      ru: "От сырой идеи до интерфейса, который понятен с первого взгляда: сценарии, структура, визуальный язык и прототип, который можно потрогать.",
+    },
+    includes: [
+      { en: "User flows and structure", ru: "Сценарии и структура" },
+      {
+        en: "Visual language and UI for iPhone, iPad and Mac",
+        ru: "Визуальный язык и UI для iPhone, iPad и Mac",
+      },
+      { en: "Interactive prototype", ru: "Интерактивный прототип" },
+      { en: "Design system in Figma", ru: "Дизайн-система в Figma" },
+    ],
+    fit: {
+      en: "a new product or a redesign",
+      ru: "нового продукта или редизайна",
+    },
+  },
+  {
+    number: "02",
+    title: { en: "Design + iOS development", ru: "Дизайн и iOS-разработка" },
+    promise: {
+      en: "Designed and built by the same hands.",
+      ru: "Спроектировано и собрано одними руками.",
+    },
+    text: {
+      en: "A native app in Swift and SwiftUI, where motion, gestures and the small states between screens survive the build, all the way to the App Store.",
+      ru: "Нативное приложение на Swift и SwiftUI, где анимации, жесты и мелкие состояния между экранами доживают до релиза — вплоть до App Store.",
+    },
+    includes: [
+      {
+        en: "Native SwiftUI app for iPhone, iPad, Mac",
+        ru: "Нативное приложение на SwiftUI для iPhone, iPad, Mac",
+      },
+      {
+        en: "Motion and interaction details",
+        ru: "Анимации и детали взаимодействия",
+      },
+      {
+        en: "TestFlight builds along the way",
+        ru: "Сборки в TestFlight по ходу работы",
+      },
+      { en: "App Store submission", ru: "Публикация в App Store" },
+    ],
+    fit: {
+      en: "an MVP, or a product that has to feel right",
+      ru: "MVP или продукта, который должен ощущаться правильно",
+    },
+  },
+  {
+    number: "03",
+    title: { en: "Launch kit", ru: "Всё для запуска" },
+    promise: {
+      en: "Everything around the app.",
+      ru: "Всё, что вокруг приложения.",
+    },
+    text: {
+      en: "What people see before they install: the icon, the App Store page, a landing page, and characters or illustrations that give the product a face.",
+      ru: "То, что люди видят до установки: иконка, страница в App Store, лендинг, а ещё персонажи и иллюстрации, которые дают продукту лицо.",
+    },
+    includes: [
+      { en: "App icon", ru: "Иконка приложения" },
+      {
+        en: "App Store screenshots and listing",
+        ru: "Скриншоты и описание для App Store",
+      },
+      { en: "Landing page", ru: "Лендинг" },
+      {
+        en: "Mascot, illustrations, social visuals",
+        ru: "Маскот, иллюстрации, визуалы для соцсетей",
+      },
+    ],
+    fit: {
+      en: "a launch, or a refresh before one",
+      ru: "запуска или обновления перед ним",
+    },
+  },
+  {
+    number: "04",
+    title: { en: "UX review", ru: "UX-аудит" },
+    promise: {
+      en: "A fresh look at what you already have.",
+      ru: "Свежий взгляд на то, что уже есть.",
+    },
+    text: {
+      en: "I go through your app the way a new user would, then send a prioritised list of what to fix, with the key screens redesigned.",
+      ru: "Прохожу ваше приложение глазами нового пользователя и присылаю список правок по приоритетам вместе с переработанными ключевыми экранами.",
+    },
+    includes: [
+      {
+        en: "Walkthrough of the key flows",
+        ru: "Разбор ключевых сценариев",
+      },
+      { en: "Prioritised list of fixes", ru: "Список правок по приоритетам" },
+      { en: "Redesigned key screens", ru: "Переработанные ключевые экраны" },
+    ],
+    fit: {
+      en: "an app that works but doesn’t feel right yet",
+      ru: "приложения, которое работает, но пока не радует",
+    },
+  },
+];
+
+const steps: { title: Bilingual; text: Bilingual }[] = [
+  {
+    title: { en: "Talk", ru: "Разговор" },
+    text: {
+      en: "The idea, the people it’s for and what a good result looks like.",
+      ru: "Идея, для кого продукт и каким должен быть хороший результат.",
+    },
+  },
+  {
+    title: { en: "Shape", ru: "Форма" },
+    text: {
+      en: "Flows, look and feel, and a prototype you can tap through before anything is built.",
+      ru: "Сценарии, визуальный язык и прототип, который можно потрогать до разработки.",
+    },
+  },
+  {
+    title: { en: "Build", ru: "Сборка" },
+    text: {
+      en: "Design and code move together. You follow along in TestFlight.",
+      ru: "Дизайн и код идут вместе. Вы следите за прогрессом в TestFlight.",
+    },
+  },
+  {
+    title: { en: "Launch", ru: "Запуск" },
+    text: {
+      en: "App Store release, the store page and a landing page.",
+      ru: "Релиз в App Store, страница в сторе и лендинг.",
+    },
+  },
+];
+
 export function Services() {
-  const services = [
-    {
-      number: "01",
-      title: "UI/UX design",
-      en: "A clear product. A distinct point of view.",
-      ru: "Ясный продукт. Узнаваемый характер.",
-      bodyEn:
-        "User flows, interface architecture, visual direction and interactive prototypes. The decisions that make a product understandable, useful and recognisably yours.",
-      bodyRu:
-        "Пользовательские сценарии, архитектура интерфейса, визуальное направление и интерактивные прототипы. Решения, которые делают продукт понятным, полезным и узнаваемым.",
-      tags: ["Product thinking", "Visual design", "Prototyping"],
-    },
-    {
-      number: "02",
-      title: "iOS development",
-      en: "The details survive the build.",
-      ru: "Детали остаются в готовом приложении.",
-      bodyEn:
-        "Native apps in Swift and SwiftUI. Navigation, gestures, motion and the small states between screens — carried through into a working app.",
-      bodyRu:
-        "Нативные приложения на Swift и SwiftUI. Навигация, жесты, движение и состояния между экранами — в работающем приложении.",
-      tags: ["Swift", "SwiftUI", "iOS & macOS"],
-    },
-    {
-      number: "03",
-      title: "Design + engineering",
-      en: "One person. The whole picture.",
-      ru: "Один человек. Целая картина.",
-      bodyEn:
-        "From shaping the idea to building the interface and preparing an App Store release. Design and development can inform each other from the start.",
-      bodyRu:
-        "От формирования идеи до разработки интерфейса и подготовки релиза в App Store. Дизайн и разработка влияют друг на друга с самого начала.",
-      tags: ["Concept → product", "End-to-end"],
-    },
-  ];
   return (
-    <section className="services-section page-width">
+    <section className="services-section page-width" id="services">
       <div className="services-intro">
         <p className="eyebrow">
           <T en="HOW WE CAN WORK TOGETHER" ru="КАК МЫ МОЖЕМ РАБОТАТЬ ВМЕСТЕ" />
@@ -63,31 +180,64 @@ export function Services() {
         </h2>
         <Asterisk />
       </div>
-      <div className="services-list">
+      <div className="service-grid">
         {services.map((service) => (
-          <details key={service.number} className="service-detail">
-            <summary>
-              <span className="service-number">{service.number}</span>
-              <span className="service-title">{service.title}</span>
-              <span className="service-description">
-                <T en={service.en} ru={service.ru} />
+          <article className="service-card" key={service.number}>
+            <div className="service-card-top">
+              <span className="service-card-number hand">
+                {service.number}
               </span>
-              <span className="service-toggle" aria-hidden="true">
-                +
-              </span>
-            </summary>
-            <div className="service-body">
-              <p>
-                <T en={service.bodyEn} ru={service.bodyRu} />
-              </p>
-              <div className="decision-tags">
-                {service.tags.map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
+              <h3>
+                <T {...service.title} />
+              </h3>
             </div>
-          </details>
+            <p className="service-promise">
+              <T {...service.promise} />
+            </p>
+            <p className="service-text">
+              <T {...service.text} />
+            </p>
+            <ul className="service-includes">
+              {service.includes.map((item) => (
+                <li key={item.en}>
+                  <T {...item} />
+                </li>
+              ))}
+            </ul>
+            <p className="service-fit">
+              <span className="service-fit-label">
+                <T en="GOOD FOR" ru="ПОДХОДИТ ДЛЯ" />
+              </span>
+              <T {...service.fit} />
+            </p>
+          </article>
         ))}
+      </div>
+      <div className="process">
+        <div className="process-heading">
+          <p className="eyebrow">
+            <T en="HOW A PROJECT GOES" ru="КАК ИДЁТ ПРОЕКТ" />
+          </p>
+          <span className="hand">
+            <T
+              en="from the first sketch to the App Store ↘"
+              ru="от первого наброска до App Store ↘"
+            />
+          </span>
+        </div>
+        <ol className="process-steps">
+          {steps.map((step, index) => (
+            <li key={step.title.en}>
+              <span className="process-index">0{index + 1}</span>
+              <h3>
+                <T {...step.title} />
+              </h3>
+              <p>
+                <T {...step.text} />
+              </p>
+            </li>
+          ))}
+        </ol>
       </div>
       <div className="services-bottom">
         <span className="hand">
