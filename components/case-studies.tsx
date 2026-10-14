@@ -12,6 +12,7 @@ import {
 } from "./interaction-study";
 import { CaseReel, type ReelItem } from "./reel";
 import { dipleMotion, orotMotion } from "@/lib/motion";
+import { BrandWorld } from "./brand-world";
 
 function Chapter({
   number,
@@ -344,6 +345,7 @@ export function OrotStudy() {
         }}
         label={{ en: "OROT / IN THE APP", ru: "OROT / В ПРИЛОЖЕНИИ" }}
       />
+      <BrandWorld />
     </>
   );
 }

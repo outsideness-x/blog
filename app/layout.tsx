@@ -8,6 +8,7 @@ import "./cases.css";
 import "./portfolio.css";
 import "./contact.css";
 import "./motion.css";
+import "./brand.css";
 const geist = localFont({
   src: "./fonts/Geist-Variable.woff2",
   weight: "100 900",
