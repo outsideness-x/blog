@@ -5,7 +5,26 @@ import { projects } from '@/lib/projects';
 import { T } from '@/components/text';
 import { ProjectArt } from '@/components/project-art';
 import { Arrow } from '@/components/marks';
+import { OrotStudy, DipleStudy, InkeptStudy } from '@/components/case-studies';
 export const dynamicParams = false;
 export function generateStaticParams() { return projects.map(({ slug }) => ({ slug })); }
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata { const project = projects.find(p => p.slug === params.slug); return { title: project?.name ?? 'Project', description: project?.description.en, alternates: { canonical: `/projects/${params.slug}` } }; }
-export default function ProjectPage({ params }: { params: { slug: string } }) { const project = projects.find(p => p.slug === params.slug); if (!project) notFound(); return <article className={`case-page case-${project.slug}`}><div className="page-width"><Link className="back-link" href="/projects">← <T en="All projects" ru="Все проекты" /></Link><header className="case-heading"><p className="eyebrow">{project.platform} / <T {...project.category} /></p><h1>{project.name}</h1><p className="case-tagline"><T {...project.line} /></p><a className="button button-light" href={project.store} target="_blank" rel="noreferrer">App Store <Arrow diagonal /></a></header><ProjectArt slug={project.slug} hero /><section className="case-overview"><h2><T {...project.thesis} /></h2><p><T {...project.overview} /></p></section></div></article>; }
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const project = projects.find(p => p.slug === params.slug);
+  return { title: project?.name ?? 'Project', description: project?.description.en, alternates: { canonical: `/projects/${params.slug}` } };
+}
+export default function ProjectPage({ params }: { params: { slug: string } }) {
+  const project = projects.find(p => p.slug === params.slug);
+  if (!project) notFound();
+  const next = projects[(projects.indexOf(project) + 1) % projects.length];
+  return <article className={`case-page case-${project.slug}`}><div className="page-width">
+    <Link className="back-link" href="/projects">← <T en="All projects" ru="Все проекты" /></Link>
+    <header className="case-heading"><p className="eyebrow">PROJECT / {project.number} — <T {...project.category} /></p><h1>{project.name}</h1><p className="case-tagline"><T {...project.line} /></p><a className="button button-light" href={project.store} target="_blank" rel="noreferrer"><T en="View on the App Store" ru="Открыть в App Store" /> <Arrow diagonal /></a></header>
+    <ProjectArt slug={project.slug} hero />
+    <dl className="case-facts"><div><dt><T en="MY PART" ru="МОЯ РОЛЬ" /></dt><dd><T en="UI/UX design & development" ru="UI/UX-дизайн и разработка" /></dd></div><div><dt><T en="PLATFORMS" ru="ПЛАТФОРМЫ" /></dt><dd>{project.platform}</dd></div><div><dt><T en="FOCUS" ru="НАПРАВЛЕНИЕ" /></dt><dd><T {...project.category} /></dd></div><div><dt><T en="STATUS" ru="СТАТУС" /></dt><dd><span className="status-dot" /> <T en="Live on the App Store" ru="Доступно в App Store" /></dd></div></dl>
+    <section className="case-overview"><div><p className="eyebrow"><T en="THE IDEA" ru="ИДЕЯ" /></p><h2><T {...project.thesis} /></h2></div><p><T {...project.overview} /></p></section>
+    {project.slug === 'orot' ? <OrotStudy/> : project.slug === 'diple' ? <DipleStudy/> : <InkeptStudy/>}
+    <section className="case-details"><div className="section-heading"><div><p className="eyebrow"><T en="A FEW DETAILS THAT MATTER" ru="ДЕТАЛИ, КОТОРЫЕ ИМЕЮТ ЗНАЧЕНИЕ" /></p><h2><T en="The care is in the details." ru="Внимание — в деталях." /></h2></div><span className="hand hand-hearts"><T en="small things, made with love." ru="маленькие вещи с душой." /></span></div><div className="case-feature-grid">{project.features.map((feature, index) => <div key={index}><span className="feature-number">0{index + 1}</span><h3><T {...feature.title} /></h3><p><T {...feature.text} /></p></div>)}</div></section>
+    <section className="case-try"><div><p className="eyebrow"><T en="THE BEST WAY TO GET IT IS TO TRY IT" ru="ЛУЧШИЙ СПОСОБ ПОНЯТЬ — ПОПРОБОВАТЬ" /></p><h2><T en="See how it feels." ru="Почувствовать самому." /></h2></div><a className="button button-light" href={project.store} target="_blank" rel="noreferrer">App Store <Arrow diagonal /></a></section>
+    <Link href={`/projects/${next.slug}`} className={`next-project next-${next.slug}`}><div><p className="eyebrow"><T en="NEXT PROJECT" ru="СЛЕДУЮЩИЙ ПРОЕКТ" /> / {next.number}</p><h2>{next.name}</h2><p><T {...next.line} /></p></div><span className="round-link glass"><Arrow diagonal /></span></Link>
+    </div></article>;
+}
