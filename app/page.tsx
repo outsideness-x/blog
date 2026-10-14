@@ -1,71 +1,22 @@
-import type { Metadata } from "next";
-import { CopyInlineText } from "@/components/copy-inline-text";
-import { ParticleFlow } from "@/components/particle-flow";
-
-export const metadata: Metadata = {
-  title: "Home",
-  alternates: { canonical: "/" },
-};
-
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { T } from '@/components/text';
+import { Asterisk, Arrow, Scribble } from '@/components/marks';
+import { Flower } from '@/components/project-art';
+import { ProjectCard } from '@/components/project-card';
+import { projects } from '@/lib/projects';
+export const metadata: Metadata = { title: 'Alex — Design engineer', alternates: { canonical: '/' } };
 export default function Home() {
-  return (
-    <div className="min-h-[80vh] flex items-center">
-      <div className="grid w-full gap-10 lg:grid-cols-[minmax(0,35fr)_minmax(0,65fr)] lg:items-center lg:gap-14">
-        <div className="space-y-6 max-w-2xl">
-          <h1 className="text-3xl font-bold font-mono text-brand">
-            <span aria-hidden="true">{">"}</span>{" "}
-            <span className="lang-ru" lang="ru">hello there</span>
-            <span className="lang-en" lang="en">hello there</span>
-            <span className="cursor-blink" aria-hidden="true">█</span>
-          </h1>
-
-          <p className="lang-ru text-zinc-400 leading-relaxed" lang="ru">
-            Меня зовут Алексей. Я full-stack web и Swift разработчик, а также независимый ML-исследователь. Здесь я
-            делюсь проектами и исследованиями в области машинного обучения и математики. По вопросам и
-            предложениям о сотрудничестве можно написать мне на{" "}
-            <CopyInlineText text="colddme@proton.me" />{" "}
-            или в Telegram{" "}
-            <CopyInlineText text="@coldd_me" />
-            .
-          </p>
-
-          <p className="lang-en text-zinc-400 leading-relaxed" lang="en">
-            My name is Alex. I am a full-stack web and Swift dev and free ML researcher. Here, I
-            will share my projects and research in the fields of machine learning and math. For questions and
-            collaboration, please contact me at{" "}
-            <CopyInlineText text="colddme@proton.me" />{" "}
-            or Telegram{" "}
-            <CopyInlineText text="@coldd_me" />
-            .
-          </p>
-
-          {/* local CSS for blinking cursor */}
-          <style>{`
-            .cursor-blink {
-              display: inline-block;
-              margin-left: 0.15em;
-              transform: translateY(-0.02em);
-              animation: cursorBlink 1s steps(1, end) infinite;
-            }
-            @keyframes cursorBlink {
-              0%, 49% { opacity: 1; }
-              50%, 100% { opacity: 0; }
-            }
-            @media (prefers-reduced-motion: reduce) {
-              .cursor-blink { animation: none; opacity: 1; }
-            }
-          `}</style>
-        </div>
-
-        <figure
-          aria-hidden="true"
-          className="order-last w-full lg:order-none lg:justify-self-end"
-        >
-          <div className="relative aspect-square w-full bg-transparent scale-[1.15] lg:scale-[1.25] lg:translate-x-6">
-            <ParticleFlow className="block h-full w-full bg-transparent" />
-          </div>
-        </figure>
-      </div>
-    </div>
-  );
+  return <>
+    <section className="home-hero page-width">
+      <div className="hero-eyebrow"><span className="tiny-cross">✳</span><T en="INDEPENDENT DESIGNER & DEVELOPER" ru="НЕЗАВИСИМЫЙ ДИЗАЙНЕР И РАЗРАБОТЧИК" /><span className="hero-index">PORTFOLIO — 2026</span></div>
+      <div className="hero-layout"><div className="hero-copy"><p className="hand hero-hello"><T en="hey, I’m Alex" ru="привет, я Алексей" /> <span>↘</span></p><h1><T en={<>Digital things.<br />Human <span className="hero-feeling">feeling<Scribble /></span></>} ru={<>Цифровые вещи.<br /><span className="hero-feeling">Живые<Scribble /></span> ощущения.</>} /></h1><p className="hero-description"><T en="I design interfaces and build apps for iOS & Mac. From the first pencil line to the last little interaction." ru="Проектирую интерфейсы и создаю приложения для iOS и Mac. От первого карандашного наброска до последнего взаимодействия." /></p><div className="hero-actions"><Link className="button button-light" href="/projects"><T en="Explore my work" ru="Посмотреть проекты" /><Arrow diagonal /></Link><span className="hero-discipline">UI/UX design <span>×</span> engineering</span></div></div>
+      <div className="hero-object" aria-hidden="true"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="hero-glass-card glass"><span className="glass-card-top">a small collection of things I made <span>↗</span></span><div className="hero-apps"><div className="hero-app hero-app-orot"><Image src="/projects/orot/icon.webp" alt="" width={150} height={150} priority /><span>OROT</span></div><div className="hero-app hero-app-diple"><Image src="/projects/diple/icon.webp" alt="" width={150} height={150} priority /><span>diple.</span></div><div className="hero-app hero-app-inkept"><div><Flower size={125} /></div><span>inkept</span></div></div><div className="glass-card-bottom"><span>DESIGNED & BUILT WITH CARE</span><span>01 — 03</span></div></div><Flower className="hero-flower" size={310} /><div className="hero-paper"><span className="paper-pin" /><span className="hand"><T en={<>a little craft.<br />a lot of care.</>} ru={<>немного ремесла.<br />много внимания.</>} /></span><span className="paper-star">✳</span></div><span className="hero-annotation hand"><T en="made by a human" ru="сделано человеком" /><svg viewBox="0 0 90 80" fill="none"><path d="M5 4c70-6 86 23 52 63m0 0 2-20m-2 20 21-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg></span></div></div>
+      <div className="hero-bottom"><span><span className="status-dot" /><T en="THOUGHTFULLY DESIGNED. PERSONALLY BUILT." ru="ПРОДУМАНО В ДИЗАЙНЕ. СОЗДАНО В КОДЕ." /></span><a href="#selected"><T en="A few things I’ve made" ru="Несколько моих работ" /><span>↓</span></a></div>
+    </section>
+    <section id="selected" className="selected-section page-width"><div className="section-heading"><div><p className="eyebrow"><T en="SELECTED WORK / 01—03" ru="ИЗБРАННОЕ / 01—03" /></p><h2><T en="Small apps. Big care." ru="Маленькие приложения. Большое внимание." /></h2></div><Link className="text-link" href="/projects"><T en="All projects" ru="Все проекты" /><Arrow diagonal /></Link></div><div className="selected-grid">{projects.map(project => <ProjectCard key={project.slug} project={project} />)}</div></section>
+    <section className="about-section page-width"><div className="about-note"><Asterisk /><p className="hand"><T en={<>Somewhere between<br />a sketchbook<br />& a code editor.</>} ru={<>Где-то между<br />скетчбуком<br />и редактором кода.</>} /></p><span className="eyebrow">THAT’S WHERE I FEEL AT HOME.</span></div><div className="about-copy"><p className="eyebrow"><T en="A LITTLE ABOUT ME" ru="НЕМНОГО ОБО МНЕ" /></p><h2><T en={<>I like when useful<br />also feels <em>personal.</em></>} ru={<>Люблю, когда в полезном<br />чувствуется <em>человек.</em></>} /></h2><p><T en="I’m Alex, a UI/UX designer and iOS developer. I work across design and code because the way something feels matters as much as the way it works." ru="Я Алексей, UI/UX-дизайнер и iOS-разработчик. Соединяю дизайн и код, потому что ощущения от продукта для меня так же важны, как его работа." /></p><p><T en="My projects are places to read, learn and keep a thought. I’m drawn to quiet interfaces, tactile details and small moments that make a tool feel like your own." ru="Мои проекты — места для чтения, обучения и мыслей. Мне близки спокойные интерфейсы, осязаемые детали и мелочи, благодаря которым инструмент становится своим." /></p><div className="skill-tags"><span>UI/UX</span><span>Swift & SwiftUI</span><span>Design engineering</span><span>Figma</span></div></div></section>
+    <section className="contact-strip page-width"><Flower size={100} /><div><p className="hand"><T en="Have a good idea?" ru="Есть хорошая идея?" /></p><h2><T en="Let’s make it feel right." ru="Давай придадим ей форму." /></h2></div><Link href="/contacts" className="round-link glass" aria-label="Contact / Контакты"><Arrow diagonal /></Link></section>
+  </>;
 }

@@ -1,71 +1,13 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Sidebar } from "@/components/sidebar";
-import { MobileMenu } from "@/components/mobile-menu";
-import { DEFAULT_LANGUAGE, languageInitScript } from "@/lib/i18n";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
-import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
+import type { Metadata } from 'next';
+import { Header, Footer } from '@/components/site-shell';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
+import './globals.css';
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: SITE_NAME,
-    template: `%s | ${SITE_NAME}`,
-  },
-  description: SITE_DESCRIPTION,
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    url: SITE_URL,
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    siteName: SITE_NAME,
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  metadataBase: new URL(SITE_URL), title: { default: SITE_NAME, template: `%s — chemical pink` }, description: SITE_DESCRIPTION,
+  openGraph: { type: 'website', title: SITE_NAME, description: SITE_DESCRIPTION, siteName: 'chemical pink', locale: 'en_US' },
+  twitter: { card: 'summary_large_image' },
 };
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html
-      lang={DEFAULT_LANGUAGE}
-      data-lang={DEFAULT_LANGUAGE}
-      className={inter.variable}
-      suppressHydrationWarning
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: languageInitScript }} />
-      </head>
-      <body className="bg-background text-foreground font-sans min-h-screen flex flex-col md:flex-row">
-        <div className="scanlines fixed inset-0 pointer-events-none z-50 opacity-50" />
-        
-        <Sidebar />
-        <MobileMenu />
-        
-        <main className="flex-1 md:ml-[232px] p-6 md:p-12 max-w-4xl mx-auto w-full mt-16 md:mt-0">
-          {children}
-        </main>
-      </body>
-    </html>
-  );
+const languageScript = `(function(){try{var l=localStorage.getItem('portfolio-language');if(l==='ru'){document.documentElement.lang=l;document.documentElement.dataset.lang=l}}catch(e){}})()`;
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return <html lang="en" data-lang="en" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{ __html: languageScript }} /></head><body><a className="skip-link" href="#main">Skip to content / К содержимому</a><Header /><main id="main">{children}</main><Footer /></body></html>;
 }
