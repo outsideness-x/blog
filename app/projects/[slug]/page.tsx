@@ -6,6 +6,13 @@ import { T } from "@/components/text";
 import { CaseCover } from "@/components/case-cover";
 import { Arrow } from "@/components/marks";
 import { OrotStudy, DipleStudy, InkeptStudy } from "@/components/case-studies";
+import { SITE_URL } from "@/lib/site";
+
+const categories: Record<string, string> = {
+  orot: "EducationalApplication",
+  diple: "ReferenceApplication",
+  inkept: "EducationalApplication",
+};
 export const dynamicParams = false;
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }));
@@ -17,8 +24,10 @@ export function generateMetadata({
 }): Metadata {
   const project = projects.find((p) => p.slug === params.slug);
   return {
-    title: project?.name ?? "Project",
-    description: project?.description.en,
+    title: project ? `${project.name} — case study` : "Project",
+    description: project
+      ? `${project.description.en} Designed and built by Alex for ${project.platform}.`
+      : undefined,
     alternates: { canonical: `/projects/${params.slug}` },
   };
 }
@@ -26,8 +35,22 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) notFound();
   const next = projects[(projects.indexOf(project) + 1) % projects.length];
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: project.name,
+    description: project.description.en,
+    operatingSystem: project.platform.includes("macOS") ? "iOS, macOS" : "iOS",
+    applicationCategory: categories[project.slug],
+    url: project.store,
+    author: { "@type": "Person", name: "Alex", url: SITE_URL },
+  };
   return (
     <article className={`case-page case-${project.slug}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <CaseCover project={project} />
       <div className="page-width" id="case-story">
         <dl className="case-facts">

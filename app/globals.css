@@ -12,7 +12,8 @@
   --line: #ffffff20;
   --blue: #9ebcdf;
   --paper: #eeeadf;
-  --font-sans: Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-geist), Arial, Helvetica, sans-serif;
+  --font-serif: var(--font-literata), Georgia, serif;
   color-scheme: dark;
 }
 * {
@@ -675,9 +676,7 @@ html[data-lang="ru"] .lang-ru {
   position: absolute;
   top: 12px;
   left: 22px;
-  font:
-    italic 78px Georgia,
-    serif;
+  font: italic 78px var(--font-serif);
   letter-spacing: -0.1em;
   color: #40566c;
 }
@@ -1087,7 +1086,7 @@ html[data-lang="ru"] .lang-ru {
   transform: rotate(-4deg);
 }
 .case-diple .case-heading h1 {
-  font-family: Georgia, serif;
+  font-family: var(--font-serif);
   letter-spacing: -0.075em;
 }
 .case-tagline {
@@ -2276,7 +2275,7 @@ html[data-lang="ru"] .lang-ru {
   padding-bottom: 65px;
 }
 .serif-italic {
-  font-family: Georgia, serif;
+  font-family: var(--font-serif);
   font-style: italic;
   color: #b9cbd9;
 }
@@ -2314,7 +2313,7 @@ html[data-lang="ru"] .lang-ru {
   color: #6d7066;
 }
 .diple-paper-copy h2 {
-  font-family: Georgia, serif;
+  font-family: var(--font-serif);
   font-size: 49px;
   letter-spacing: -0.05em;
   line-height: 1.15;
@@ -2528,7 +2527,7 @@ html[data-lang="ru"] .lang-ru {
   transform: rotate(-3deg);
 }
 .next-diple h2 {
-  font-family: Georgia, serif;
+  font-family: var(--font-serif);
 }
 @media (max-width: 1100px) {
   .stage-caption {

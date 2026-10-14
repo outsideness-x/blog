@@ -7,14 +7,18 @@ import { Flower } from "@/components/project-art";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/projects";
 import { Services } from "@/components/services";
-import { CONTACT, CONTACT_LINKS } from "@/lib/site";
+import { CONTACT, CONTACT_LINKS, PERSON_SCHEMA } from "@/lib/site";
 export const metadata: Metadata = {
-  title: "Alex — Design engineer",
+  title: { absolute: "Alex — UI/UX designer & iOS developer" },
   alternates: { canonical: "/" },
 };
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
+      />
       <section className="home-hero page-width">
         <div className="hero-eyebrow">
           <span className="tiny-cross">✳</span>

@@ -184,7 +184,7 @@
   transform: rotate(-4deg);
 }
 .work-row-diple .work-row-copy h2 {
-  font-family: Georgia, serif;
+  font-family: var(--font-serif);
   color: #b3c5d1;
 }
 .work-row-copy h3 {

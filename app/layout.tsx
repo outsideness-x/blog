@@ -1,10 +1,32 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
+import { Literata } from "next/font/google";
 import { Header, Footer } from "@/components/site-shell";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 import "./cases.css";
 import "./portfolio.css";
 import "./contact.css";
+const geist = localFont({
+  src: "./fonts/Geist-Variable.woff2",
+  weight: "100 900",
+  variable: "--font-geist",
+  display: "swap",
+  adjustFontFallback: "Arial",
+});
+// diple's own editorial face, used only where its case sets type in serif.
+const literata = Literata({
+  subsets: ["latin", "cyrillic"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  variable: "--font-literata",
+  display: "swap",
+  preload: false,
+});
+export const viewport: Viewport = {
+  themeColor: "#0c0d0d",
+  colorScheme: "dark",
+};
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: SITE_NAME, template: `%s — chemical pink` },
@@ -17,6 +39,8 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   twitter: { card: "summary_large_image" },
+  authors: [{ name: "Alex", url: SITE_URL }],
+  creator: "Alex",
 };
 const languageScript = `(function(){try{var l=localStorage.getItem('portfolio-language');if(l==='ru'){document.documentElement.lang=l;document.documentElement.dataset.lang=l}}catch(e){}})()`;
 export default function RootLayout({
@@ -25,7 +49,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      data-lang="en"
+      className={`${geist.variable} ${literata.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: languageScript }} />
       </head>
