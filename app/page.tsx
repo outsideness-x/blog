@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { T } from "@/components/text";
 import { Asterisk, Arrow, Scribble } from "@/components/marks";
 import { Flower } from "@/components/project-art";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/projects";
 import { Services } from "@/components/services";
+import { HeroReel } from "@/components/hero-reel";
 import { CONTACT, CONTACT_LINKS, PERSON_SCHEMA } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Alex — UI/UX designer & iOS developer" },
@@ -75,78 +75,35 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="hero-object" aria-hidden="true">
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
-            <div className="hero-glass-card glass">
-              <span className="glass-card-top">
-                a small collection of things I made <span>↗</span>
-              </span>
-              <div className="hero-apps">
-                <div className="hero-app hero-app-orot">
-                  <Image
-                    src="/projects/orot/icon.webp"
-                    alt=""
-                    width={150}
-                    height={150}
-                    priority
-                  />
-                  <span>OROT</span>
-                </div>
-                <div className="hero-app hero-app-diple">
-                  <Image
-                    src="/projects/diple/icon.webp"
-                    alt=""
-                    width={150}
-                    height={150}
-                    priority
-                  />
-                  <span>diple.</span>
-                </div>
-                <div className="hero-app hero-app-inkept">
-                  <div>
-                    <Flower size={125} />
-                  </div>
-                  <span>inkept</span>
-                </div>
-              </div>
-              <div className="glass-card-bottom">
-                <span>DESIGNED & BUILT WITH CARE</span>
-                <span>01 — 03</span>
-              </div>
-            </div>
-            <Flower className="hero-flower" size={310} />
-            <div className="hero-paper">
-              <span className="paper-pin" />
-              <span className="hand">
-                <T
-                  en={
-                    <>
-                      a little craft.
-                      <br />a lot of care.
-                    </>
-                  }
-                  ru={
-                    <>
-                      немного ремесла.
-                      <br />
-                      много внимания.
-                    </>
-                  }
-                />
-              </span>
-              <span className="paper-star">✳</span>
-            </div>
+          <div className="hero-object">
+            <HeroReel />
           </div>
         </div>
-        <div className="hero-bottom">
-          <span>
-            <span className="status-dot" />
-            <T
-              en="THREE INDEPENDENT APPS. LIVE ON THE APP STORE."
-              ru="ТРИ СВОИХ ПРИЛОЖЕНИЯ. УЖЕ В APP STORE."
-            />
-          </span>
+        <div className="hero-facts">
+          <div>
+            <strong>3</strong>
+            <span>
+              <T
+                en="apps of my own, live on the App Store"
+                ru="собственных приложения уже в App Store"
+              />
+            </span>
+          </div>
+          <div>
+            <strong>iPhone · iPad · Mac</strong>
+            <span>
+              <T en="native, in Swift and SwiftUI" ru="нативно, на Swift и SwiftUI" />
+            </span>
+          </div>
+          <div>
+            <strong>1</strong>
+            <span>
+              <T
+                en="person, from the first sketch to the release"
+                ru="человек от первого наброска до релиза"
+              />
+            </span>
+          </div>
           <a href="#selected">
             <T en="A few things I’ve made" ru="Несколько моих работ" />
             <span>↓</span>

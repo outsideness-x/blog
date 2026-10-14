@@ -52,6 +52,7 @@ export function Scribble({ className = "" }: { className?: string }) {
       aria-hidden="true"
     >
       <path
+        pathLength={1}
         d="M4 17C85 1 198 6 332 11M28 23C111 12 238 13 310 18"
         stroke="currentColor"
         strokeWidth="3"
