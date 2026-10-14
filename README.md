@@ -1,6 +1,6 @@
 # chemical pink — portfolio
 
-A bilingual design-engineering portfolio for Alex: Home, Projects and Contact, with case studies for OROT, diple. and inkept. English is the default; the Russian preference persists locally. Original app screenshots and a locally built chemical font ship with the site.
+A bilingual portfolio for Alex, a UI/UX designer and iOS developer. Pages: Home, Projects (case studies for OROT, diple. and inkept, and a page for the chemical typeface), Playground and Contact. English is the default; the Russian preference persists locally.
 
 ## Run locally
 
@@ -21,15 +21,20 @@ npm run build
 npm run test:smoke
 ```
 
-Use `NEXT_DIST_DIR=.next-build npm run build` to build separately while the development server is running. Set `NEXT_PUBLIC_SITE_URL` to the production origin before deployment; otherwise the existing mini-blog.vercel.app origin is used for canonical metadata and the sitemap.
+Use `NEXT_DIST_DIR=.next-build npm run build` to build separately while the development server is running, and `NEXT_DIST_DIR=.next-build npx next start -p 3100` with `TEST_ORIGIN=http://127.0.0.1:3100` to smoke-test that build. Set `NEXT_PUBLIC_SITE_URL` to the production origin before deployment; otherwise `mini-blog.vercel.app` is used for canonical URLs, link previews and the sitemap. The build fetches Literata from Google Fonts once and self-hosts it.
 
 ## Editing
 
-- `lib/projects.ts`: English and Russian project copy and App Store URLs.
-- `components/case-studies.tsx`: individual editorial project layouts.
-- `components/liquid-navigation.tsx`: transparent refractive lens and spring motion.
-- `app/contacts/page.tsx`: contact details. Replacement contact addresses are pending from the author; the old email and Telegram are intentionally not published.
-- `app/globals.css`: visual system, responsive layouts and chemical OpenType features.
+- `lib/site.ts`: name, description, and the contact details (email, Telegram, GitHub) used across the site, the footer and structured data.
+- `lib/projects.ts`: English and Russian project copy, tags, App Store and source URLs.
+- `lib/motion.ts`: the recorded interactions shown in the case reels and the playground, with their captions.
+- `components/case-studies.tsx`: individual editorial project layouts; `components/brand-world.tsx` is OROT's character, icons and social chapter.
+- `components/services.tsx` and `components/faq.tsx`: service packages, the process and the FAQ.
+- `components/contact-brief.tsx`: the brief that composes an email or a Telegram message. Nothing is sent from the site.
+- `components/reel.tsx`, `components/media.tsx`: the CSS iPhone, the case reels and the tap-to-pause loops.
+- `app/projects/chemical/page.tsx` and `components/type-tester.tsx`: the typeface page.
+- `lib/og.tsx`: link preview images, rendered at build time.
+- `components/liquid-navigation.tsx`: the refractive navigation lens; it samples what is behind it and switches to dark labels over pale artwork.
 - `docs/assets.md` and `docs/liquid-glass.md`: asset provenance and optical implementation notes.
 
-The screen viewer is keyboard accessible and closes with Escape. Reduced-motion preferences disable the navigation spring and CSS motion. A high-contrast preference increases navigation opacity. No analytics or remote font requests are added.
+Video loops load only once they are on screen and actually playing, pause off screen, start paused for reduced motion or data saver, and can always be paused. The screen viewer is keyboard accessible and closes with Escape. A high-contrast preference increases navigation opacity. No analytics or third-party requests are added at runtime.

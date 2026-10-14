@@ -641,11 +641,6 @@
     padding: 25px 12px 20px;
     transform: rotate(9deg);
   }
-  .cover-inkept-note .paper-pin {
-    left: 40px;
-    width: 45px;
-    height: 19px;
-  }
   .cover-inkept-note > svg {
     width: 19px;
     bottom: 5px;

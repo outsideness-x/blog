@@ -145,7 +145,6 @@ export function CaseCover({ project }: { project: Project }) {
             </div>
             <Flower className="cover-inkept-flower" size={340} />
             <div className="cover-inkept-note hand hand-mixed">
-              <span className="paper-pin" />
               <T
                 en={
                   <>

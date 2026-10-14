@@ -120,7 +120,6 @@ export default function Home() {
             </div>
             <Flower className="hero-flower" size={310} />
             <div className="hero-paper">
-              <span className="paper-pin" />
               <span className="hand">
                 <T
                   en={

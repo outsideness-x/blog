@@ -351,12 +351,12 @@ html[data-lang="ru"] .lang-ru {
 }
 .hero-flower {
   position: absolute;
-  width: 255px;
+  width: 170px;
   height: auto;
-  top: 6px;
-  right: 9%;
-  z-index: 2;
-  transform: rotate(13deg);
+  top: -6px;
+  left: 2%;
+  z-index: 5;
+  transform: rotate(-12deg);
   filter: drop-shadow(0 15px 18px #0009);
 }
 .hero-paper {
@@ -376,17 +376,6 @@ html[data-lang="ru"] .lang-ru {
 .hero-paper .hand {
   font-size: 25px;
   line-height: 1.25;
-}
-.paper-pin {
-  position: absolute;
-  width: 65px;
-  height: 23px;
-  top: -2px;
-  left: 73px;
-  transform: rotate(-7deg);
-  background: #b8c9cb70;
-  border-left: 1px dashed #e6eeef80;
-  border-right: 1px dashed #e6eeef80;
 }
 .paper-star {
   position: absolute;
@@ -1206,8 +1195,8 @@ html[data-lang="ru"] .lang-ru {
     height: 560px;
   }
   .hero-flower {
-    top: 27px;
-    width: 280px;
+    top: 12px;
+    width: 190px;
   }
   .hero-paper {
     bottom: 24px;
@@ -1236,9 +1225,8 @@ html[data-lang="ru"] .lang-ru {
     height: 440px;
   }
   .hero-flower {
-    width: 220px;
-    right: 12%;
-    top: 7px;
+    width: 140px;
+    top: 0;
   }
   .hero-paper {
     width: 185px;
@@ -1384,9 +1372,9 @@ html[data-lang="ru"] .lang-ru {
     width: min(440px, 100%);
   }
   .hero-flower {
-    width: 194px;
-    right: 15%;
-    top: 8px;
+    width: 120px;
+    left: 0;
+    top: -4px;
   }
   .hero-paper {
     width: 160px;
