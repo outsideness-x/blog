@@ -10,6 +10,8 @@ import {
   MemoryStudy,
   InkeptViews,
 } from "./interaction-study";
+import { CaseReel, type ReelItem } from "./reel";
+import { dipleMotion, orotMotion } from "@/lib/motion";
 
 function Chapter({
   number,
@@ -29,6 +31,33 @@ function Chapter({
       </p>
       <h2>{children}</h2>
     </div>
+  );
+}
+function MotionSection({
+  number,
+  items,
+  heading,
+  intro,
+  label,
+}: {
+  number: string;
+  items: ReelItem[];
+  heading: { en: ReactNode; ru: ReactNode };
+  intro: { en: string; ru: string };
+  label: { en: string; ru: string };
+}) {
+  return (
+    <section className="motion-section">
+      <div className="motion-intro">
+        <Chapter number={number} en="IN MOTION" ru="В ДВИЖЕНИИ">
+          <T {...heading} />
+        </Chapter>
+        <p>
+          <T {...intro} />
+        </p>
+      </div>
+      <CaseReel items={items} label={label} />
+    </section>
   );
 }
 function StudyLabel() {
@@ -290,6 +319,31 @@ export function OrotStudy() {
           <span className="reward-label">OROT / STORY ARTEFACT 01</span>
         </div>
       </section>
+      <MotionSection
+        number="04"
+        items={orotMotion}
+        heading={{
+          en: (
+            <>
+              Details you can
+              <br />
+              <em>feel in your hand.</em>
+            </>
+          ),
+          ru: (
+            <>
+              Детали, которые
+              <br />
+              <em>чувствуешь рукой.</em>
+            </>
+          ),
+        }}
+        intro={{
+          en: "Recorded in the shipping app, not mocked up. The motion isn’t decoration: each moment tells the reader what just happened and keeps them in the story.",
+          ru: "Записано в живом приложении, а не нарисовано. Движение здесь не украшение: каждый момент объясняет, что произошло, и оставляет читателя в истории.",
+        }}
+        label={{ en: "OROT / IN THE APP", ru: "OROT / В ПРИЛОЖЕНИИ" }}
+      />
     </>
   );
 }
@@ -506,6 +560,31 @@ export function DipleStudy() {
           </span>
         </div>
       </section>
+      <MotionSection
+        number="04"
+        items={dipleMotion}
+        heading={{
+          en: (
+            <>
+              Quiet motion,
+              <br />
+              <em>always with a reason.</em>
+            </>
+          ),
+          ru: (
+            <>
+              Тихое движение,
+              <br />
+              <em>всегда с причиной.</em>
+            </>
+          ),
+        }}
+        intro={{
+          en: "Recorded in the shipping app. The motion stays quiet: it shows where things went, then gets out of the way of the page.",
+          ru: "Записано в живом приложении. Движение остаётся тихим: показывает, куда что делось, и уступает место странице.",
+        }}
+        label={{ en: "DIPLE. / IN THE APP", ru: "DIPLE. / В ПРИЛОЖЕНИИ" }}
+      />
     </>
   );
 }
