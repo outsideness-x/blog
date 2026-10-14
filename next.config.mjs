@@ -25,31 +25,9 @@ const securityHeaders = [
 const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   async headers() {
-    const animationCacheControl =
-      process.env.NODE_ENV === "development"
-        ? "no-store, max-age=0"
-        : "public, max-age=0, must-revalidate";
-
-    return [
-      {
-        source: "/:path*",
-        headers: securityHeaders,
-      },
-      {
-        source: "/animations/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: animationCacheControl,
-          },
-        ],
-      },
-    ];
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
 };
 
