@@ -531,6 +531,9 @@
     max-width: 170px;
     transform: rotate(-6deg);
   }
+  .cover-orot .cover-note {
+    display: none;
+  }
   .cover-stamp {
     bottom: 25px;
     left: 5%;

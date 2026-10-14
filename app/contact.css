@@ -258,8 +258,20 @@
   .availability {
     margin-top: 22px;
   }
+  .contact-row-primary {
+    flex-wrap: wrap;
+    row-gap: 14px;
+  }
   .contact-row-primary > a:first-child {
-    font-size: 20px;
+    flex-basis: 100%;
+    font-size: 22px;
+    overflow-wrap: normal;
+  }
+  .contact-row-primary .copy-button {
+    margin-left: 0;
+  }
+  .contact-row-primary > .contact-row-arrow {
+    margin-left: auto;
   }
   .contact-next {
     grid-template-columns: 1fr;

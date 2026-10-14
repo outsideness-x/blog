@@ -8,6 +8,8 @@ const routes = new Map([
   ["/projects/diple", "diple."],
   ["/projects/inkept", "inkept"],
   ["/contacts", "something good."],
+  ["/projects/chemical", "chemical"],
+  ["/playground", "Small things, moving."],
 ]);
 for (const [route, expected] of routes) {
   const response = await fetch(new URL(route, origin));
@@ -22,6 +24,9 @@ for (const [route, expected] of routes) {
     `${route}: one primary heading`,
   );
   assert.ok(!html.includes("made by a human"), `${route}: removed annotation`);
+  const visible = html.replace(/<script[\s\S]*?<\/script>/g, "");
+  assert.ok(!/\\n[A-ZА-Я]/.test(visible), `${route}: no literal \\n in copy`);
+  assert.ok(html.includes("og:image"), `${route}: has a link preview image`);
   console.log(`OK ${route}`);
 }
 for (const route of [
@@ -39,6 +44,13 @@ for (const route of [
 const sitemap = await (await fetch(new URL("/sitemap.xml", origin))).text();
 for (const route of routes.keys())
   assert.ok(sitemap.includes(route), `sitemap: ${route}`);
+for (const route of ["/opengraph-image", "/icon.svg", "/apple-icon.png"]) {
+  const response = await fetch(new URL(route, origin));
+  assert.equal(response.status, 200, route);
+}
+const contact = await (await fetch(new URL("/contacts", origin))).text();
+assert.ok(contact.includes("mailto:outsidenessx@gmail.com"), "contact: email");
+assert.ok(contact.includes("https://t.me/coldd_me"), "contact: Telegram");
 for (const asset of [
   "fonts/chemical-latin.woff2",
   "fonts/chemical-cyrillic.woff2",
@@ -50,5 +62,5 @@ for (const asset of [
   assert.equal((await fetch(new URL(`/${asset}`, origin))).status, 200, asset);
 }
 console.log(
-  "Smoke checks passed: pages, translations, retired routes, sitemap and core assets.",
+  "Smoke checks passed: pages, translations, contacts, previews, retired routes, sitemap and core assets.",
 );

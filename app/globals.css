@@ -1343,7 +1343,7 @@ html[data-lang="ru"] .lang-ru {
     gap: 7px;
   }
   .hero-index {
-    font-size: 9px;
+    display: none;
   }
   .hero-layout {
     display: flex;
