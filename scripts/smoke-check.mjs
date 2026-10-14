@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { access } from 'node:fs/promises';
 const origin = process.env.TEST_ORIGIN || 'http://127.0.0.1:3000';
 const routes = new Map([
-  ['/', 'Digital things.'],
+  ['/', 'I design it.'],
   ['/projects', 'Made with intent.'],
   ['/projects/orot', 'OROT'],
   ['/projects/diple', 'diple.'],
