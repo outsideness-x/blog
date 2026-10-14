@@ -1203,6 +1203,8 @@ html[data-lang="ru"] .lang-ru {
   margin: 28px 0 50px;
 }
 .contact-heading h1 {
+  flex: 1;
+  min-width: 0;
   font-size: clamp(42px, 6vw, 86px);
   line-height: 1.16;
   letter-spacing: -0.055em;
@@ -1746,7 +1748,9 @@ html[data-lang="ru"] .lang-ru {
   }
   .page-intro h1 > svg {
     width: 37px;
+    height: 37px;
     min-width: 37px;
+    margin-right: 4px;
   }
   .intro-bottom {
     display: block;
