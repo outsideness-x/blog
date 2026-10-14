@@ -531,3 +531,76 @@ export async function contactOg() {
     </div>,
   );
 }
+
+export async function chemicalOg() {
+  const flower = await image("flower.png");
+  return render(
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        position: "relative",
+        background: "#111413",
+        color: INK,
+        fontFamily: "Geist",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          left: 60,
+          top: 10,
+          display: "flex",
+          fontFamily: "chemical",
+          fontSize: 250,
+          color: "#eeeadf",
+          transform: "rotate(-4deg)",
+        }}
+      >
+        chemical
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          right: 80,
+          top: 70,
+          display: "flex",
+          fontFamily: "chemical",
+          fontSize: 64,
+          color: "#e47b62",
+          transform: "rotate(8deg)",
+        }}
+      >
+        good ideas
+      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
+      <img
+        src={flower}
+        width={170}
+        style={{ position: "absolute", right: 120, top: 250, transform: "rotate(-12deg)" }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: 72,
+          bottom: 56,
+          display: "flex",
+          flexDirection: "column",
+          gap: 16,
+        }}
+      >
+        <span style={{ fontSize: 18, letterSpacing: 3, color: MUTED }}>
+          LATIN · CYRILLIC · HANGUL / TYPE DESIGN
+        </span>
+        <span style={{ fontSize: 40, letterSpacing: -1.5 }}>
+          A felt-tip pen that never draws the same letter twice.
+        </span>
+        <div style={{ display: "flex", marginTop: 10 }}>
+          <Wordmark />
+        </div>
+      </div>
+    </div>,
+  );
+}

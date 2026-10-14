@@ -40,7 +40,8 @@ const sitemap = await (await fetch(new URL("/sitemap.xml", origin))).text();
 for (const route of routes.keys())
   assert.ok(sitemap.includes(route), `sitemap: ${route}`);
 for (const asset of [
-  "fonts/chemical.woff2",
+  "fonts/chemical-latin.woff2",
+  "fonts/chemical-cyrillic.woff2",
   "projects/inkept/flower.webp",
   "projects/orot/phone-reading.webp",
   "projects/diple/mac-library.webp",
