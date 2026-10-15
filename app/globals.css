@@ -550,7 +550,7 @@ html[data-lang="ru"] .lang-ru {
 }
 .orot-phone {
   position: absolute;
-  width: 38%;
+  width: 35.7%;
   max-height: none;
   right: 13%;
   top: 42px;
@@ -907,7 +907,7 @@ html[data-lang="ru"] .lang-ru {
   bottom: -100px;
 }
 .project-card-large:first-child .orot-phone {
-  width: 24%;
+  width: 21.2%;
   right: 20%;
   top: 57px;
   transform: rotate(12deg);
@@ -1010,7 +1010,7 @@ html[data-lang="ru"] .lang-ru {
   bottom: -100px;
 }
 .art-hero .orot-phone {
-  width: 28%;
+  width: 25.3%;
   right: 17%;
   top: 60px;
 }
@@ -1244,7 +1244,7 @@ html[data-lang="ru"] .lang-ru {
     font-size: 51px;
   }
   .orot-phone {
-    width: 44%;
+    width: 41.9%;
     right: 9%;
   }
   .orot-cover {
@@ -1439,7 +1439,7 @@ html[data-lang="ru"] .lang-ru {
     top: 16px;
   }
   .orot-phone {
-    width: 38%;
+    width: 35.7%;
     right: 15%;
     top: 40px;
   }
@@ -1593,7 +1593,7 @@ html[data-lang="ru"] .lang-ru {
     left: 7%;
   }
   .project-card-large:first-child .orot-phone {
-    width: 41%;
+    width: 38.8%;
     right: 11%;
     top: 50px;
   }
@@ -1713,7 +1713,7 @@ html[data-lang="ru"] .lang-ru {
     bottom: 50px;
   }
   .art-hero .orot-phone {
-    width: 43%;
+    width: 40.9%;
     right: 9%;
     top: 37px;
   }

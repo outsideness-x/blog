@@ -48,7 +48,7 @@
   transform: rotate(-18deg);
 }
 .selected-grid > .project-card:first-child .orot-phone {
-  width: 24%;
+  width: 21.2%;
   right: 19%;
   top: 40px;
   transform: rotate(12deg);
@@ -245,7 +245,7 @@
   left: 30px;
 }
 .work-row-art .orot-phone {
-  width: 38%;
+  width: 35.7%;
   top: 65px;
   right: 13%;
 }
@@ -373,7 +373,7 @@
     bottom: -110px;
   }
   .selected-grid > .project-card:first-child .orot-phone {
-    width: 27%;
+    width: 24.3%;
     right: 16%;
   }
   .selected-grid .inkept-hand {
@@ -415,7 +415,7 @@
     left: 5%;
   }
   .work-row-art .orot-phone {
-    width: 43%;
+    width: 40.9%;
     right: 9%;
   }
   .work-row-art .art-diple-title {
@@ -489,7 +489,7 @@
     transform: rotate(-15deg);
   }
   .selected-grid > .project-card:first-child .orot-phone {
-    width: 41%;
+    width: 38.8%;
     right: 11%;
     top: 42px;
   }
@@ -613,7 +613,7 @@
     left: 25px;
   }
   .work-row-art .orot-phone {
-    width: 41%;
+    width: 38.8%;
     right: 10%;
     top: 50px;
   }
@@ -1029,7 +1029,7 @@
 }
 .beyond-visual .beyond-device {
   position: absolute;
-  width: 112px;
+  width: 100px;
   top: 34px;
   left: calc(50% - 120px);
   transform: rotate(-8deg);

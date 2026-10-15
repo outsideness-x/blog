@@ -1,8 +1,8 @@
 /* A CSS iPhone, so clips and screens stay sharp at any size. */
 .device {
   position: relative;
-  padding: 3.3%;
-  border-radius: 16.5% / 7.6%;
+  display: flow-root;
+  border-radius: 15% / 7%;
   background: linear-gradient(
     150deg,
     #34373a 0%,
@@ -35,8 +35,12 @@
   top: 27%;
   height: 15%;
 }
+/* The bezel is the screen's margin, not the frame's padding: percentages
+   resolve against the parent, so this keeps it 2% of the phone itself
+   when a scene sizes the phone to a fraction of its width. */
 .device-screen {
   position: relative;
+  margin: 2%;
   aspect-ratio: 600 / 1304;
   border-radius: 13.5% / 6.2%;
   overflow: hidden;

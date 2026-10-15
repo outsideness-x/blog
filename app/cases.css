@@ -84,7 +84,7 @@
 }
 .cover-orot-reading {
   position: absolute;
-  width: 25%;
+  width: 22.2%;
   left: 39%;
   top: 150px;
   transform: rotate(-10deg);
@@ -93,7 +93,7 @@
 }
 .cover-orot-grammar {
   position: absolute;
-  width: 23%;
+  width: 20.1%;
   right: 9%;
   top: 238px;
   transform: rotate(10deg);
@@ -418,12 +418,12 @@
   }
   .cover-orot-reading {
     top: 125px;
-    width: 28%;
+    width: 25.3%;
     left: 35%;
   }
   .cover-orot-grammar {
     top: 200px;
-    width: 26%;
+    width: 23.3%;
     right: 7%;
   }
   .cover-orot-book {
@@ -502,13 +502,13 @@
     left: 5%;
   }
   .cover-orot-reading {
-    width: 43%;
+    width: 40.9%;
     top: 155px;
     left: 28%;
     transform: rotate(-9deg);
   }
   .cover-orot-grammar {
-    width: 36%;
+    width: 33.6%;
     top: 225px;
     right: -6%;
     transform: rotate(11deg);
