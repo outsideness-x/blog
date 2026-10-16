@@ -68,7 +68,7 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <Link className="footer-signature" href="/">
-        chemical pink<span>✳</span>
+        chemical pink<span>✳︎</span>
       </Link>
       <p>
         <T

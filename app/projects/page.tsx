@@ -34,8 +34,8 @@ export default function Projects() {
           </p>
           <span className="hand hand-mixed">
             <T
-              en="designed. built. out in the world. ↘"
-              ru="спроектировано. разработано. выпущено. ↘"
+              en="designed. built. out in the world. ↘︎"
+              ru="спроектировано. разработано. выпущено. ↘︎"
             />
           </span>
         </div>

@@ -218,8 +218,8 @@ export function Services() {
           </p>
           <span className="hand">
             <T
-              en="from the first sketch to the App Store ↘"
-              ru="от первого наброска до App Store ↘"
+              en="from the first sketch to the App Store ↘︎"
+              ru="от первого наброска до App Store ↘︎"
             />
           </span>
         </div>

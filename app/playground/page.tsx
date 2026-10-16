@@ -44,7 +44,7 @@ export default function Playground() {
             />
           </p>
           <span className="hand hand-mixed">
-            <T en="the details are the design ↘" ru="детали и есть дизайн ↘" />
+            <T en="the details are the design ↘︎" ru="детали и есть дизайн ↘︎" />
           </span>
         </div>
       </div>

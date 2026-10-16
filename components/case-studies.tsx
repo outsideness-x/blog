@@ -65,7 +65,7 @@ function StudyLabel() {
         en="INTERACTION STUDY — TRY IT"
         ru="ИНТЕРАКТИВНЫЙ ФРАГМЕНТ — ПОПРОБУЙТЕ"
       />
-      <span>↘</span>
+      <span>↘︎</span>
     </p>
   );
 }
@@ -373,7 +373,7 @@ export function DipleStudy() {
           />
         </h2>
         <div>
-          <span className="editorial-star">✳</span>
+          <span className="editorial-star">✳︎</span>
           <p>
             <T
               en="The page gets the attention. Everything else earns its place."
@@ -656,8 +656,8 @@ export function InkeptStudy() {
           </p>
           <span className="hand">
             <T
-              en="a few things that make it inkept ↘"
-              ru="то, из чего складывается inkept ↘"
+              en="a few things that make it inkept ↘︎"
+              ru="то, из чего складывается inkept ↘︎"
             />
           </span>
         </div>

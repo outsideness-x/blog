@@ -136,7 +136,7 @@ export function ContactBrief() {
           />
         </p>
         <span className="hand">
-          <T en="no forms, no sign-ups ↘" ru="без форм и регистраций ↘" />
+          <T en="no forms, no sign-ups ↘︎" ru="без форм и регистраций ↘︎" />
         </span>
       </div>
       <div className="brief-form">
