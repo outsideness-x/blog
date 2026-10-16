@@ -29,8 +29,8 @@ const literata = Literata({
   preload: false,
 });
 export const viewport: Viewport = {
-  themeColor: "#0c0d0d",
-  colorScheme: "dark",
+  themeColor: "#f2ede2",
+  colorScheme: "light",
 };
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -70,7 +70,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body>
+      <body className="artbook">
         <a className="skip-link" href="#main">
           Skip to content / К содержимому
         </a>

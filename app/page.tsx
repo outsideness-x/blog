@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { T } from "@/components/text";
@@ -14,14 +14,9 @@ export const metadata: Metadata = {
   title: { absolute: "Alex — UI/UX designer & iOS developer" },
   alternates: { canonical: "/" },
 };
-// The home page is a sheet of paper, so the browser chrome matches it.
-export const viewport: Viewport = {
-  themeColor: "#f2ede2",
-  colorScheme: "light",
-};
 export default function Home() {
   return (
-    <div className="artbook">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
@@ -257,6 +252,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

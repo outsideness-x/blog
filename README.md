@@ -34,8 +34,8 @@ Use `NEXT_DIST_DIR=.next-build npm run build` to build separately while the deve
 - `components/reel.tsx`, `components/media.tsx`: the CSS iPhone, the case reels and the tap-to-pause loops.
 - `app/projects/chemical/page.tsx` and `components/type-tester.tsx`: the typeface page.
 - `lib/og.tsx`: link preview images, rendered at build time.
-- `components/liquid-navigation.tsx`: the refractive navigation lens; it samples what is behind it and switches to dark labels over pale artwork.
-- `app/artbook.css` and `components/sketchbook.tsx`: the home page as an artbook — paper, stickers, taped prints, index cards, the About spread and the postcard. Other pages keep the dark theme.
+- `components/liquid-navigation.tsx`: the refractive navigation lens; it samples what is behind it and keeps the labels dark on paper, light over a dark screen.
+- `app/artbook.css` and `components/sketchbook.tsx`: the artbook pieces every page shares (paper, washi tape, pills drawn by hand) and the home page — stickers, taped prints, index cards, the About spread and the postcard. The paper itself and the palette are tokens in `app/globals.css`.
 - `scripts/art/`: the drawings on the home page, made in code. `node scripts/art/render.mjs` redraws them into `public/sketchbook/` (needs a Chromium build, set `CHROME` if it is not Playwright's, and `cwebp`); `python3 scripts/art/paper.py` makes the paper tiles.
 - `docs/assets.md` and `docs/liquid-glass.md`: asset provenance and optical implementation notes.
 

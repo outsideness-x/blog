@@ -1,7 +1,13 @@
 /* chemical: a typeface page that is mostly the typeface. */
+/* the cover is a sheet from a felt-tip test pad: ruled, with a pink margin */
 .cover-chemical .cover-scene {
   background:
-    radial-gradient(circle at 78% 30%, #9ebcdf14, transparent 40%), #111413;
+    linear-gradient(90deg, #0000 5%, #e3a3b280 5% calc(5% + 1.5px), #0000 0),
+    repeating-linear-gradient(#0000 0 47px, #c9d6e880 47px 48px) 0 30px,
+    #faf6ec;
+}
+.cover-chemical .cover-grid {
+  display: none;
 }
 .cover-chemical h1 {
   top: 6%;
@@ -9,14 +15,14 @@
   font-size: clamp(150px, 22vw, 320px);
   letter-spacing: 0;
   line-height: 1;
-  color: var(--paper);
+  color: var(--ink);
   transform: rotate(-4deg);
   z-index: 2;
 }
 .chemical-sample {
   position: absolute;
   z-index: 2;
-  color: #b9c9b6;
+  color: var(--pink-ink);
 }
 .chemical-sample-ru {
   left: 9%;
@@ -29,7 +35,7 @@
   right: 6%;
   top: 40%;
   font-size: clamp(48px, 6vw, 90px);
-  color: #e47b62;
+  color: #c48a7a;
   transform: rotate(8deg);
 }
 .chemical-sample-hearts {
@@ -45,7 +51,7 @@
   left: 41%;
   bottom: 30%;
   font-size: clamp(26px, 3vw, 42px);
-  color: #d8d4b8;
+  color: var(--pencil);
   font-feature-settings:
     "calt" 1,
     "ss01" 1,
@@ -57,7 +63,7 @@
   left: 6%;
   top: 52%;
   width: 52%;
-  color: #e47b6299;
+  color: #d99aab99;
   z-index: 1;
 }
 .chemical-stroke path {
@@ -77,14 +83,14 @@
   width: 150px;
   height: auto;
   transform: rotate(-12deg);
-  filter: drop-shadow(0 12px 14px #0008);
+  filter: drop-shadow(0 10px 10px #3a2a1a4d);
   z-index: 1;
 }
 .cover-chemical .cover-note {
   top: auto;
   bottom: 30%;
   right: 4%;
-  color: #b8c7af;
+  color: var(--blue);
 }
 .type-try,
 .type-process {
@@ -94,10 +100,17 @@
 .type-process > .chapter-heading {
   margin-bottom: 44px;
 }
+/* the tester is a pad of paper to write on */
 .type-tester {
-  border: 1px solid #ffffff16;
-  border-radius: 14px;
-  background: #121414;
+  position: relative;
+  border: 0;
+  border-radius: 2px;
+  background:
+    radial-gradient(circle, #b9c7da 0.9px, #0000 1.3px) 9px 9px / 18px 18px,
+    #fdfbf6;
+  box-shadow:
+    0 1px 1.5px #3a2a1a29,
+    0 24px 32px -24px #3a2a1a8c;
   padding: 26px 30px 24px;
 }
 .type-tester-bar {
@@ -114,10 +127,10 @@
 }
 .type-samples > button,
 .type-features > button {
-  border: 1px solid #ffffff24;
+  border: 1px solid #2b262280;
   border-radius: 30px;
-  background: #ffffff05;
-  color: #cfd3cf;
+  background: transparent;
+  color: var(--text);
   transition:
     background 0.2s,
     color 0.2s,
@@ -128,9 +141,9 @@
   font-size: 13px;
 }
 .type-samples > button[aria-pressed="true"] {
-  background: var(--paper);
-  border-color: var(--paper);
-  color: #151716;
+  background: var(--butter);
+  border-color: var(--ink);
+  color: var(--ink);
 }
 .type-size {
   display: flex;
@@ -150,16 +163,16 @@
   margin: 22px 0 18px;
   padding: 18px 4px;
   border: 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px dashed #77726a80;
+  border-bottom: 1px dashed #77726a80;
   background: none;
-  color: var(--paper);
+  color: var(--ink);
   line-height: 1.22;
   resize: vertical;
 }
 .type-specimen-area:focus-visible {
   outline: none;
-  border-color: #9ebcdf66;
+  border-color: var(--blue);
 }
 .type-features {
   display: grid;
@@ -178,8 +191,8 @@
   text-align: left;
 }
 .type-features > button[aria-pressed="true"] {
-  border-color: #9ebcdf88;
-  background: #9ebcdf14;
+  border-color: var(--ink);
+  background: var(--butter);
   color: var(--ink);
 }
 .type-feature-tag {
@@ -197,13 +210,13 @@
   grid-area: hint;
   font-size: 12px;
   line-height: 1.45;
-  color: var(--muted);
+  color: var(--text);
 }
 .type-tester-note {
   margin-top: 16px;
   font-size: 12px;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--text);
 }
 .type-steps {
   list-style: none;
@@ -214,9 +227,12 @@
   gap: 22px;
 }
 .type-steps > li {
-  border: 1px solid #ffffff14;
-  border-radius: 14px;
-  background: #121414;
+  border: 0;
+  border-radius: 2px;
+  background: #fdfbf6;
+  box-shadow:
+    0 1px 1.5px #3a2a1a29,
+    0 18px 26px -18px #3a2a1a7a;
   padding: 26px 28px 28px;
 }
 .type-steps svg,
@@ -229,7 +245,7 @@
 .type-step-glyph {
   font-size: 120px;
   line-height: 0.9;
-  color: var(--paper);
+  color: var(--ink);
 }
 .type-step-index {
   font-size: 11px;
@@ -243,12 +259,12 @@
 .type-steps p {
   font-size: 14px;
   line-height: 1.75;
-  color: var(--muted);
+  color: var(--text);
 }
 .type-twins {
   margin-top: 70px;
   padding: 40px 0 10px;
-  border-top: 1px solid var(--line);
+  border-top: 1px dashed #77726a80;
 }
 .type-twins-sample {
   display: flex;
@@ -257,19 +273,19 @@
   margin: 22px 0 18px;
   font-size: clamp(54px, 7vw, 96px);
   line-height: 1.1;
-  color: var(--paper);
+  color: var(--ink);
 }
 .type-twins-sample > span:nth-child(2) {
   color: var(--blue);
 }
 .type-twins-sample > span:nth-child(3) {
-  color: #e47b62;
+  color: #c48a7a;
 }
 .type-twins-note {
   max-width: 560px;
   font-size: 14px;
   line-height: 1.8;
-  color: var(--muted);
+  color: var(--text);
 }
 @media (max-width: 1100px) {
   .type-features {

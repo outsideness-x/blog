@@ -11,8 +11,9 @@ const links = [
   { href: "/contacts", en: "Contact", ru: "Контакты" },
 ];
 
-// Like system glass, the bar adapts to what is behind it: over pale artwork
-// the labels turn dark instead of relying on a heavier tint.
+// Like system glass, the bar adapts to what is behind it: on paper and pale
+// artwork the labels are dark, over a dark screen they turn light, instead of
+// relying on a heavier tint.
 const imageTones = new WeakMap<HTMLImageElement, number>();
 function luminance(r: number, g: number, b: number) {
   const linear = (c: number) => {
@@ -79,7 +80,7 @@ export function LiquidNavigation({
   const [lensWidth, setLensWidth] = useState(94);
   const [map, setMap] = useState("");
   const [backdropSupported, setBackdropSupported] = useState(false);
-  const [tone, setTone] = useState<"dark" | "light">("dark");
+  const [tone, setTone] = useState<"dark" | "light">("light");
   const nav = useRef<HTMLElement>(null);
   const glass = useRef<LiquidGlassHandle>(null);
   const options = useRef<HTMLDivElement>(null);

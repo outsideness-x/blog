@@ -14,8 +14,8 @@
     inset 0 0 0 1px #5a5f63,
     inset 0 0 0 2.5px #0a0b0c,
     inset 0 0 0 3.5px #2b2e31,
-    0 34px 60px #00000080,
-    0 10px 22px #00000059;
+    0 30px 50px #3a2a1a4d,
+    0 10px 18px #3a2a1a40;
 }
 .device::before,
 .device::after {
@@ -65,17 +65,17 @@
   width: 36px;
   height: 36px;
   padding: 0;
-  border: 1px solid #ffffff2b;
+  border: 1px solid #2b262240;
   border-radius: 50%;
-  background: #ffffff0a;
+  background: #fcfaf5;
   color: var(--ink);
   transition:
     background 0.2s,
     border-color 0.2s;
 }
 .reel-toggle:hover {
-  background: #ffffff1a;
-  border-color: #ffffff4d;
+  background: var(--butter);
+  border-color: var(--ink);
 }
 .reel-toggle svg {
   width: 14px;
@@ -96,7 +96,7 @@
 .motion-intro > p {
   font-size: 15px;
   line-height: 1.85;
-  color: var(--muted);
+  color: var(--text);
   max-width: 460px;
 }
 .reel {
@@ -130,7 +130,7 @@
   counter-reset: reel;
 }
 .reel-list > li:last-child > button {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px dashed #77726a73;
 }
 .reel-list button {
   position: relative;
@@ -139,10 +139,10 @@
   width: 100%;
   padding: 20px 0 18px;
   border: 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px dashed #77726a73;
   background: none;
   text-align: left;
-  color: #8f938e;
+  color: var(--muted);
   transition: color 0.25s;
 }
 .reel-list button:hover,
@@ -166,7 +166,7 @@
   opacity: 0;
   font-size: 14px;
   line-height: 1.7;
-  color: var(--muted);
+  color: var(--text);
   max-width: 480px;
   transition:
     grid-template-rows 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
@@ -347,10 +347,10 @@
   place-items: center;
   width: 34px;
   height: 34px;
-  border: 1px solid #ffffff2b;
+  border: 1px solid #2b262233;
   border-radius: 50%;
-  background: #121414b3;
-  color: #fff;
+  background: #fcfaf5d9;
+  color: var(--ink);
   opacity: 0;
   transition: opacity 0.2s;
   backdrop-filter: blur(6px);
@@ -390,7 +390,7 @@
   margin-top: 18px;
   font-size: 14px;
   line-height: 1.45;
-  color: #c9cec9;
+  color: var(--text);
 }
 .play-tile figcaption > a {
   flex-shrink: 0;
@@ -402,13 +402,15 @@
 .play-note {
   grid-column: span 2;
 }
+/* the dokkaebi loop is a print, the notes are cards stuck on the page */
 .play-paper .loop-video {
-  border-radius: 12px;
   overflow: hidden;
-  background: #efe9dc;
+  padding: 10px;
+  background: #fcfaf5;
   box-shadow:
-    0 26px 44px #0006,
-    0 0 0 1px #ffffff14;
+    0 1px 1.5px #3a2a1a29,
+    0 20px 28px -20px #3a2a1a8c;
+  transform: rotate(-1deg);
 }
 .play-paper .loop-video-state {
   background: #efe9dccc;
@@ -424,26 +426,60 @@
   justify-content: center;
 }
 .play-note {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
   min-height: 260px;
-  padding: 30px 32px;
-  border: 1px solid #ffffff16;
-  border-radius: 14px;
-  background: #121414;
-  transition:
-    border-color 0.25s,
-    background 0.25s;
+  padding: 34px 32px 30px;
+  border-radius: 2px;
+  background:
+    radial-gradient(circle, #b9c7da 0.9px, #0000 1.3px) 9px 9px / 18px 18px,
+    #fdfbf6;
+  box-shadow:
+    0 1px 1.5px #3a2a1a29,
+    0 18px 26px -18px #3a2a1a7a;
+  transform: rotate(var(--r, -0.6deg));
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.play-note::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 28px;
+  width: 92px;
+  height: 24px;
+  background:
+    repeating-linear-gradient(90deg, #ffffff24 0 1px, #0000 1px 4px),
+    color-mix(in srgb, var(--tape, var(--tape-butter)) 82%, transparent);
+  mix-blend-mode: multiply;
+  clip-path: polygon(
+    0 10%,
+    4% 0,
+    96% 4%,
+    100% 14%,
+    97% 30%,
+    100% 46%,
+    97.5% 62%,
+    100% 78%,
+    97% 92%,
+    99% 100%,
+    3% 96%,
+    0 86%,
+    2.5% 70%,
+    0 54%,
+    3% 38%,
+    0.5% 22%
+  );
+  transform: rotate(-4deg);
 }
 a.play-note:hover {
-  border-color: #ffffff30;
-  background: #151818;
+  transform: rotate(0deg) translateY(-3px);
 }
 .play-note-sample {
   font-size: 84px;
   line-height: 1;
-  color: var(--paper);
+  color: var(--ink);
 }
 .play-note-title {
   font-size: 30px;
@@ -454,22 +490,25 @@ a.play-note:hover {
   max-width: 440px;
   font-size: 14px;
   line-height: 1.75;
-  color: var(--muted);
+  color: var(--text);
 }
 .play-note-link {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   margin-top: auto;
-  font-size: 12px;
-  color: var(--ink);
+  font-family: chemical, sans-serif;
+  font-size: 21px;
+  color: var(--blue);
 }
 .play-note-link > svg {
   width: 15px;
 }
+/* the note about the glass is on a sheet of tracing paper, faintly blue */
 .play-note-glass {
-  background:
-    radial-gradient(circle at 80% 0%, #9ebcdf1f, transparent 55%), #121414;
+  --r: 0.7deg;
+  --tape: var(--tape-blue);
+  background: linear-gradient(135deg, #ffffffb3, #fff0 45%), #e4ebf3;
 }
 @media (max-width: 1100px) {
   .play-grid {

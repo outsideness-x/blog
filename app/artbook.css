@@ -1,42 +1,6 @@
-/* Home as an artbook. The page is a sheet of warm paper: ink for type,
-   pencil for notes, soft washes for colour, and things pasted on top —
-   stickers, prints, index cards, a postcard. Other pages keep the dark desk. */
-body:has(.artbook) {
-  --bg: #f2ede2;
-  --surface: #fbf8f1;
-  --paper: #fbf8f1;
-  --ink: #2b2622;
-  --text: #4b453e;
-  --muted: #7a746b;
-  --pencil: #77726a;
-  --line: #2b26221f;
-  --blue: #52709f;
-  --pink: #d99aab;
-  --pink-ink: #b06d82;
-  --sage: #a9bf9f;
-  --butter: #efdca4;
-  --wash-blue: #b4c6e0;
-  --tape-sage: #b9cdb1;
-  --tape-pink: #ecc2cc;
-  --tape-blue: #c3d2e8;
-  --tape-butter: #f1e1b0;
-  color-scheme: light;
-  color: var(--ink);
-  background-color: var(--bg);
-  background-image:
-    url("/sketchbook/specks.webp"), url("/sketchbook/paper.webp");
-  background-size:
-    520px 520px,
-    320px 320px;
-}
-body:has(.artbook)::before {
-  display: none;
-}
-body:has(.artbook) ::selection {
-  background: #ecc4cd;
-  color: var(--ink);
-}
-
+/* The artbook pieces: washi tape, pills drawn by hand, the header and footer
+   on paper, and the home page — a sketch, stickers, taped prints, index
+   cards and a postcard. */
 /* ---------- shared pieces */
 /* washi tape: translucent, torn at both ends */
 .artbook .tape-strip,
@@ -76,14 +40,14 @@ body:has(.artbook) ::selection {
 }
 /* a pill drawn by hand: the outline, and a second, looser pass around it */
 .artbook .button-light,
-body:has(.artbook) .header-cta,
+.header-cta,
 .artbook .platform {
   position: relative;
   border: 1.5px solid var(--ink);
   border-radius: 999px;
 }
 .artbook .button-light::after,
-body:has(.artbook) .header-cta::after,
+.header-cta::after,
 .artbook .platform::after {
   content: "";
   position: absolute;
@@ -95,37 +59,37 @@ body:has(.artbook) .header-cta::after,
 }
 
 /* ---------- header and footer on paper */
-body:has(.artbook) .wordmark {
+.wordmark {
   color: var(--ink);
 }
-body:has(.artbook) .wordmark > svg {
+.wordmark > svg {
   color: var(--blue);
 }
-body:has(.artbook) .wordmark-pink {
+.wordmark-pink {
   color: var(--pink-ink);
 }
-body:has(.artbook) .language-button {
+.language-button {
   color: #a39d93;
 }
-body:has(.artbook) .language-button .active {
+.language-button .active {
   color: var(--ink);
 }
-body:has(.artbook) .header-cta {
+.header-cta {
   background: transparent;
   color: var(--ink);
 }
-body:has(.artbook) .header-cta:hover {
+.header-cta:hover {
   background: var(--butter);
   border-color: var(--ink);
   color: var(--ink);
 }
-body:has(.artbook) .site-footer {
+.site-footer {
   color: var(--muted);
   background-image: linear-gradient(90deg, #77726a66 50%, #0000 0);
   background-size: 9px 1px;
   background-repeat: repeat-x;
 }
-body:has(.artbook) .footer-signature > span {
+.footer-signature > span {
   color: var(--pink-ink);
 }
 
@@ -485,6 +449,10 @@ body:has(.artbook) .footer-signature > span {
 }
 .artbook .beyond-mascot .beyond-visual {
   background: #f3eee2;
+}
+.artbook .beyond-play .beyond-visual {
+  background:
+    radial-gradient(circle at 50% 115%, #b4c6e099, #0000 62%), #e3e8ee;
 }
 .artbook .beyond-info h3 {
   color: var(--ink);

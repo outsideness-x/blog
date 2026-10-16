@@ -158,8 +158,9 @@
   grid-template-columns: 0.72fr 1.4fr;
   gap: 65px;
   align-items: center;
-  padding: 50px 0;
-  border-top: 1px solid var(--line);
+  padding: 64px 0;
+  background: linear-gradient(90deg, #77726a80 55%, #0000 0) top / 10px 1px
+    repeat-x;
 }
 .work-row-copy > .eyebrow {
   font-size: 10px;
@@ -174,12 +175,12 @@
 }
 .work-row-inkept .work-row-copy h2 {
   font-family: chemical, sans-serif;
-  color: #bdcdb1;
+  color: var(--pink-ink);
   transform: rotate(-4deg);
 }
 .work-row-diple .work-row-copy h2 {
   font-family: var(--font-serif);
-  color: #b3c5d1;
+  color: var(--blue);
 }
 .work-row-copy h3 {
   font-size: 22px;
@@ -189,7 +190,7 @@
 }
 .work-row-description {
   font-size: 13px;
-  color: var(--muted);
+  color: var(--text);
   line-height: 1.85;
   margin-top: 20px;
   max-width: 310px;
@@ -199,20 +200,33 @@
   gap: 8px;
   margin-top: 24px;
 }
+.work-row-tags {
+  flex-wrap: wrap;
+}
 .work-row-tags > span {
+  position: relative;
   font-size: 10px;
   padding: 6px 10px;
-  border: 1px solid var(--line);
+  border: 1px solid #2b262299;
   border-radius: 25px;
-  color: #a7b1a1;
+  color: var(--text);
+}
+.work-row-tags > span::after {
+  content: "";
+  position: absolute;
+  inset: -2px -1px -1px -3px;
+  border: 1px solid #2b262259;
+  border-radius: 25px;
+  transform: rotate(-1.5deg);
 }
 .work-row-link {
   display: flex;
   align-items: center;
-  gap: 14px;
-  font-size: 11px;
-  margin-top: 42px;
-  color: var(--ink);
+  gap: 12px;
+  margin-top: 38px;
+  font-family: chemical, sans-serif;
+  font-size: 21px;
+  color: var(--blue);
 }
 .work-row-link > svg {
   width: 16px;
@@ -221,13 +235,69 @@
 .work-row:hover .work-row-link > svg {
   transform: translate(3px, -3px);
 }
+/* each project is a print taped into the book */
 .work-row-art {
   position: relative;
-  overflow: hidden;
-  border-radius: 5px;
+  padding: 12px;
+  background: #fcfaf5;
+  box-shadow:
+    0 1px 1.5px #3a2a1a29,
+    0 20px 28px -20px #3a2a1a8c;
+  transform: rotate(var(--r, 0.8deg));
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.work-row:nth-child(even) .work-row-art {
+  --r: -0.9deg;
+}
+.work-row:hover .work-row-art {
+  transform: rotate(0deg) translateY(-3px);
+}
+.work-row-art::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: -12px;
+  left: calc(50% - 46px);
+  width: 92px;
+  height: 24px;
+  background:
+    repeating-linear-gradient(90deg, #ffffff24 0 1px, #0000 1px 4px),
+    linear-gradient(#ffffff38, #0000 35%, #0000 70%, #00000010),
+    color-mix(in srgb, var(--tape, var(--tape-sage)) 82%, transparent);
+  mix-blend-mode: multiply;
+  clip-path: polygon(
+    0 10%,
+    4% 0,
+    96% 4%,
+    100% 14%,
+    97% 30%,
+    100% 46%,
+    97.5% 62%,
+    100% 78%,
+    97% 92%,
+    99% 100%,
+    3% 96%,
+    0 86%,
+    2.5% 70%,
+    0 54%,
+    3% 38%,
+    0.5% 22%
+  );
+  transform: rotate(-3deg);
+}
+.work-row-diple .work-row-art::before {
+  --tape: var(--tape-pink);
+  transform: rotate(4deg);
+}
+.work-row-inkept .work-row-art::before {
+  --tape: var(--tape-blue);
+}
+.work-row-chemical .work-row-art::before {
+  --tape: var(--tape-butter);
+  transform: rotate(2deg);
 }
 .work-row-art .project-art {
-  height: 510px;
+  height: 486px;
   transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .work-row:hover .project-art {
@@ -297,15 +367,16 @@
 }
 .work-row-badge {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 28px;
+  bottom: 28px;
   display: grid;
   place-items: center;
   width: 43px;
   height: 43px;
   border-radius: 50%;
-  color: #fff;
-  background: #15201e44;
+  color: var(--ink);
+  background: #fcfaf5;
+  box-shadow: 0 2px 6px #3a2a1a33;
 }
 .work-row-diple,
 .work-row-chemical {
@@ -324,7 +395,7 @@
 .work-row-chemical .work-row-copy h2 {
   font-family: chemical, sans-serif;
   letter-spacing: 0;
-  color: var(--paper);
+  color: var(--ink);
   transform: rotate(-3deg);
 }
 .work-index-end {
@@ -333,7 +404,8 @@
   justify-content: space-between;
   gap: 30px;
   padding: 50px 0 65px;
-  border-top: 1px solid var(--line);
+  background: linear-gradient(90deg, #77726a80 55%, #0000 0) top / 10px 1px
+    repeat-x;
 }
 .work-index-end > .hand {
   font-size: 30px;
@@ -887,7 +959,9 @@
 /* chemical in the project index. */
 .art-chemical {
   background:
-    radial-gradient(circle at 75% 25%, #9ebcdf17, transparent 45%), #111413;
+    linear-gradient(90deg, #0000 44px, #e3a3b2 44px 45.5px, #0000 45.5px),
+    repeating-linear-gradient(#0000 0 35px, #b9cbe2 35px 36px) 0 28px,
+    #fdfbf6;
 }
 .art-chemical-word {
   position: absolute;
@@ -895,7 +969,7 @@
   top: 14%;
   font-size: clamp(90px, 10vw, 150px);
   line-height: 1;
-  color: var(--paper);
+  color: var(--ink);
   transform: rotate(-5deg);
 }
 .art-chemical-ko {
@@ -903,7 +977,7 @@
   right: 9%;
   top: 12%;
   font-size: 64px;
-  color: #e47b62;
+  color: #c48a7a;
   transform: rotate(8deg);
 }
 .art-chemical-ru {
@@ -919,7 +993,7 @@
   right: 10%;
   bottom: 18%;
   font-size: 40px;
-  color: #b9c9b6;
+  color: var(--pink-ink);
   font-feature-settings:
     "calt" 1,
     "ss03" 1;
@@ -1052,6 +1126,7 @@
     font-size: 84px;
   }
   .art-chemical-ko {
+    top: 42%;
     font-size: 44px;
   }
   .art-chemical-ru {
@@ -1059,5 +1134,10 @@
   }
   .art-chemical-hearts {
     font-size: 30px;
+  }
+}
+@media (max-width: 370px) {
+  .art-chemical-word {
+    font-size: 68px;
   }
 }
