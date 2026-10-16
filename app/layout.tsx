@@ -10,6 +10,8 @@ import "./contact.css";
 import "./motion.css";
 import "./brand.css";
 import "./type.css";
+import "./sketchbook.css";
+import "./artbook.css";
 const geist = localFont({
   src: "./fonts/Geist-Variable.woff2",
   weight: "100 900",

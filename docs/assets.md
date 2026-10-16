@@ -16,6 +16,16 @@
 - `public/projects/inkept`: original inkept App Store screenshots (resized to WebP) and the original forget-me-not illustration from its App Icon Composer assets.
 - `lib/og/img`: small PNG/JPEG copies of the screens above for the build-time link previews.
 
+## Artbook drawings
+
+`public/sketchbook` holds the home page's paper and drawings, all made in code for this site rather than drawn from any reference:
+
+- `hero.webp`: the working sketch of an iPhone, half pencil wireframe and half inked and painted interface, with a pencil and forget-me-nots (`scripts/art/hero.mjs`).
+- `forget-me-not.webp`: the botanical plate on the About spread (`scripts/art/forget-me-not.mjs`); `sprig.webp` is the small sprig on the postcard (`scripts/art/sprig.mjs`).
+- `paper.webp` and `specks.webp`: seamless tiles of warm paper and of dust and specks, laid over each other at different sizes (`scripts/art/paper.py`).
+
+`scripts/art/brush.mjs` draws pressure-shaped ink, graphite and watercolour washes as SVG; `scripts/art/render.mjs` renders each drawing at 2x with a transparent background and encodes it with `cwebp`. The page sets the drawings on the paper with `mix-blend-mode: multiply`.
+
 ## Icons
 
 `app/icon.svg`, `app/favicon.ico` and `app/apple-icon.png` are drawn from the asterisk in the wordmark.

@@ -35,6 +35,8 @@ Use `NEXT_DIST_DIR=.next-build npm run build` to build separately while the deve
 - `app/projects/chemical/page.tsx` and `components/type-tester.tsx`: the typeface page.
 - `lib/og.tsx`: link preview images, rendered at build time.
 - `components/liquid-navigation.tsx`: the refractive navigation lens; it samples what is behind it and switches to dark labels over pale artwork.
+- `app/artbook.css` and `components/sketchbook.tsx`: the home page as an artbook — paper, stickers, taped prints, index cards, the About spread and the postcard. Other pages keep the dark theme.
+- `scripts/art/`: the drawings on the home page, made in code. `node scripts/art/render.mjs` redraws them into `public/sketchbook/` (needs a Chromium build, set `CHROME` if it is not Playwright's, and `cwebp`); `python3 scripts/art/paper.py` makes the paper tiles.
 - `docs/assets.md` and `docs/liquid-glass.md`: asset provenance and optical implementation notes.
 
 Video loops load only once they are on screen and actually playing, pause off screen, start paused for reduced motion or data saver, and can always be paused. The screen viewer is keyboard accessible and closes with Escape. A high-contrast preference increases navigation opacity. No analytics or third-party requests are added at runtime.

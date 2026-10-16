@@ -1,0 +1,310 @@
+/* About, as the middle of the book: two pages meeting at a soft gutter,
+   the forget-me-not plate on the left, the words on the right, and a ribbon
+   marking the spread. It lies on the home page's paper. */
+.sketchbook-section {
+  margin-top: 130px;
+  padding: 0 0 70px;
+}
+.sketchbook {
+  --sb-ink: #2b2622;
+  --sb-text: #4b453e;
+  --sb-pencil: #6f6a63;
+  --sb-blue: #3f5f94;
+  --sb-pink: #d99aab;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(100%, 1180px);
+  margin: 0 auto;
+}
+/* the fold: shade sinking into the gutter, fading out at the top and bottom */
+.sketchbook::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  bottom: -40px;
+  left: calc(50% - 90px);
+  width: 180px;
+  background: linear-gradient(
+    90deg,
+    #3d2c1a00,
+    #3d2c1a0d 38%,
+    #3d2c1a24 49%,
+    #ffffff33 51.5%,
+    #3d2c1a0a 60%,
+    #3d2c1a00
+  );
+  -webkit-mask: linear-gradient(#0000, #000 14%, #000 86%, #0000);
+  mask: linear-gradient(#0000, #000 14%, #000 86%, #0000);
+  pointer-events: none;
+}
+.sketchbook-page {
+  position: relative;
+  isolation: isolate;
+  color: var(--sb-ink);
+}
+.sketchbook-plate {
+  padding-right: 4%;
+}
+.sketchbook-words {
+  padding: clamp(30px, 5%, 60px) 0 70px clamp(40px, 9%, 96px);
+}
+
+/* The left page is an artboard: the plate and its pencil notes keep their
+   places at any width. */
+.plate-board {
+  position: relative;
+  aspect-ratio: 560 / 780;
+  container-type: inline-size;
+}
+.plate-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
+}
+.plate-note {
+  position: absolute;
+  font-family: chemical, sans-serif;
+  font-feature-settings: "calt" 1;
+  font-size: max(10px, 2.86cqw);
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--sb-pencil);
+  transform: rotate(var(--tilt, -2deg));
+  /* graphite catches only on the tooth of the paper */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 0 0 0 -0.05'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 0 0 0 -0.05'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23g)'/%3E%3C/svg%3E");
+  -webkit-mask-size: 60px;
+  mask-size: 60px;
+}
+.note-fig {
+  left: 7.1%;
+  top: 5.6%;
+  --tilt: -1deg;
+}
+.note-buds {
+  left: 5.4%;
+  top: 13.3%;
+  --tilt: -4deg;
+}
+.note-open {
+  left: 36.8%;
+  top: 19.2%;
+  --tilt: 2deg;
+}
+.note-zoom {
+  left: 70.5%;
+  top: 36.2%;
+  --tilt: -3deg;
+}
+.note-hex {
+  top: 49.4%;
+  font-size: max(8.5px, 2.2cqw);
+  --tilt: 0deg;
+}
+.hex-blue {
+  left: 59.4%;
+}
+.hex-pink {
+  left: 71.2%;
+}
+.hex-green {
+  left: 83%;
+}
+.plate-caption {
+  position: absolute;
+  left: 49.5%;
+  top: 66.5%;
+  width: 46%;
+  transform: rotate(-4deg);
+  transform-origin: left top;
+}
+.plate-caption .hand {
+  font-size: 6.4cqw;
+  line-height: 1.24;
+  color: var(--sb-blue);
+}
+.plate-caption .eyebrow {
+  display: block;
+  margin-top: 3.4cqw;
+  font-size: max(8px, 1.75cqw);
+  color: var(--sb-pencil);
+}
+.sketchbook .folio {
+  position: absolute;
+  bottom: 26px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--sb-pencil);
+  font-variant-numeric: oldstyle-nums;
+}
+.sketchbook-plate .folio {
+  left: 7%;
+}
+.sketchbook-words .folio {
+  right: 8.5%;
+}
+
+/* The right page: the words, set like a book. */
+.sketchbook-words .eyebrow {
+  color: var(--sb-pencil);
+}
+.sketchbook-words h2 {
+  margin: 18px 0 28px;
+  font-size: clamp(27px, 2.75vw, 37px);
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+  color: var(--sb-ink);
+}
+.sketchbook-words em {
+  position: relative;
+  display: inline-block;
+  font-family: chemical, sans-serif;
+  font-style: normal;
+  font-size: 1.12em;
+  letter-spacing: -0.02em;
+  color: var(--sb-blue);
+  transform: rotate(-2deg);
+}
+.sketchbook-words em svg {
+  position: absolute;
+  left: -4%;
+  bottom: -11px;
+  width: 110%;
+  height: 20px;
+  color: var(--sb-pink);
+  opacity: 0.85;
+}
+.sketchbook-words > p:not(.eyebrow) {
+  max-width: 440px;
+  margin: 14px 0;
+  font-size: 15px;
+  line-height: 1.78;
+  color: var(--sb-text);
+}
+
+/* Skills on scraps of washi tape: translucent, torn at both ends. */
+.tape-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 12px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.tape-tags .tape {
+  --tape: #c3d2e8;
+  padding: 7px 16px 6px;
+  font-size: 17px;
+  line-height: 1.1;
+  color: var(--sb-ink);
+  background:
+    repeating-linear-gradient(90deg, #ffffff24 0 1px, #0000 1px 4px),
+    linear-gradient(#ffffff30, #0000 30%, #0000 70%, #00000010),
+    color-mix(in srgb, var(--tape) 85%, transparent);
+  mix-blend-mode: multiply;
+  clip-path: polygon(
+    0 8%,
+    4% 0,
+    96% 3%,
+    100% 12%,
+    97% 26%,
+    100% 41%,
+    97.5% 57%,
+    100% 72%,
+    97% 87%,
+    99% 100%,
+    3% 97%,
+    0 88%,
+    2.5% 72%,
+    0 56%,
+    3% 41%,
+    0.5% 25%
+  );
+}
+.tape-tags .tape:nth-child(1) {
+  transform: rotate(-3deg);
+}
+.tape-tags .tape:nth-child(2) {
+  transform: rotate(2deg) translateY(3px);
+}
+.tape-tags .tape:nth-child(3) {
+  transform: rotate(-1.5deg);
+}
+.tape-tags .tape:nth-child(4) {
+  transform: rotate(3.5deg) translateY(2px);
+}
+.tape-tags .tape-pink {
+  --tape: #ecc2cc;
+}
+.tape-tags .tape-green {
+  --tape: #c2d3b8;
+}
+.tape-tags .tape-yellow {
+  --tape: #f1e1b0;
+}
+
+/* A satin ribbon lying in the gutter, its end hanging below the spread. */
+.sketchbook-ribbon {
+  position: absolute;
+  z-index: 4;
+  top: 52%;
+  left: calc(50% + 3px);
+  width: 11px;
+  height: calc(48% + 70px);
+  transform: rotate(2deg);
+  transform-origin: top center;
+  filter: drop-shadow(1px 2px 1.5px #3b1c2638);
+  -webkit-mask: linear-gradient(#0000, #000 18%);
+  mask: linear-gradient(#0000, #000 18%);
+  pointer-events: none;
+}
+.sketchbook-ribbon > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #b97a8c,
+    #dfa4b4 38%,
+    #efc3cf 50%,
+    #d495a7 66%,
+    #b07285
+  );
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 10px), 0 100%);
+}
+
+@media (max-width: 1100px) {
+  .sketchbook-words > p:not(.eyebrow) {
+    font-size: 14px;
+  }
+  .tape-tags .tape {
+    font-size: 15px;
+  }
+}
+/* On a phone the spread becomes one page after the other. */
+@media (max-width: 860px) {
+  .sketchbook-section {
+    margin-top: 80px;
+    padding-bottom: 40px;
+  }
+  .sketchbook {
+    grid-template-columns: 1fr;
+    width: min(100%, 560px);
+  }
+  .sketchbook::before,
+  .sketchbook-ribbon {
+    display: none;
+  }
+  .sketchbook-plate {
+    padding: 0 0 40px;
+  }
+  .sketchbook-words {
+    padding: 20px 0 60px;
+  }
+  .sketchbook .folio {
+    bottom: 14px;
+  }
+}

@@ -1,0 +1,842 @@
+/* Home as an artbook. The page is a sheet of warm paper: ink for type,
+   pencil for notes, soft washes for colour, and things pasted on top —
+   stickers, prints, index cards, a postcard. Other pages keep the dark desk. */
+body:has(.artbook) {
+  --bg: #f2ede2;
+  --surface: #fbf8f1;
+  --paper: #fbf8f1;
+  --ink: #2b2622;
+  --text: #4b453e;
+  --muted: #7a746b;
+  --pencil: #77726a;
+  --line: #2b26221f;
+  --blue: #52709f;
+  --pink: #d99aab;
+  --pink-ink: #b06d82;
+  --sage: #a9bf9f;
+  --butter: #efdca4;
+  --wash-blue: #b4c6e0;
+  --tape-sage: #b9cdb1;
+  --tape-pink: #ecc2cc;
+  --tape-blue: #c3d2e8;
+  --tape-butter: #f1e1b0;
+  color-scheme: light;
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image:
+    url("/sketchbook/specks.webp"), url("/sketchbook/paper.webp");
+  background-size:
+    520px 520px,
+    320px 320px;
+}
+body:has(.artbook)::before {
+  display: none;
+}
+body:has(.artbook) ::selection {
+  background: #ecc4cd;
+  color: var(--ink);
+}
+
+/* ---------- shared pieces */
+/* washi tape: translucent, torn at both ends */
+.artbook .tape-strip,
+.artbook .project-card::before,
+.artbook .beyond-card::before,
+.artbook .service-card::before,
+.artbook .hero-paper::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 92px;
+  height: 24px;
+  background:
+    repeating-linear-gradient(90deg, #ffffff24 0 1px, #0000 1px 4px),
+    linear-gradient(#ffffff38, #0000 35%, #0000 70%, #00000010),
+    color-mix(in srgb, var(--tape, var(--tape-sage)) 82%, transparent);
+  mix-blend-mode: multiply;
+  clip-path: polygon(
+    0 10%,
+    4% 0,
+    96% 4%,
+    100% 14%,
+    97% 30%,
+    100% 46%,
+    97.5% 62%,
+    100% 78%,
+    97% 92%,
+    99% 100%,
+    3% 96%,
+    0 86%,
+    2.5% 70%,
+    0 54%,
+    3% 38%,
+    0.5% 22%
+  );
+  pointer-events: none;
+}
+/* a pill drawn by hand: the outline, and a second, looser pass around it */
+.artbook .button-light,
+body:has(.artbook) .header-cta,
+.artbook .platform {
+  position: relative;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+}
+.artbook .button-light::after,
+body:has(.artbook) .header-cta::after,
+.artbook .platform::after {
+  content: "";
+  position: absolute;
+  inset: -3px -2px -1px -4px;
+  border: 1px solid #2b262280;
+  border-radius: 999px;
+  transform: rotate(-1.4deg);
+  pointer-events: none;
+}
+
+/* ---------- header and footer on paper */
+body:has(.artbook) .wordmark {
+  color: var(--ink);
+}
+body:has(.artbook) .wordmark > svg {
+  color: var(--blue);
+}
+body:has(.artbook) .wordmark-pink {
+  color: var(--pink-ink);
+}
+body:has(.artbook) .language-button {
+  color: #a39d93;
+}
+body:has(.artbook) .language-button .active {
+  color: var(--ink);
+}
+body:has(.artbook) .header-cta {
+  background: transparent;
+  color: var(--ink);
+}
+body:has(.artbook) .header-cta:hover {
+  background: var(--butter);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+body:has(.artbook) .site-footer {
+  color: var(--muted);
+  background-image: linear-gradient(90deg, #77726a66 50%, #0000 0);
+  background-size: 9px 1px;
+  background-repeat: repeat-x;
+}
+body:has(.artbook) .footer-signature > span {
+  color: var(--pink-ink);
+}
+
+/* ---------- hero: copy on the left, a working sketch on the right */
+.artbook .hero-eyebrow {
+  color: var(--pencil);
+}
+.artbook .tiny-cross,
+.artbook .hero-hello {
+  color: var(--blue);
+}
+.artbook .hero-copy h1 {
+  color: var(--ink);
+}
+.artbook .hero-feeling {
+  color: var(--blue);
+}
+.artbook .hero-feeling svg {
+  color: var(--pink);
+  opacity: 0.9;
+}
+.artbook .hero-description {
+  color: var(--text);
+}
+.artbook .button-light {
+  color: var(--ink);
+  background: var(--butter);
+  box-shadow: 3px 4px 0 #2b262224;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s,
+    background 0.25s;
+}
+.artbook .button-light:hover {
+  background: #f4e4b8;
+  transform: translate(-1px, -2px) rotate(-1deg);
+  box-shadow: 5px 6px 0 #2b262222;
+}
+.artbook .hero-talk {
+  font-family: chemical, sans-serif;
+  font-size: 21px;
+  color: var(--blue);
+}
+.hero-sketch {
+  position: relative;
+  container-type: inline-size;
+  justify-self: center;
+  width: min(100%, 600px);
+  aspect-ratio: 620 / 640;
+}
+.hero-sketch-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
+}
+/* the apps, as stickers with a white die-cut edge */
+.sticker {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 12.5cqw;
+  aspect-ratio: 1;
+  padding: 1cqw;
+  border-radius: 27%;
+  background: #fcfbf7;
+  box-shadow:
+    0 1px 1.5px #3a2a1a2e,
+    0 9px 14px -9px #3a2a1a73;
+  transform: rotate(var(--r, 0deg));
+}
+.sticker img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 23%;
+}
+.sticker-cut {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+.sticker-cut img {
+  border-radius: 0;
+  filter: drop-shadow(1.6px 0 0 #fcfbf7) drop-shadow(-1.6px 0 0 #fcfbf7)
+    drop-shadow(0 1.6px 0 #fcfbf7) drop-shadow(0 -1.6px 0 #fcfbf7)
+    drop-shadow(0 6px 6px #3a2a1a47);
+}
+.sticker-orot {
+  left: 5%;
+  top: 19%;
+  --r: -9deg;
+}
+.sticker-diple {
+  left: 78%;
+  top: 2%;
+  --r: 8deg;
+}
+.sticker-inkept {
+  left: 86%;
+  top: 46%;
+  width: 15cqw;
+  --r: 14deg;
+}
+.sketch-note {
+  position: absolute;
+  z-index: 2;
+  font-family: chemical, sans-serif;
+  font-size: max(12px, 2.75cqw);
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--pencil);
+}
+.note-sketch {
+  left: 1%;
+  top: 41%;
+  transform: rotate(-7deg);
+}
+.note-shipped {
+  left: 43%;
+  top: 91.5%;
+  transform: rotate(-3deg);
+}
+.artbook .hero-paper {
+  right: -3%;
+  bottom: 9%;
+  width: 33cqw;
+  min-height: 0;
+  padding: 6.2cqw 4.6cqw 4.2cqw;
+  color: var(--ink);
+  background: #fbf8f1 url("/sketchbook/paper.webp") 40px 0 / 320px;
+  border-radius: 2px 3px 2px 4px;
+  clip-path: none;
+  box-shadow:
+    0 1px 1.5px #3a2a1a2b,
+    0 14px 22px -14px #3a2a1a8c;
+  transform: rotate(6deg);
+}
+.artbook .hero-paper::before {
+  top: -11px;
+  left: calc(50% - 46px);
+  transform: rotate(-5deg);
+  --tape: var(--tape-pink);
+}
+.artbook .hero-paper .hand {
+  display: block;
+  font-size: 4.2cqw;
+  line-height: 1.25;
+}
+.artbook .paper-star {
+  right: 6%;
+  bottom: 3%;
+  font-size: 4.2cqw;
+  color: var(--blue);
+}
+/* facts: a pencil rule above and below, numbers by hand */
+.artbook .hero-facts {
+  border: 0;
+  background-image:
+    linear-gradient(90deg, #77726a80 55%, #0000 0),
+    linear-gradient(90deg, #77726a80 55%, #0000 0);
+  background-size:
+    10px 1px,
+    10px 1px;
+  background-position:
+    0 0,
+    0 100%;
+  background-repeat: repeat-x;
+}
+.artbook .hero-facts strong {
+  font-family: chemical, sans-serif;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+  color: var(--blue);
+}
+.artbook .hero-facts > div:nth-child(2) strong {
+  color: var(--pink-ink);
+}
+.artbook .hero-facts > div > span,
+.artbook .hero-facts > a {
+  color: var(--text);
+}
+.artbook .hero-facts > a:hover {
+  color: var(--blue);
+}
+
+/* ---------- section headings */
+.artbook .eyebrow {
+  color: var(--pencil);
+}
+.artbook .section-heading h2,
+.artbook .services-intro h2 {
+  color: var(--ink);
+}
+.artbook .text-link {
+  font-family: chemical, sans-serif;
+  font-size: 20px;
+  letter-spacing: 0;
+  color: var(--blue);
+}
+
+/* ---------- selected work: prints taped into the book */
+.artbook .selected-section {
+  padding-top: 110px;
+}
+.artbook .selected-grid {
+  gap: 64px 44px;
+  margin-top: 46px;
+}
+.artbook .project-card {
+  position: relative;
+  padding: 12px 12px 6px;
+  background: #fcfaf5;
+  box-shadow:
+    0 1px 1.5px #3a2a1a29,
+    0 18px 26px -18px #3a2a1a8c;
+  transform: rotate(var(--r, -1deg));
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.45s;
+}
+.artbook .project-card:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow:
+    0 1px 1.5px #3a2a1a29,
+    0 26px 34px -20px #3a2a1a8c;
+}
+.artbook .selected-grid > .project-card:nth-child(1) {
+  --r: -0.5deg;
+}
+.artbook .selected-grid > .project-card:nth-child(2) {
+  --r: 1.2deg;
+}
+.artbook .selected-grid > .project-card:nth-child(3) {
+  --r: -1.4deg;
+}
+.artbook .project-card::before {
+  top: -12px;
+  left: calc(50% - 46px);
+  transform: rotate(-3deg);
+}
+.artbook .selected-grid > .project-card:nth-child(2)::before {
+  --tape: var(--tape-pink);
+  left: 8%;
+  transform: rotate(-38deg);
+  top: 2px;
+  width: 80px;
+  margin-left: -26px;
+}
+.artbook .selected-grid > .project-card:nth-child(3)::before {
+  --tape: var(--tape-blue);
+  left: auto;
+  right: 8%;
+  transform: rotate(32deg);
+  top: 2px;
+  width: 80px;
+  margin-right: -26px;
+}
+.artbook .project-card-image {
+  border: 0;
+  border-radius: 1px;
+}
+.artbook .project-card-image .project-open {
+  background: #fcfaf5;
+  color: var(--ink);
+  box-shadow: 0 2px 6px #0003;
+}
+.artbook .project-card-info {
+  align-items: center;
+  padding: 14px 6px 10px;
+}
+.artbook .project-card-info h3,
+.artbook .selected-grid .project-card-info h3 {
+  font-family: chemical, sans-serif;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--ink);
+}
+.artbook .project-card-info p {
+  margin-top: 6px;
+  color: var(--pencil);
+}
+.artbook .platform {
+  margin-top: 0;
+  color: var(--text);
+  border-width: 1px;
+}
+
+/* ---------- beyond the apps: three pieces stuck on the page */
+.artbook .beyond {
+  padding-top: 130px;
+}
+.artbook .beyond-grid {
+  gap: 40px 34px;
+  margin-top: 44px;
+}
+.artbook .beyond-card {
+  position: relative;
+  overflow: visible;
+  border: 0;
+  border-radius: 1px;
+  background: #fcfaf5;
+  box-shadow:
+    0 1px 1.5px #3a2a1a29,
+    0 18px 26px -18px #3a2a1a80;
+  transform: rotate(var(--r, 0deg));
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.45s;
+}
+.artbook .beyond-card:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+.artbook .beyond-card:nth-child(1) {
+  --r: -1.2deg;
+}
+.artbook .beyond-card:nth-child(2) {
+  --r: 1deg;
+}
+.artbook .beyond-card:nth-child(3) {
+  --r: -0.6deg;
+}
+.artbook .beyond-card::before {
+  top: -12px;
+  left: calc(50% - 46px);
+  transform: rotate(2deg);
+  --tape: var(--tape-butter);
+}
+.artbook .beyond-card:nth-child(2)::before {
+  --tape: var(--tape-sage);
+  transform: rotate(-4deg);
+}
+.artbook .beyond-card:nth-child(3)::before {
+  --tape: var(--tape-blue);
+}
+.artbook .beyond-visual {
+  margin: 12px 12px 0;
+  border-radius: 1px;
+}
+/* the typeface sample sits on an index card: ruled lines, a pink margin */
+.artbook .beyond-type .beyond-visual {
+  background:
+    linear-gradient(90deg, #0000 30px, #e3a3b2 30px 31.5px, #0000 31.5px),
+    repeating-linear-gradient(#0000 0 27px, #b9cbe2 27px 28px) 0 18px,
+    #fdfbf6;
+}
+.artbook .beyond-type-sample {
+  color: var(--ink);
+}
+.artbook .beyond-type-ru {
+  color: var(--blue);
+}
+.artbook .beyond-type-ko {
+  color: var(--pink-ink);
+}
+.artbook .beyond-mascot .beyond-visual {
+  background: #f3eee2;
+}
+.artbook .beyond-info h3 {
+  color: var(--ink);
+}
+.artbook .beyond-info p {
+  color: var(--text);
+}
+
+/* ---------- services: index cards, the process as a pencil path */
+.artbook .services-section {
+  margin-top: 130px;
+  padding-top: 0;
+  border-top: 0;
+}
+.artbook .services-intro h2 .hand {
+  color: var(--blue);
+}
+.artbook .services-intro > svg {
+  color: var(--pink);
+}
+.artbook .service-grid {
+  gap: 40px 36px;
+}
+.artbook .service-card {
+  position: relative;
+  border: 0;
+  border-radius: 2px;
+  padding-top: 40px;
+  background:
+    linear-gradient(#0000 0 22px, #e3a3b2 22px 23.5px, #0000 23.5px),
+    radial-gradient(circle, #b9c7da 0.9px, #0000 1.3px) 9px 40px / 18px 18px,
+    #fdfbf6;
+  box-shadow:
+    0 1px 1.5px #3a2a1a29,
+    0 18px 26px -18px #3a2a1a7a;
+  transform: rotate(var(--r, 0deg));
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.45s;
+}
+.artbook .service-card:hover {
+  background:
+    linear-gradient(#0000 0 22px, #e3a3b2 22px 23.5px, #0000 23.5px),
+    radial-gradient(circle, #b9c7da 0.9px, #0000 1.3px) 9px 40px / 18px 18px,
+    #fdfbf6;
+  transform: rotate(0deg) translateY(-3px);
+}
+.artbook .service-card:nth-child(1) {
+  --r: -0.8deg;
+}
+.artbook .service-card:nth-child(2) {
+  --r: 0.7deg;
+}
+.artbook .service-card:nth-child(3) {
+  --r: 0.5deg;
+}
+.artbook .service-card:nth-child(4) {
+  --r: -0.6deg;
+}
+.artbook .service-card::before {
+  top: -12px;
+  left: 26px;
+  transform: rotate(-4deg);
+  --tape: var(--tape-blue);
+}
+.artbook .service-card:nth-child(2)::before {
+  left: auto;
+  right: 26px;
+  transform: rotate(5deg);
+  --tape: var(--tape-pink);
+}
+.artbook .service-card:nth-child(3)::before {
+  --tape: var(--tape-butter);
+}
+.artbook .service-card:nth-child(4)::before {
+  left: auto;
+  right: 30px;
+  --tape: var(--tape-sage);
+}
+.artbook .service-card-number {
+  color: var(--pink-ink);
+}
+.artbook .service-card-top > h3 {
+  color: var(--ink);
+}
+.artbook .service-promise {
+  color: var(--ink);
+}
+.artbook .service-text,
+.artbook .service-fit {
+  color: var(--text);
+}
+.artbook .service-includes {
+  border-top-color: #0000;
+}
+.artbook .service-includes > li {
+  color: var(--text);
+}
+.artbook .service-includes > li::before {
+  content: "✳";
+  color: var(--blue);
+  font-size: 11px;
+  top: 2px;
+}
+.artbook .service-fit-label {
+  color: var(--pencil);
+}
+.artbook .process-heading > .hand,
+.artbook .services-bottom > .hand {
+  color: var(--pink-ink);
+}
+.artbook .process-steps > li::before {
+  border-top: 1.5px dashed #77726a8c;
+}
+.artbook .process-steps > li::after {
+  width: 14px;
+  height: 14px;
+  top: -1px;
+  background: var(--butter);
+  border: 1.5px solid var(--ink);
+  border-radius: 48% 52% 45% 55% / 55% 45% 55% 45%;
+}
+.artbook .process-index {
+  color: var(--pink-ink);
+  font-family: chemical, sans-serif;
+  font-size: 18px;
+}
+.artbook .process-steps h3 {
+  color: var(--ink);
+}
+.artbook .process-steps p {
+  color: var(--text);
+}
+
+/* ---------- a postcard to finish */
+.postcard-section {
+  padding: 60px 0 120px;
+}
+.postcard {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 430px;
+  padding: 48px 46px 44px;
+  background: #fcfaf5 url("/sketchbook/paper.webp") 70px 30px / 320px;
+  box-shadow:
+    0 1px 1.5px #3a2a1a2e,
+    0 30px 40px -28px #3a2a1a99;
+  transform: rotate(-1deg);
+}
+/* the dividing line down the middle of the back of a postcard */
+.postcard::after {
+  content: "";
+  position: absolute;
+  top: 48px;
+  bottom: 44px;
+  left: calc(56.5% - 1px);
+  border-left: 1.5px solid #2b262233;
+}
+.postcard-message {
+  padding-right: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.postcard-message .hand {
+  font-size: 24px;
+  color: var(--blue);
+  transform: rotate(-3deg);
+  transform-origin: left center;
+}
+.postcard-message h2 {
+  margin: 18px 0 34px;
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+.postcard-message .button {
+  margin-top: 6px;
+}
+.postcard-sprig {
+  width: 250px;
+  height: auto;
+  margin: auto 0 -14px -18px;
+  mix-blend-mode: multiply;
+  transform: rotate(-3deg);
+}
+.postcard-address {
+  position: relative;
+  padding: 150px 0 0 40px;
+  display: flex;
+  flex-direction: column;
+}
+.postcard-address .eyebrow {
+  margin-bottom: 6px;
+}
+.postcard-address a {
+  padding: 12px 0 6px;
+  font-size: 21px;
+  color: var(--ink);
+  border-bottom: 1.5px solid #2b262240;
+  transition: color 0.2s;
+}
+.postcard-address a:hover {
+  color: var(--blue);
+}
+/* a perforated stamp with the forget-me-not */
+.postcard-stamp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 96px;
+  height: 116px;
+  padding: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--tape-blue);
+  transform: rotate(4deg);
+  --perf: radial-gradient(circle, #0000 3.3px, #000 3.8px) -6px -6px / 12px 12px
+    round;
+  -webkit-mask:
+    var(--perf),
+    linear-gradient(#000 0 0) center / calc(100% - 10px) calc(100% - 10px)
+      no-repeat;
+  mask:
+    var(--perf),
+    linear-gradient(#000 0 0) center / calc(100% - 10px) calc(100% - 10px)
+      no-repeat;
+  filter: drop-shadow(0 1px 1px #3a2a1a40);
+}
+.postcard-stamp::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #fcfaf5aa;
+}
+.postcard-stamp .flower {
+  width: 70px;
+  transform: rotate(-12deg);
+}
+/* the postmark, slightly off, in faded ink */
+.postcard-postmark {
+  position: absolute;
+  top: 54px;
+  right: 58px;
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  border: 1.5px solid #52709f99;
+  border-radius: 50%;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
+  color: #52709fcc;
+  transform: rotate(-14deg);
+  mix-blend-mode: multiply;
+}
+.postcard-postmark::after {
+  content: "";
+  position: absolute;
+  right: 86px;
+  top: 30px;
+  width: 120px;
+  height: 30px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 30'%3E%3Cg fill='none' stroke='%2352709f' stroke-opacity='.6' stroke-width='1.4'%3E%3Cpath d='M0 5q7.5-5 15 0t15 0 15 0 15 0 15 0 15 0 15 0 15 0'/%3E%3Cpath d='M0 15q7.5-5 15 0t15 0 15 0 15 0 15 0 15 0 15 0 15 0'/%3E%3Cpath d='M0 25q7.5-5 15 0t15 0 15 0 15 0 15 0 15 0 15 0 15 0'/%3E%3C/g%3E%3C/svg%3E")
+    0 0 / 100% 100%;
+}
+
+@media (max-width: 1100px) {
+  .artbook .hero-facts strong {
+    font-size: 27px;
+  }
+  .postcard {
+    grid-template-columns: 1fr 1fr;
+  }
+  .postcard::after {
+    left: 50%;
+  }
+}
+@media (max-width: 760px) {
+  .hero-sketch {
+    width: min(100%, 420px);
+    margin-top: 10px;
+  }
+  .artbook .selected-grid {
+    gap: 44px;
+  }
+  .artbook .project-card {
+    padding: 9px 9px 4px;
+  }
+  .artbook .project-card-info h3,
+  .artbook .selected-grid .project-card-info h3 {
+    font-size: 26px;
+  }
+  .artbook .beyond {
+    padding-top: 90px;
+  }
+  .artbook .services-section {
+    margin-top: 90px;
+  }
+  .artbook .service-grid {
+    gap: 30px;
+  }
+  .artbook .process-steps > li::before {
+    border-top: 0;
+    border-left: 1.5px dashed #77726a8c;
+  }
+  .postcard-section {
+    padding: 40px 0 80px;
+  }
+  .postcard {
+    grid-template-columns: 1fr;
+    padding: 34px 24px 30px;
+    transform: rotate(-0.8deg);
+  }
+  .postcard::after {
+    display: none;
+  }
+  .postcard-message {
+    padding: 0 0 30px;
+  }
+  .postcard-message .hand {
+    font-size: 20px;
+  }
+  .postcard-address {
+    padding: 28px 0 0;
+    border-top: 1.5px solid #2b262233;
+  }
+  .postcard-stamp {
+    top: -10px;
+    width: 76px;
+    height: 92px;
+  }
+  .postcard-stamp .flower {
+    width: 54px;
+  }
+  .postcard-postmark {
+    display: none;
+  }
+  .artbook .section-heading {
+    flex-wrap: wrap;
+  }
+  .artbook .text-link {
+    font-size: 18px;
+    white-space: nowrap;
+  }
+}

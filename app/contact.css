@@ -306,39 +306,6 @@
   }
 }
 
-/* Closing call to action on the home page. */
-.contact-strip > .button {
-  margin-left: auto;
-  flex-shrink: 0;
-}
-.contact-strip-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 22px;
-  margin-top: 14px;
-  font-size: 13px;
-  color: var(--muted);
-}
-.contact-strip-links > a {
-  transition: color 0.2s;
-}
-.contact-strip-links > a:hover {
-  color: var(--blue);
-}
-@media (max-width: 760px) {
-  .contact-strip {
-    flex-wrap: wrap;
-  }
-  .contact-strip > div {
-    flex: 1;
-    min-width: 0;
-  }
-  .contact-strip > .button {
-    margin-left: 0;
-    width: 100%;
-  }
-}
-
 /* Questions clients ask before the first message. */
 .faq {
   display: grid;
