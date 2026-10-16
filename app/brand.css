@@ -13,7 +13,7 @@
 .brand-social-copy > p:last-child {
   font-size: 15px;
   line-height: 1.85;
-  color: var(--muted);
+  color: var(--text);
   max-width: 470px;
 }
 .brand-mascot {
@@ -22,14 +22,15 @@
   gap: 80px;
   align-items: center;
 }
+/* the mascot loop is a print on the page */
 .brand-mascot-film {
-  border-radius: 6px;
   overflow: hidden;
+  padding: 10px;
   transform: rotate(-2deg);
   box-shadow:
-    0 30px 50px #0007,
-    0 0 0 1px #ffffff14;
-  background: #efe9dc;
+    0 1px 1.5px #3a2a1a29,
+    0 26px 34px -24px #3a2a1a8c;
+  background: #fcfaf5;
 }
 .brand-mascot-film .loop-video-state {
   border-color: #231f2733;
@@ -54,9 +55,11 @@
   margin-top: 18px;
 }
 .brand-sheet .screen-button {
-  border-radius: 10px;
+  border-radius: 2px;
   overflow: hidden;
-  box-shadow: 0 0 0 1px #ffffff14;
+  box-shadow:
+    0 1px 1.5px #3a2a1a29,
+    0 18px 26px -18px #3a2a1a73;
 }
 .brand-sheet > .hand {
   position: absolute;
@@ -93,8 +96,8 @@
   height: auto;
   border-radius: 22.5%;
   box-shadow:
-    0 14px 26px #0006,
-    0 0 0 1px #ffffff12;
+    0 12px 20px -6px #3a2a1a59,
+    0 0 0 1px #2b262214;
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .brand-icon-grid > li:hover img {
@@ -130,7 +133,7 @@
   scroll-snap-type: x mandatory;
   padding-bottom: 14px;
   scrollbar-width: thin;
-  scrollbar-color: #ffffff30 transparent;
+  scrollbar-color: #2b262240 transparent;
 }
 .brand-carousel:focus-visible {
   outline: 2px solid var(--blue);
@@ -177,8 +180,8 @@
   gap: 10px;
   padding: 13px 18px;
   border-radius: 30px;
-  background: #121414cc;
-  color: #fff;
+  background: #2b2622cc;
+  color: #fbf8f1;
   font-size: 12px;
   line-height: 1;
   white-space: nowrap;

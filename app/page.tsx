@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { T } from "@/components/text";
-import { Asterisk, Arrow, Scribble } from "@/components/marks";
+import { Arrow, Scribble } from "@/components/marks";
 import { Flower } from "@/components/project-art";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/projects";
 import { Services } from "@/components/services";
 import { Beyond } from "@/components/beyond";
+import { Sketchbook } from "@/components/sketchbook";
 import { CONTACT, CONTACT_LINKS, PERSON_SCHEMA } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Alex — UI/UX designer & iOS developer" },
@@ -40,21 +41,20 @@ export default function Home() {
               <T
                 en={
                   <>
-                    I design it.
-                    <br />I{" "}
+                    I make it feel right.
+                    <br />I make it{" "}
                     <span className="hero-feeling">
-                      build
+                      real.
                       <Scribble />
-                    </span>{" "}
-                    it.
+                    </span>
                   </>
                 }
                 ru={
                   <>
-                    Я проектирую.
-                    <br />И{" "}
+                    Продумываю, как ощущается.
+                    <br />Делаю, чтобы{" "}
                     <span className="hero-feeling">
-                      создаю.
+                      работало.
                       <Scribble />
                     </span>
                   </>
@@ -78,47 +78,43 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="hero-object" aria-hidden="true">
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
-            <div className="hero-glass-card glass">
-              <span className="glass-card-top">
-                a small collection of things I made <span>↗</span>
-              </span>
-              <div className="hero-apps">
-                <div className="hero-app hero-app-orot">
-                  <Image
-                    src="/projects/orot/icon.webp"
-                    alt=""
-                    width={150}
-                    height={150}
-                    priority
-                  />
-                  <span>OROT</span>
-                </div>
-                <div className="hero-app hero-app-diple">
-                  <Image
-                    src="/projects/diple/icon.webp"
-                    alt=""
-                    width={150}
-                    height={150}
-                    priority
-                  />
-                  <span>diple.</span>
-                </div>
-                <div className="hero-app hero-app-inkept">
-                  <div>
-                    <Flower size={125} />
-                  </div>
-                  <span>inkept</span>
-                </div>
-              </div>
-              <div className="glass-card-bottom">
-                <span>DESIGNED & BUILT WITH CARE</span>
-                <span>01 — 03</span>
-              </div>
-            </div>
-            <Flower className="hero-flower" size={310} />
+          {/* A working sketch: the screen is still pencil above the line and
+              finished below it. The three apps are stuck on as stickers. */}
+          <div className="hero-sketch" aria-hidden="true">
+            <Image
+              className="hero-sketch-art"
+              src="/sketchbook/hero.webp"
+              alt=""
+              width={1240}
+              height={1280}
+              sizes="(max-width: 760px) 92vw, 600px"
+              priority
+            />
+            <span className="sticker sticker-orot">
+              <Image
+                src="/projects/orot/icon.webp"
+                alt=""
+                width={150}
+                height={150}
+              />
+            </span>
+            <span className="sticker sticker-diple">
+              <Image
+                src="/projects/diple/icon.webp"
+                alt=""
+                width={150}
+                height={150}
+              />
+            </span>
+            <span className="sticker sticker-cut sticker-inkept">
+              <Flower size={125} />
+            </span>
+            <span className="sketch-note note-sketch">
+              <T en="v0.1 — a sketch ↗" ru="v0.1 — набросок ↗" />
+            </span>
+            <span className="sketch-note note-shipped">
+              <T en="↖ v1.0 — shipped" ru="↖ v1.0 — в App Store" />
+            </span>
             <div className="hero-paper">
               <span className="hand">
                 <T
@@ -201,98 +197,59 @@ export default function Home() {
       </section>
       <Beyond />
       <Services />
-      <section className="about-section page-width">
-        <div className="about-note">
-          <Asterisk />
-          <p className="hand">
-            <T
-              en={
-                <>
-                  Somewhere between
-                  <br />a sketchbook
-                  <br />& a code editor.
-                </>
-              }
-              ru={
-                <>
-                  Где-то между
-                  <br />
-                  скетчбуком
-                  <br />и редактором кода.
-                </>
-              }
+      <Sketchbook />
+      {/* A postcard to finish: the message on the left, the address on the right. */}
+      <section className="postcard-section page-width">
+        <div className="postcard">
+          <div className="postcard-message">
+            <p className="hand">
+              <T
+                en="Your next product starts here."
+                ru="Ваш следующий продукт начинается здесь."
+              />
+            </p>
+            <h2>
+              <T
+                en="Let’s make something worth using."
+                ru="Создадим то, чем захочется пользоваться."
+              />
+            </h2>
+            <Link href="/contacts" className="button button-light">
+              <T en="Start a project" ru="Обсудить проект" />
+              <Arrow diagonal />
+            </Link>
+            <Image
+              className="postcard-sprig"
+              src="/sketchbook/sprig.webp"
+              alt=""
+              width={520}
+              height={320}
+              sizes="250px"
             />
-          </p>
-          <span className="eyebrow">THAT’S WHERE I FEEL AT HOME.</span>
-        </div>
-        <div className="about-copy">
-          <p className="eyebrow">
-            <T en="A LITTLE ABOUT ME" ru="НЕМНОГО ОБО МНЕ" />
-          </p>
-          <h2>
-            <T
-              en={
-                <>
-                  I like when useful
-                  <br />
-                  also feels <em>personal.</em>
-                </>
-              }
-              ru={
-                <>
-                  Люблю, когда в полезном
-                  <br />
-                  чувствуется <em>человек.</em>
-                </>
-              }
-            />
-          </h2>
-          <p>
-            <T
-              en="I’m Alex, a UI/UX designer and iOS developer. I work across design and code because the way something feels matters as much as the way it works."
-              ru="Я Алексей, UI/UX-дизайнер и iOS-разработчик. Соединяю дизайн и код, потому что ощущения от продукта для меня так же важны, как его работа."
-            />
-          </p>
-          <p>
-            <T
-              en="My projects are places to read, learn and keep a thought. I’m drawn to quiet interfaces, tactile details and small moments that make a tool feel like your own."
-              ru="Мои проекты — места для чтения, обучения и мыслей. Мне близки спокойные интерфейсы, осязаемые детали и мелочи, благодаря которым инструмент становится своим."
-            />
-          </p>
-          <div className="skill-tags">
-            <span>UI/UX</span>
-            <span>Swift & SwiftUI</span>
-            <span>Design engineering</span>
-            <span>Figma</span>
           </div>
-        </div>
-      </section>
-      <section className="contact-strip page-width">
-        <Flower size={100} />
-        <div>
-          <p className="hand">
-            <T
-              en="Your next product starts here."
-              ru="Ваш следующий продукт начинается здесь."
-            />
-          </p>
-          <h2>
-            <T
-              en="Let’s make something worth using."
-              ru="Создадим то, чем захочется пользоваться."
-            />
-          </h2>
-          <div className="contact-strip-links">
-            <a href={CONTACT_LINKS.email}>{CONTACT.email}</a>
-            <a href={CONTACT_LINKS.telegram} target="_blank" rel="noreferrer">
+          <div className="postcard-address">
+            <span className="postcard-stamp" aria-hidden="true">
+              <Flower size={100} />
+            </span>
+            <span className="postcard-postmark" aria-hidden="true">
+              chemical pink · 2026
+            </span>
+            <p className="eyebrow">
+              <T en="WRITE TO" ru="КУДА ПИСАТЬ" />
+            </p>
+            <a className="hand" href={CONTACT_LINKS.email}>
+              {CONTACT.email}
+            </a>
+            <a
+              className="hand"
+              href={CONTACT_LINKS.telegram}
+              target="_blank"
+              rel="noreferrer"
+            >
               Telegram @{CONTACT.telegram}
             </a>
           </div>
         </div>
-        <Link href="/contacts" className="button button-light">
-          <T en="Start a project" ru="Обсудить проект" />
-          <Arrow diagonal />
-        </Link>
       </section>
     </>
   );

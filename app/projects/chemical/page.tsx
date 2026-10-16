@@ -223,12 +223,12 @@ export default function Chemical() {
               <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
                 <path
                   d="M28 66c18 2 52-2 58-20S70 18 52 22 22 52 34 76s50 24 64 10"
-                  stroke="#9ebcdf"
+                  stroke="#52709f"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                 />
-                <circle cx="28" cy="66" r="3" fill="#9ebcdf" />
-                <circle cx="98" cy="86" r="3" fill="#9ebcdf" />
+                <circle cx="28" cy="66" r="3" fill="#52709f" />
+                <circle cx="98" cy="86" r="3" fill="#52709f" />
               </svg>
               <span className="type-step-index">01</span>
               <h3>
@@ -262,7 +262,7 @@ export default function Chemical() {
                 </defs>
                 <path
                   d="M28 66c18 2 52-2 58-20S70 18 52 22 22 52 34 76s50 24 64 10"
-                  stroke="#eeeae2"
+                  stroke="#2b2622"
                   strokeWidth="9"
                   strokeLinecap="round"
                   filter="url(#ragged)"

@@ -10,6 +10,8 @@ import "./contact.css";
 import "./motion.css";
 import "./brand.css";
 import "./type.css";
+import "./sketchbook.css";
+import "./artbook.css";
 const geist = localFont({
   src: "./fonts/Geist-Variable.woff2",
   weight: "100 900",
@@ -27,8 +29,8 @@ const literata = Literata({
   preload: false,
 });
 export const viewport: Viewport = {
-  themeColor: "#0c0d0d",
-  colorScheme: "dark",
+  themeColor: "#f2ede2",
+  colorScheme: "light",
 };
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -68,7 +70,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body>
+      <body className="artbook">
         <a className="skip-link" href="#main">
           Skip to content / К содержимому
         </a>
