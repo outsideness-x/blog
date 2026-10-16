@@ -4,13 +4,9 @@ import { T } from "./text";
 import { Flower } from "./project-art";
 import { ScreenViewer } from "./screen-viewer";
 import { Asterisk, Scribble } from "./marks";
-import {
-  KoreanStudy,
-  ReadingStudy,
-  MemoryStudy,
-  InkeptViews,
-} from "./interaction-study";
+import { KoreanStudy, MemoryStudy, InkeptViews } from "./interaction-study";
 import { CaseReel, Device, type ReelItem } from "./reel";
+import { LoopVideo } from "./media";
 import { dipleMotion, orotMotion } from "@/lib/motion";
 import { BrandWorld } from "./brand-world";
 
@@ -500,10 +496,37 @@ export function DipleStudy() {
             <span>Interaction design</span>
           </div>
         </div>
-        <div>
-          <StudyLabel />
-          <ReadingStudy />
-        </div>
+        {/* The real thing rather than a mock-up: a thought written beside
+            its line, opened from the margin, the next one a swipe away. */}
+        <figure className="margin-film">
+          <Device>
+            <LoopVideo
+              src="/projects/diple/motion/living-margin.mp4"
+              poster="/projects/diple/motion/living-margin.webp"
+              width={600}
+              height={1304}
+              label="Notes in the margin, by hand"
+            />
+          </Device>
+          <figcaption className="hand">
+            <T
+              en={
+                <>
+                  ↙ in the margin,
+                  <br />
+                  by hand
+                </>
+              }
+              ru={
+                <>
+                  ↙ на полях,
+                  <br />
+                  от руки
+                </>
+              }
+            />
+          </figcaption>
+        </figure>
       </section>
       <section className="desktop-editorial">
         <div className="desktop-editorial-title">

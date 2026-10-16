@@ -231,9 +231,13 @@ export function LiquidNavigation({
               : "blur(1px) saturate(1.2)",
         }}
       />
+      {/* The lens refracts what it wraps, so it wraps an empty plate under the
+          labels: bent through three colour channels, the words came out
+          doubled and smeared. They sit above it and stay crisp. */}
       <LiquidGlass
         ref={glass}
         className="nav-optics"
+        style={{ position: "absolute", inset: 5 }}
         width={lensWidth}
         height={40}
         radius={20}
@@ -249,28 +253,29 @@ export function LiquidNavigation({
         shadow="inset 0 1px 1px #ffffff55, inset 0 -1px 1px #ffffff12, 0 3px 12px #00000022"
         onMapGenerated={setMap}
       >
-        <div className="nav-options" ref={options}>
-          {links.map((item, index) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={selected === index ? "page" : undefined}
-              onClick={(event) => {
-                if (
-                  !event.metaKey &&
-                  !event.ctrlKey &&
-                  !event.shiftKey &&
-                  !event.altKey
-                )
-                  setTarget(index);
-              }}
-            >
-              <T en={item.en} ru={item.ru} />
-              {index === 1 && <sup>04</sup>}
-            </Link>
-          ))}
-        </div>
+        <span className="nav-lens-plate" />
       </LiquidGlass>
+      <div className="nav-options" ref={options}>
+        {links.map((item, index) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={selected === index ? "page" : undefined}
+            onClick={(event) => {
+              if (
+                !event.metaKey &&
+                !event.ctrlKey &&
+                !event.shiftKey &&
+                !event.altKey
+              )
+                setTarget(index);
+            }}
+          >
+            <T en={item.en} ru={item.ru} />
+            {index === 1 && <sup>04</sup>}
+          </Link>
+        ))}
+      </div>
     </nav>
   );
 }

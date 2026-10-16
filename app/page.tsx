@@ -41,21 +41,20 @@ export default function Home() {
               <T
                 en={
                   <>
-                    I design it.
-                    <br />I{" "}
+                    I make it feel right.
+                    <br />I make it{" "}
                     <span className="hero-feeling">
-                      build
+                      real.
                       <Scribble />
-                    </span>{" "}
-                    it.
+                    </span>
                   </>
                 }
                 ru={
                   <>
-                    Я проектирую.
-                    <br />И{" "}
+                    Продумываю, как ощущается.
+                    <br />Делаю, чтобы{" "}
                     <span className="hero-feeling">
-                      создаю.
+                      работало.
                       <Scribble />
                     </span>
                   </>

@@ -1311,97 +1311,23 @@
   font: italic 12px var(--font-serif);
   z-index: 3;
 }
-.reading-study {
-  background: #fbf8f1;
-  color: var(--ink);
-  padding: 28px 35px;
-  min-height: 450px;
+/* diple's margin, filmed in the app: the phone stands on the page and a
+   pencil note points at the hand-written thought */
+.margin-film {
+  position: relative;
+  justify-self: center;
+  width: min(300px, 100%);
+  margin: 0;
 }
-.reading-study .prototype-topline {
-  color: var(--pencil);
-}
-.reading-kicker {
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  color: var(--pencil);
-  margin-top: 47px;
-}
-.reading-passage {
-  font: 23px/1.65 var(--font-serif);
-  margin-top: 24px;
-}
-.reading-passage button {
-  font: inherit;
-  border: 0;
-  border-radius: 1px;
-  background: none;
-  color: inherit;
-  text-align: left;
-  display: inline;
-  padding: 0;
-  text-decoration: underline;
-  text-decoration-color: #52709f66;
-  text-underline-offset: 4px;
-  transition: background 0.25s;
-}
-.reading-passage button.is-marked {
-  background: #efdca4cc;
-  text-decoration: none;
-}
-.reading-tools {
-  display: flex;
-  gap: 10px;
-  margin: 28px 0 20px;
-}
-.reading-tools > button {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 11px;
-  border: 1px solid #2b262266;
-  border-radius: 30px;
-  padding: 9px 12px;
-  background: transparent;
-  color: var(--text);
-}
-.reading-tools > button:hover,
-.reading-tools > button[aria-pressed="true"] {
-  background: var(--butter);
-  border-color: var(--ink);
-  color: var(--ink);
-}
-.reading-tools > button > span:first-child {
-  font-size: 13px;
-}
-.reading-hint {
-  font-size: 11px;
-  line-height: 1.7;
-  color: var(--pencil);
-}
-.margin-note {
-  display: block;
-  border-left: 2px solid var(--pink);
-  padding-left: 15px;
-  margin-top: 20px;
-}
-.margin-note > .hand {
-  font-size: 18px;
+.margin-film figcaption {
+  position: absolute;
+  left: calc(100% + 22px);
+  top: 15%;
+  width: max-content;
+  font-size: 23px;
+  line-height: 1.25;
   color: var(--pink-ink);
-}
-.margin-note textarea {
-  width: 100%;
-  background: none;
-  border: 0;
-  border-bottom: 1px solid #2b262240;
-  color: var(--ink);
-  padding: 9px 0;
-  resize: vertical;
-  font: 14px/1.5 var(--font-serif);
-  margin-top: 8px;
-}
-.margin-note textarea:focus-visible {
-  outline: 1px solid var(--blue);
-  outline-offset: 4px;
+  transform: rotate(-6deg);
 }
 .desktop-editorial {
   background: #d9e0e5;
@@ -1887,12 +1813,6 @@
   .book-spread-right {
     padding: 65px 40px 0;
   }
-  .reading-study {
-    padding: 25px;
-  }
-  .reading-passage {
-    font-size: 21px;
-  }
   .craft-board {
     padding: 35px 30px 60px;
   }
@@ -2180,24 +2100,6 @@
     left: 25px;
     font-size: 20px;
   }
-  .reading-study {
-    padding: 25px;
-    min-height: 430px;
-  }
-  .reading-kicker {
-    margin-top: 35px;
-  }
-  .reading-passage {
-    font-size: 23px;
-    margin-top: 20px;
-  }
-  .reading-tools {
-    gap: 8px;
-  }
-  .reading-tools > button {
-    font-size: 10px;
-    padding: 9px 10px;
-  }
   .desktop-editorial {
     padding: 35px 20px 25px;
   }
@@ -2397,15 +2299,6 @@
 @media (max-width: 370px) {
   .korean-sentence button {
     font-size: 19px;
-  }
-  .reading-study {
-    padding: 22px;
-  }
-  .reading-passage {
-    font-size: 21px;
-  }
-  .reading-tools > button {
-    font-size: 9px;
   }
   .craft-pieces {
     padding-inline: 10px;

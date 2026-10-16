@@ -2580,11 +2580,17 @@ html[data-lang="ru"] .lang-ru {
 }
 .nav-optics {
   z-index: 2;
+  pointer-events: none;
+}
+.nav-lens-plate {
+  display: block;
+  height: 40px;
 }
 .nav-options {
   display: flex;
   gap: 2px;
   position: relative;
+  z-index: 3;
 }
 .liquid-nav a {
   min-width: 94px;

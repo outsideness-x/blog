@@ -101,8 +101,17 @@
 .artbook .hero-hello {
   color: var(--blue);
 }
+.artbook .hero-copy {
+  min-width: 0;
+  container-type: inline-size;
+}
 .artbook .hero-copy h1 {
   color: var(--ink);
+  font-size: clamp(28px, 9.3cqw, 68px);
+  line-height: 1.16;
+}
+.artbook .hero-copy h1 > .lang-ru {
+  font-size: 0.66em;
 }
 .artbook .hero-feeling {
   color: var(--blue);
