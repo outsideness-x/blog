@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Project } from "@/lib/projects";
 import { T } from "./text";
-import { Arrow, Asterisk } from "./marks";
+import { Arrow, Asterisk, InkMark } from "./marks";
 import { Flower } from "./project-art";
 import { Device } from "./reel";
 
@@ -87,7 +87,7 @@ export function CaseCover({ project }: { project: Project }) {
               <div className="cover-window-bar">
                 <span>● ● ●</span>
                 <span>diple. — your reading room</span>
-                <span>↗</span>
+                <span><InkMark symbol="↗" /></span>
               </div>
               <Image
                 src="/projects/diple/mac-library.webp"

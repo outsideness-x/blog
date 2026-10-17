@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { T } from "@/components/text";
-import { Arrow, Scribble } from "@/components/marks";
+import { Arrow, Scribble, InkMark } from "@/components/marks";
 import { Flower } from "@/components/project-art";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/projects";
@@ -23,7 +23,9 @@ export default function Home() {
       />
       <section className="home-hero page-width">
         <div className="hero-eyebrow">
-          <span className="tiny-cross">✳︎</span>
+          <span className="tiny-cross">
+            <InkMark symbol="✳" />
+          </span>
           <T
             en="INDEPENDENT DESIGNER & DEVELOPER"
             ru="НЕЗАВИСИМЫЙ ДИЗАЙНЕР И РАЗРАБОТЧИК"
@@ -35,7 +37,8 @@ export default function Home() {
         <div className="hero-layout">
           <div className="hero-copy">
             <p className="hand hero-hello">
-              <T en="hey, I’m Alex" ru="привет, я Алексей" /> <span>↘︎</span>
+              <T en="hey, I’m Alex" ru="привет, я Алексей" />{" "}
+              <span><InkMark symbol="↘" /></span>
             </p>
             <h1>
               <T
@@ -133,7 +136,9 @@ export default function Home() {
                   }
                 />
               </span>
-              <span className="paper-star">✳︎</span>
+              <span className="paper-star">
+                <InkMark symbol="✳" />
+              </span>
             </div>
           </div>
         </div>

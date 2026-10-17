@@ -19,7 +19,12 @@ npx tsc --noEmit
 npm run build
 # With the site running:
 npm run test:smoke
+# Responsive layout and interactions in Chromium and Safari/WebKit:
+npx playwright install chromium webkit
+npm run test:responsive
 ```
+
+Responsive checks cover all eight pages in English and Russian at sixteen widths from 320 to 1440px, including both sides of the layout breakpoints, plus navigation, the contact brief, previews and interactive controls. They check for horizontal overflow, overlapping controls, clipped text and emoji-based decorative icons. Mobile screenshots are saved in `test-results/`. Set `TEST_ORIGIN` to check an already running site; otherwise the suite starts an isolated development server.
 
 Use `NEXT_DIST_DIR=.next-build npm run build` to build separately while the development server is running, and `NEXT_DIST_DIR=.next-build npx next start -p 3100` with `TEST_ORIGIN=http://127.0.0.1:3100` to smoke-test that build. Set `NEXT_PUBLIC_SITE_URL` to the production origin before deployment; otherwise `mini-blog.vercel.app` is used for canonical URLs, link previews and the sitemap. The build fetches Literata from Google Fonts once and self-hosts it.
 
@@ -36,6 +41,7 @@ Use `NEXT_DIST_DIR=.next-build npm run build` to build separately while the deve
 - `lib/og.tsx`: link preview images, rendered at build time.
 - `components/liquid-navigation.tsx`: the refractive navigation lens; it samples what is behind it and keeps the labels dark on paper, light over a dark screen.
 - `app/artbook.css` and `components/sketchbook.tsx`: the artbook pieces every page shares (paper, washi tape, pills drawn by hand) and the home page — stickers, taped prints, index cards, the About spread and the postcard. The paper itself and the palette are tokens in `app/globals.css`.
+- `app/responsive.css`: shared responsive rules, loaded after the artbook theme; `components/marks.tsx` draws decorative symbols as SVG so they look consistent on iOS.
 - `scripts/art/`: the drawings on the home page, made in code. `node scripts/art/render.mjs` redraws them into `public/sketchbook/` (needs a Chromium build, set `CHROME` if it is not Playwright's, and `cwebp`); `python3 scripts/art/paper.py` makes the paper tiles.
 - `docs/assets.md` and `docs/liquid-glass.md`: asset provenance and optical implementation notes.
 

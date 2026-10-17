@@ -1,3 +1,35 @@
+export type InkSymbol = "✳" | "↗" | "↘" | "↙" | "↖";
+
+// Draw decorative symbols ourselves: iOS can render Unicode arrows as emoji,
+// even when a font or text-presentation selector asks for a monochrome glyph.
+export function InkMark({ symbol }: { symbol: InkSymbol }) {
+  const rotation = { "↗": 0, "↘": 90, "↙": 180, "↖": 270 };
+  return (
+    <svg
+      className="ink-mark"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d={
+          symbol === "✳"
+            ? "M12 2v20M2 12h20M5 5l14 14M5 19 19 5"
+            : "M5 19 19 5M5 5h14v14"
+        }
+        transform={symbol === "✳" ? undefined : `rotate(${rotation[symbol]} 12 12)`}
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function Arrow({
   diagonal = false,
   className = "",

@@ -78,6 +78,7 @@ export function LiquidNavigation({
         : 0;
   const [target, setTarget] = useState(selected);
   const [lensWidth, setLensWidth] = useState(94);
+  const [lensHeight, setLensHeight] = useState(40);
   const [map, setMap] = useState("");
   const [backdropSupported, setBackdropSupported] = useState(false);
   const [tone, setTone] = useState<"dark" | "light">("light");
@@ -100,13 +101,23 @@ export function LiquidNavigation({
     if (initialMap) setMap(initialMap);
     const element = options.current;
     if (!element) return;
-    const measure = () =>
-      setLensWidth((element.firstElementChild as HTMLElement).offsetWidth);
+    const measure = () => {
+      const first = element.firstElementChild as HTMLElement;
+      setLensWidth(first.offsetWidth);
+      setLensHeight(first.offsetHeight);
+    };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
+
+  // The translated labels have different widths. Remeasure after switching
+  // language even when the bar itself stays the same size.
+  useEffect(() => {
+    const first = options.current?.firstElementChild as HTMLElement | null;
+    if (first) setLensWidth(first.offsetWidth);
+  }, [language]);
 
   useEffect(() => {
     const element = nav.current;
@@ -204,7 +215,7 @@ export function LiquidNavigation({
                 x="0"
                 y="0"
                 width={lensWidth}
-                height="40"
+                height={lensHeight}
                 preserveAspectRatio="none"
                 result="lens-map"
               />
@@ -225,6 +236,7 @@ export function LiquidNavigation({
         className="nav-backdrop-lens"
         style={{
           width: lensWidth,
+          height: lensHeight,
           backdropFilter:
             backdropSupported && map
               ? `url(#${filterId}) blur(.4px) saturate(1.2)`
@@ -239,8 +251,8 @@ export function LiquidNavigation({
         className="nav-optics"
         style={{ position: "absolute", inset: 5 }}
         width={lensWidth}
-        height={40}
-        radius={20}
+        height={lensHeight}
+        radius={lensHeight / 2}
         strength={0.035}
         depth={9}
         curvature={0.85}

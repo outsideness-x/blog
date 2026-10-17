@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { InkMark } from "./marks";
 import { T } from "./text";
 import { Device } from "./reel";
 export function Flower({
@@ -61,7 +62,7 @@ export function ProjectArt({
       {slug === "diple" && (
         <>
           <span className="art-diple-title">
-            Aa<span>↗</span>
+            Aa<span><InkMark symbol="↗" /></span>
           </span>
           <div className="diple-window">
             <div className="window-bar">

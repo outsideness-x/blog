@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { InkMark } from "@/components/marks";
 import { T } from "@/components/text";
 import { Flower } from "@/components/project-art";
 export default function NotFound() {
@@ -12,7 +13,7 @@ export default function NotFound() {
         <T en="Nothing growing here. Yet." ru="Здесь пока ничего не выросло." />
       </h1>
       <Link href="/" className="button button-light">
-        <T en="Back home" ru="На главную" /> ↗
+        <T en="Back home" ru="На главную" /> <InkMark symbol="↗" />
       </Link>
     </div>
   );

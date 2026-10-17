@@ -560,11 +560,17 @@
 .artbook .service-includes > li {
   color: var(--text);
 }
+/* The decorative list bullets are shapes, never platform emoji. */
 .artbook .service-includes > li::before {
-  content: "✳\FE0E";
-  color: var(--blue);
-  font-size: 11px;
-  top: 2px;
+  content: "";
+  top: 0.25em;
+  width: 12px;
+  height: 12px;
+  background: var(--blue);
+  clip-path: polygon(43% 0, 57% 0, 57% 33%, 81% 9%, 91% 19%, 67% 43%,
+    100% 43%, 100% 57%, 67% 57%, 91% 81%, 81% 91%, 57% 67%, 57% 100%,
+    43% 100%, 43% 67%, 19% 91%, 9% 81%, 33% 57%, 0 57%, 0 43%,
+    33% 43%, 9% 19%, 19% 9%, 43% 33%);
 }
 .artbook .service-fit-label {
   color: var(--pencil);

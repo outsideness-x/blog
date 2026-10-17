@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { InkMark } from "./marks";
 import { T } from "./text";
 import { Flower } from "./project-art";
 
@@ -79,7 +80,7 @@ export function KoreanStudy() {
             ru="ответ там, где он нужен."
           />
         </span>
-        <span>↗</span>
+        <span><InkMark symbol="↗" /></span>
       </div>
     </div>
   );

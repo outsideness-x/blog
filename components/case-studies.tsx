@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { T } from "./text";
 import { Flower } from "./project-art";
 import { ScreenViewer } from "./screen-viewer";
-import { Asterisk, Scribble } from "./marks";
+import { Asterisk, Scribble, InkMark } from "./marks";
 import { KoreanStudy, MemoryStudy, InkeptViews } from "./interaction-study";
 import { CaseReel, Device, type ReelItem } from "./reel";
 import { LoopVideo } from "./media";
@@ -65,7 +65,7 @@ function StudyLabel() {
         en="INTERACTION STUDY — TRY IT"
         ru="ИНТЕРАКТИВНЫЙ ФРАГМЕНТ — ПОПРОБУЙТЕ"
       />
-      <span>↘︎</span>
+      <span><InkMark symbol="↘" /></span>
     </p>
   );
 }
@@ -152,7 +152,7 @@ export function OrotStudy() {
           </figure>
         </div>
         <span className="story-wall-note hand">
-          <T en="a way into the language" ru="вход в новый язык" /> ↗
+          <T en="a way into the language" ru="вход в новый язык" /> <InkMark symbol="↗" />
         </span>
       </section>
       <section className="decision-section">
@@ -373,7 +373,7 @@ export function DipleStudy() {
           />
         </h2>
         <div>
-          <span className="editorial-star">✳︎</span>
+          <span className="editorial-star"><InkMark symbol="✳" /></span>
           <p>
             <T
               en="The page gets the attention. Everything else earns its place."
@@ -512,14 +512,14 @@ export function DipleStudy() {
             <T
               en={
                 <>
-                  ↙ in the margin,
+                  <InkMark symbol="↙" /> in the margin,
                   <br />
                   by hand
                 </>
               }
               ru={
                 <>
-                  ↙ на полях,
+                  <InkMark symbol="↙" /> на полях,
                   <br />
                   от руки
                 </>
@@ -563,7 +563,7 @@ export function DipleStudy() {
           <div className="desktop-toolbar">
             <span>● ● ●</span>
             <span>diple. / macOS</span>
-            <span>↗</span>
+            <span><InkMark symbol="↗" /></span>
           </div>
           <ScreenViewer
             screen={{

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CONTACT, CONTACT_LINKS } from "@/lib/site";
 import { T } from "./text";
-import { Asterisk, Arrow } from "./marks";
+import { Asterisk, Arrow, InkMark } from "./marks";
 import { LiquidNavigation } from "./liquid-navigation";
 
 export function Header() {
@@ -68,7 +68,7 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <Link className="footer-signature" href="/">
-        chemical pink<span>✳︎</span>
+        chemical pink<span><InkMark symbol="✳" /></span>
       </Link>
       <p>
         <T

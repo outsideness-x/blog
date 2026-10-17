@@ -12,6 +12,7 @@ import "./brand.css";
 import "./type.css";
 import "./sketchbook.css";
 import "./artbook.css";
+import "./responsive.css";
 const geist = localFont({
   src: "./fonts/Geist-Variable.woff2",
   weight: "100 900",
@@ -29,6 +30,7 @@ const literata = Literata({
   preload: false,
 });
 export const viewport: Viewport = {
+  viewportFit: "cover",
   themeColor: "#f2ede2",
   colorScheme: "light",
 };
